@@ -53,7 +53,7 @@ function WArray() {
         if (this.value.length == 0) {
             throw new Error('无数据无法返回数组本身')
         };
-      
+
         return this.value;
     }
     /**
@@ -86,7 +86,7 @@ function WArray() {
      * @returns pval
      */
     this.pop = function () {
-
+        //1、判断 this.value 中有没有元素，没有就抛出 异常
         if (this.value.length == 0) {
             throw new Error('内部无数据已无法删除')
         }
@@ -100,6 +100,7 @@ function WArray() {
      * @returns 
      */
     this.shift = function () {
+        //1、判断 this.value 中有没有元素，没有就抛出 异常
         if (this.value.length == 0) {// 情况1： 当 value == []
             throw new Error('内部无数据已无法删除')
         }
@@ -122,6 +123,7 @@ function WArray() {
      * @returns 
      */
     this.unshift = function (...UNshift) {
+        //1、判断 入参是否合法 ，没有就抛出 异常
         if (UNshift == undefined || UNshift == null || UNshift.length == 0) {
             throw new error('入参不合法');
         }
@@ -143,6 +145,7 @@ function WArray() {
      * @param {*} item5 
      */
     this.join = function (joinStr) {
+        //1、判断 入参是否合法 ，没有就抛出 异常
         if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
             joinStr = ',';// 当undefined/null/空字符串时，默认是逗号
         }
@@ -167,6 +170,7 @@ function WArray() {
      * @returns 
      */
     this.concat = function (...ConcatArr) {
+        //1、判断 入参是否合法 ，没有就抛出 异常
         if (ConcatArr == undefined || ConcatArr == null || ConcatArr.length == 0) {
             throw new error('入参不合法');
         }
@@ -181,6 +185,7 @@ function WArray() {
      * @returns this.value
      */
     this.reverse = function () {
+        //1、判断 this.value中有没有元素，没有就抛出 异常
         if (this.value.length == 0) {// 情况1： 当 value == []
             throw new Error('内部无数据已无法删除')
         }
@@ -192,10 +197,23 @@ function WArray() {
         return this.value;
 
     };
+    /**
+     * map（）方法 将数组的 所有成员 依次 传入参数，然后把每一次的执行结果 组成一个新的数组返回
+     * @returns mapArr
+     */
     this.map = function () {
-        let mapArr = [];
- 
-        return mapArr;
+        //1、判断 this.value中有没有元素，
+        if (this.value.length == 0) {
+            throw new Error('内部无数据');
+        }
+        let mapArr2 = [];
+        for (let i = 0; i < this.value.length; i++) {
+            let mapArr1 = [];
+            mapArr1 = this.value[i];
+            mapArr2 += mapArr1;
+            mapArr2++;
+        }
+        return mapArr2;
     }
     this.slice = function (...reverseArr) {
 
@@ -231,9 +249,9 @@ console.log(`before: `, wArray);
 // console.log(`after: `, wArray);
 // console.log(`after:  UNshift = `, UNshift);
 
-// let joinStr = wArray.join4('|');
-// console.log(`after: `, wArray);
-// console.log(`after: joinStr = `, joinStr);
+let joinStr = wArray.join4('|');
+console.log(`after: `, wArray);
+console.log(`after: joinStr = `, joinStr);
 
 // let ConcatArr = wArray.concat('[5,6],[8,9]');
 // console.log(`after: `, wArray);
@@ -243,9 +261,10 @@ console.log(`before: `, wArray);
 // console.log(`after: `, wArray);
 // console.log(`after: reverseArr = `, reverseArr);
 
-let mapArray = wArray.map();
-console.log(`after: `, wArray);
-console.log(`after: mapArray = `, mapArray);
+// let mapArray = wArray.map();
+// console.log(`after: `, wArray);
+// console.log(`after: mapArray = `, mapArray);
+
 
 
   //原生js 实现 push() 、valueof() 、pop() 、 shift() 、 unshift() 、  concat() 、 reverse() 、 map() ，没完善  toSting()、join()

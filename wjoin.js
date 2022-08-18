@@ -97,26 +97,75 @@ function WArray() {
             // result = result.slice(0, -1)
         }
         return result;
-    }
-    // 方式三
-    this.join5 = function (...joinStr) {
-        if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
-            joinStr = ',';// 当undefined/null/空字符串时，默认是逗号
+    },
+        // 方式三
+        this.join5 = function (...joinStr) {
+            if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
+                joinStr = ',';// 当undefined/null/空字符串时，默认是逗号
+            }
+
+            let result = "";
+            for (let j = 0; j < this.value.length; j++) {
+                let item = this.value[j];
+                result += item;
+                // result += joinStr;
+                // if (!(result[result.length - 1] == joinStr)) {
+                //     result += joinStr;
+                // } else {
+                //     break;
+                // }
+
+
+
+
+            }
+            return result;
+
+        },
+
+        // 方式四
+        this.join6 = function (...joinStr) {
+            if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
+                joinStr = ',';// 当undefined/null/空字符串时，默认是逗号
+            }
+
+            let result = "";
+            for (let j = 0; j < this.value.length; j++) {
+                let item = this.value[j];
+                result += item;
+                if (!(result.charAt(result.length - 1) == joinStr)) {
+                    result += joinStr;
+                } else {
+                    break;
+                }
+            }
+            return result;
+        },
+
+        
+        // [1, 1, 1]
+        // [HELLO, HELLO , HELLO]
+        this.join7 = function (...joinStr) {
+            if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
+                joinStr = ',';// 当undefined/null/空字符串时，默认是逗号
+            }
+
+            let result = "";
+            for (let j = 0; j < this.value.length; j++) {
+                let item = this.value[j];
+                result += item;
+                if (j != this.value.length - 1) {// 如果不是最后一个item, 就拼接。
+             // if ( item != this.value[this.value.length - 1] )
+                    result += joinStr;
+                } else {
+                    break;
+                }
+            }
+            return result;
         }
 
-        let result = "";
-        for (let j = 0; j < this.value.length; j++) {
-            let item = this.value[j];
-
-            result += item;
-            result += joinStr;
-        }
-        if (result[result.length - 1] == joinStr) {
-
-        }
-
-    }
 }
+
 
 let wArray = new WArray();
 wArray.push('1', '2', '3', '4',);
@@ -135,10 +184,11 @@ console.log(`before: `, wArray);
 // console.log(`after: item5 = `, joinStr);
 
 
-let joinStr = wArray.join4('|');
+// let joinStr = wArray.join5('hello world');
+// console.log(`after: `, wArray);
+// console.log(`after: joinStr = `, joinStr);
+
+
+let joinStr = wArray.join7('hello world');
 console.log(`after: `, wArray);
 console.log(`after: item5 = `, joinStr);
-
-// let joinStr2 = wArray.join5('hello world');
-// console.log(`after: `, wArray);
-// console.log(`after: item6 = `, joinStr2);
