@@ -1,5 +1,5 @@
 
-function WArray() {
+function WArray() {  //定义一个 wArray 函数 ，在JavaScript中一切皆对象，所以这是定义一个 wArray对象 
     this.value = []; // 初始化 wArray对象 时，里面定义 一个空数组，将来用来装数据的容器
     this.length = 0;  //因为是空数组，所以现在的长度是0
     //缺少方法注释
@@ -108,7 +108,7 @@ function WArray() {
         let sval = this.value[0];
         // 将数组的后一项赋值给前一项
         for (let i = 0; i < this.value.length; i++) {
-            this.value[i] = this.value[i + 1];
+            this.value[i] = this.value[i + 1];  //i:元素下标 + 1
         }
         if (this.value.length > 1) {//去掉数组最后一项
             this.value.length = this.value.length - 1;
@@ -140,30 +140,31 @@ function WArray() {
         return this.length;
     };
     /**
-     * join 方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。
+     * join 方法以指定的参数作为分隔符，将所有数组成员连接成一个字符串返回。
      * 如果不提供参数，默认用逗号分隔。
-     * @param {*} item5 
+     * @param  {...any} joinStr 
      */
-    this.join = function (joinStr) {
-        //1、判断 入参是否合法 ，没有就抛出 异常
-        if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
-            joinStr = ',';// 当undefined/null/空字符串时，默认是逗号
+    this.join = function (...joinStr) {
+        //判断入参 joinStr，并且如果不提供参数，默认用逗号分隔。
+        if (joinStr == undefined || joinStr == null || joinStr == 0) {
+            joinStr = ','
         }
-
-        let result = "";
-        for (let j = 0; j < this.value.length; j++) {
-            let item = this.value[j];
-
+        let result = '';  //千万不要擅自修改原数组的数据，很难复原
+        for (let i = 0; i < this.value.length; i++) {
+            let item = this.value[i];
             result += item;
-            result += joinStr;
-        }
-        if (result[result.length - 1] == joinStr) {
-            result = result.substring(0, result.length - 1)
-            // result = result.slice(0, -1)
+            // result += joinStr;  //但是最后一位元素后面是不能加 有分隔符的
+
+            //通过下标判断最后一个元素是最准确的，这里通过下标来判断数组中最后一位元素
+            if (i != this.value.length - 1) {  // 如果不是最后一个item, 就拼接。
+                result += joinStr;
+            } else {
+                break;
+            }
         }
         return result;
 
-    };
+    }
     /**
      * concat()方法 用于多个数组的合并。它将新数组的成员，添加到原数组成员的后部。
      * @param  {...any} ConcatArr 
@@ -201,20 +202,18 @@ function WArray() {
      * map（）方法 将数组的 所有成员 依次 传入参数，然后把每一次的执行结果 组成一个新的数组返回
      * @returns mapArr
      */
-    this.map = function () {
-        //1、判断 this.value中有没有元素，
-        if (this.value.length == 0) {
-            throw new Error('内部无数据');
+    this.map = function (callback) {
+        if (typeof callback != 'function') {
+            throw new Error("callback 不是一个 function")
         }
-        let mapArr2 = [];
+        let mapArr = [];
         for (let i = 0; i < this.value.length; i++) {
-            let mapArr1 = [];
-            mapArr1 = this.value[i];
-            mapArr2 += mapArr1;
-            mapArr2++;
+            mapArr[i] = callback(this.value[i]);
         }
-        return mapArr2;
+        return mapArr;
+
     }
+
     this.slice = function (...reverseArr) {
 
     }
@@ -225,7 +224,7 @@ let wArray = new WArray();
 // wArray.push(4);
 // wArray.push(3);
 
-wArray.push('1', '2', '3', '4',);
+wArray.push(1, 2, 3, 4);
 console.log(`before: `, wArray);
 // wArray.push();   //这里就没传递数据
 
@@ -249,9 +248,9 @@ console.log(`before: `, wArray);
 // console.log(`after: `, wArray);
 // console.log(`after:  UNshift = `, UNshift);
 
-let joinStr = wArray.join4('|');
-console.log(`after: `, wArray);
-console.log(`after: joinStr = `, joinStr);
+// let joinStr = wArray.join4('|');
+// console.log(`after: `, wArray);
+// console.log(`after: joinStr = `, joinStr);
 
 // let ConcatArr = wArray.concat('[5,6],[8,9]');
 // console.log(`after: `, wArray);
@@ -261,9 +260,12 @@ console.log(`after: joinStr = `, joinStr);
 // console.log(`after: `, wArray);
 // console.log(`after: reverseArr = `, reverseArr);
 
-// let mapArray = wArray.map();
-// console.log(`after: `, wArray);
-// console.log(`after: mapArray = `, mapArray);
+let weicallback = function (x) {
+    return x + 1;
+}
+let mapArray = wArray.map(weicallback);
+console.log(`after: `, wArray);
+console.log(`after: mapArray = `, mapArray);
 
 
 
