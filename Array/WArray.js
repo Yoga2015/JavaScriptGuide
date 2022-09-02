@@ -213,8 +213,29 @@ function WArray() {  //定义一个 wArray 函数 ，在JavaScript中一切皆�
         return mapArr;
 
     }
+    /**
+     * slice（）方法用于提取目标数组的一部分，返回一个新数组，原数组不变。
+     * @param  {...any} reverseArr 
+     */
+    this.slice = function (start, end) {
+        let sliceArr = [];
+        if (start === undefined || null || 0) {
+            return start = 0;
+        }
 
-    this.slice = function (...reverseArr) {
+        if (end === undefined || null || 0) {
+            return end = this.value.length;
+        }
+
+        start = start > this.value.length ? [] : start;
+        end = end < start ? [] : end;
+
+
+        for (let i = start; i < end; i++) {
+            sliceArr.push(this.value[i]);
+        }
+
+        return sliceArr;
 
     }
 }
@@ -260,16 +281,19 @@ console.log(`before: `, wArray);
 // console.log(`after: `, wArray);
 // console.log(`after: reverseArr = `, reverseArr);
 
-let weicallback = function (x) {
-    return x + 1;
-}
-let mapArray = wArray.map(weicallback);
-console.log(`after: `, wArray);
-console.log(`after: mapArray = `, mapArray);
+// let weicallback = function (x) {
+//     return x + 1;
+// }
+// let mapArray = wArray.map(weicallback);
+// console.log(`after: `, wArray);
+// console.log(`after: mapArray = `, mapArray);
+
+let sliceArray = wArray.slice(1, 2);
+console.log('after:', wArray);
+console.log("after : sliceArray = ", sliceArray)
 
 
 
-  //原生js 实现 push() 、valueof() 、pop() 、 shift() 、 unshift() 、  concat() 、 reverse() 、 map() ，没完善  toSting()、join()
 
 
 

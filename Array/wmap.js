@@ -9,11 +9,6 @@ function WArray() {
      * @returns 
      */
     this.push = function (...item1) {   // 当传入多个参数入来时 可用 ...形参名 表示
-        // console.log(' item1.length: ', item1.length);  //提前查看 入参的长度 提前判断 
-
-        // if (item1 == undefined && item1 == null && item1.length == 0) {
-        //     throw new Error('入参不合法');
-        // }
 
         if (item1 == undefined || item1 == null || item1.length == 0) {
             throw new error('入参不合法');
@@ -53,8 +48,12 @@ function WArray() {
         }
         return mapArr2;
     };
-
-    this.map = function (callback) {
+    /**
+     * map（）方法 将数组的 所有成员 依次 传入参数，
+     * 然后把每一次的执行结果 组成一个新的数组返回,原数组没有变化。
+     * @returns mapArr
+     */
+    this.map2 = function (callback) {
         if (typeof callback != 'function') {
             throw new Error('callback is not a function!');
         }
@@ -75,7 +74,7 @@ console.log(`before: `, wArray);
 let callbackWei = function (x) {
     return x + 1;
 }
-let mapArr = wArray.map(callbackWei);
+let mapArr = wArray.map2(callbackWei);
 
 console.log(`after: `, wArray);
 console.log(`after: mapArr = `, mapArr);
