@@ -75,10 +75,10 @@ function WArray() {
         }
         let foreachval = [];
 
-        for (let j = 0; j < this.value.length; j++) {
-            foreachval.push(fcallback(out, this.value[j]));
+        for (let k = 0; k < this.value.length; k++) {
+            foreachval.push.call(out, fcallback(this.value[k]));
         }
-        out = foreachval
+        // out = foreachval
         return out;
     }
 
@@ -88,16 +88,16 @@ let wArray = new WArray();
 wArray.push(1, 2, 3, 4, 5, 6);
 console.log(`before: `, wArray);
 
-let out = new String('3');
+let out = [2];
 
-let wlog3 = function (out, element) {
-    this.push(out, (element * element));
+let wlog3 = function (element) {
+    return element * element;
 }
 
 let forlog3 = wArray.forEach3(wlog3, out);
 
 console.log('after:', wArray);
-console.log('after: out = ', out);
+console.log('after: forlog3 = ', forlog3);
 
 // let wlog2 = function (element) {
 //     out.push(element * element)
