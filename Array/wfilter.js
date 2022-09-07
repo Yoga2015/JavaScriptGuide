@@ -21,7 +21,11 @@ function WArray() {
 
         return this.length;
     };
-
+    /**
+     * filter（）方法用于过滤 数组成员，满足条件的成员组成一个新数组返回。
+     * @param {*} filterCallback 
+     * @returns 
+     */
     this.filter1 = function (filterCallback) {
         if (typeof filterCallback != 'function') {
             throw new Error("filterCallback 不是一个function")
@@ -34,14 +38,18 @@ function WArray() {
 
     }
 
-    this.filter2 = function (filterCallback) {
+    this.filter2 = function (filterCallback, out) {
         if (typeof filterCallback != 'function') {
             throw new Error("filterCallback 不是一个function")
         }
+        if (out == undefined || out == null) {
+            throw new Error("入参不合法")
+        }
         let filtervalue = [];
         for (let i = 0; i < this.value.length; i++) {
-            filtervalue.push(filterCallback(this.value[i], i, this));
+            filtervalue.push.call(out, filterCallback(this.value[i], i, this));
         }
+
         return filtervalue;
 
     }
@@ -54,16 +62,20 @@ wArray.push(1, 2, 3, 4, 5, 6);
 console.log(`before: `, wArray);
 
 let filterVal = function (element, index, Array) {
-    return index % 2 === 0;
+    if (!(index % 2 === 0)) {
+        return index;
+    }
 }
-
-let filterArr = wArray.filter2(filterVal);
+let out = [];
+let filterArr = wArray.filter2(filterVal, out);
 
 console.log('after:', wArray);
-console.log('after: filterArr = ', filterArr);
+console.log('after: out = ', out);
 
 // let filterVal = function (element) {
-//     return element > 3;
+//     if (element > 3) {
+//         return element;
+//     }
 // }
 
 // let filterArr = wArray.filter1(filterVal);

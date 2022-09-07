@@ -137,6 +137,12 @@ function WArray() {
         },
 
         // 方式四
+        /**
+         * join 方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。
+         * 如果不提供参数，默认用逗号分隔。
+         * @param  {...any} joinStr 
+         * @returns 
+         */
         this.join6 = function (...joinStr) {
             if (joinStr == undefined || joinStr == null || joinStr.length == 0) {
                 joinStr = ',';// 当undefined/null/空字符串时，默认是逗号

@@ -1,4 +1,4 @@
-function WArray() {
+function WString() {
     this.value = []; // 初始化 wArray对象 时，里面定义 一个空数组，将来用来装数据的容器
     this.length = 0;  //因为是空数组，所以现在的长度是0
     /**
@@ -21,28 +21,6 @@ function WArray() {
 
         return this.length;
     };
-
-    /**
-     * splice方法用于删除原数组的一部分成员，
-     * 并可以在删除的位置添加新的数组成员，返回值是被删除的元素。
-     * 注意，该方法会改变原数组。
-     */
-    this.splice = function (start, end) {
-        let sliceArr1 = [];
-        let sliceArr2 = [];
-        if (start === undefined || null || 0) {
-            return start = 0;
-        }
-        if (end === undefined || null || 0) {
-            return [];
-        }
-    };
 }
 
-let wArray = new WArray();
-wArray.push(1, 2, 3, 4, 5, 6);
-console.log(`before: `, wArray);
-
-let spliceArray = wArray.splice(1, 2);
-console.log('after:', wArray);
-console.log("after : sliceArray = ", spliceArray)
+let wString = new WString();

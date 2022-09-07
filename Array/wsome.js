@@ -65,14 +65,14 @@ let wArray = new WArray();
 wArray.push(1, 2, 3, 4, 5, 6);
 console.log(`before: `, wArray);
 
-// let everyfun = function (element, index, arr) {
-//     false == !(element >= 3);
-//     return false;
-// }
+let everyfun = function (element, index, arr) {
+    false == !(element >= 3);
+    return false;
+}
 
-// let everyboolean = wArray.some(everyfun);
-// console.log('after:', wArray);
-// console.log('after: everyboolean = ', everyboolean);
+let everyboolean = wArray.some(everyfun);
+console.log('after:', wArray);
+console.log('after: everyboolean = ', everyboolean);
 
 // let somefun = function (element, index, arr) {
 //     return element >= 3;

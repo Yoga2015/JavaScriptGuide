@@ -60,8 +60,8 @@ function WArray() {
 
         let mapArr2 = [];
         for (let i = 0; i < this.value.length; i++) {
-            mapArr2[i] = callback(this.value[i]);
-            // mapArr2.push(callback(this.value[i]));
+            // mapArr2[i] = callback(this.value[i]);
+            mapArr2.push(callback(this.value[i]));
         }
         return mapArr2;
     }

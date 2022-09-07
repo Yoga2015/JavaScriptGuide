@@ -23,19 +23,21 @@ function WArray() {
     };
 
     /**
-     * splice方法用于删除原数组的一部分成员，
-     * 并可以在删除的位置添加新的数组成员，返回值是被删除的元素。
-     * 注意，该方法会改变原数组。
+     * reverse()方法用于颠倒排列数组元素。返回变化后的数组
+     * @returns this.value
      */
-    this.splice = function (start, end) {
-        let sliceArr1 = [];
-        let sliceArr2 = [];
-        if (start === undefined || null || 0) {
-            return start = 0;
+    this.reverse = function () {
+        //1、判断 this.value中有没有元素，没有就抛出 异常
+        if (this.value.length == 0) {// 情况1： 当 value == []
+            throw new Error('内部无数据已无法删除')
         }
-        if (end === undefined || null || 0) {
-            return [];
+        for (let i = 0; i < this.value.length / 2; i++) {//0 1 2 3 
+            let temp = this.value[i];
+            this.value[i] = this.value[this.value.length - 1 - i];
+            this.value[this.value.length - 1 - i] = temp;
         }
+        return this.value;
+
     };
 }
 
@@ -43,6 +45,6 @@ let wArray = new WArray();
 wArray.push(1, 2, 3, 4, 5, 6);
 console.log(`before: `, wArray);
 
-let spliceArray = wArray.splice(1, 2);
-console.log('after:', wArray);
-console.log("after : sliceArray = ", spliceArray)
+let reverseArr = wArray.reverse();
+console.log(`after: `, wArray);
+console.log(`after: reverseArr = `, reverseArr);

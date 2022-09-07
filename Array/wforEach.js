@@ -65,12 +65,18 @@ function WArray() {
     //     out = foreachval
     //     return out;
     // }
-
+    /**
+     *空数组out是forEach方法的第二个参数，
+     * 结果，回调函数内部的this关键字就指向out。
+     * @param {*} fcallback 
+     * @param {*} out 
+     * @returns 
+     */
     this.forEach3 = function (fcallback, out) {
         if (typeof fcallback != 'function') {
             throw new Error("fcallback 不是一个 function")
         }
-        if (out == undefined || out == null || out == 0) {
+        if (out == undefined || out == null) {
             throw new Error('入参不合法')
         }
         let foreachval = [];
@@ -78,9 +84,10 @@ function WArray() {
         for (let k = 0; k < this.value.length; k++) {
             foreachval.push.call(out, fcallback(this.value[k]));
         }
-        // out = foreachval
+
         return out;
     }
+
 
 }
 
@@ -88,14 +95,12 @@ let wArray = new WArray();
 wArray.push(1, 2, 3, 4, 5, 6);
 console.log(`before: `, wArray);
 
-let out = [2];
-
+let out = [];
 let wlog3 = function (element) {
     return element * element;
 }
-
+// forEach方法也可以接受第二个参数，绑定参数函数的this变量。
 let forlog3 = wArray.forEach3(wlog3, out);
-
 console.log('after:', wArray);
 console.log('after: forlog3 = ', forlog3);
 
