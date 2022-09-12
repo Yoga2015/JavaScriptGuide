@@ -26,7 +26,6 @@ class Window {
         }
         obj.doPean();
 
-        // obj.doPean.bind
         // obj.doPean.apply
         // obj.doPean.call
 
@@ -40,7 +39,7 @@ class Window {
         delete obj3.doPean;
 
         
-        // bind
+        //obj.doPean.bind
 
         // new
         

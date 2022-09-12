@@ -1,4 +1,4 @@
-// function Dog(name, color) { 
+// function Dog(name, color) {
 //     this.name = name;
 //     this.color = color;
 //     console.log(this)
@@ -16,40 +16,29 @@
 // //对象
 // var obj1 = {
 //     name: 'xiaohua',
-//     age:21
+//     age:1
 // }
 
 // //调用call
-// print.apply(obj1, [1, 2, 3]);
+// print.apply(obj1, [1, , 3]);
 
-// print.call(obj1, 1, 2, 3);
+// print.call(obj1, 1, , 3);
 
 
 
 // //箭头函数
 // var obj = {
-//     a: () => { 
+//     a: () => {
 //         console.log(this)
 //     }
 // }
 
 // obj.a()    //window
 
+"use strict"
 
-function a() {
-    console.log("function a:", this)
-        ; (() => {
-            console.log("arrow function: ", this)
-        })()
-}
 
-a()
 
-a.bind(null)()
 
-a.bind(undefined)()
 
-a.bind().bind(2)()
-
-a.apply()
 

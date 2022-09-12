@@ -218,7 +218,8 @@ function WArray() {  //定义一个 wArray 函数 ，在JavaScript中一切皆�
      * @param  {...any} reverseArr 
      */
     this.slice = function (start, end) {
-        let sliceArr = [];
+        let sliceArr1 = [];
+        let sliceArr2 = [];
         if (start === undefined || null || 0) {
             return start = 0;
         }
@@ -226,17 +227,30 @@ function WArray() {  //定义一个 wArray 函数 ，在JavaScript中一切皆�
         if (end === undefined || null || 0) {
             return end = this.value.length;
         }
+        if (true) {
+            start = start > this.value.length ? [] : start;
+            end = start > end ? [] : end;
 
-        start = start > this.value.length ? [] : start;
-        end = end < start ? [] : end;
 
+            for (let i = start; i < end; i++) {
+                sliceArr1.push(this.value[i]);
+            }
 
-        for (let i = start; i < end; i++) {
-            sliceArr.push(this.value[i]);
+            return sliceArr1;
+        } else {
+            if (start < 0 || end < 0 || end > start) {
+                sliceArr2 = this.value;
+                sliceArr2.reverse();
+                start = start > sliceArr2.length ? [] : start;
+                end = end < start ? [] : end;
+                let sliceArr3 = [];
+                for (let j = start; j < end; j++) {
+                    sliceArr3.push(this.sliceArr2[j]);
+                }
+                return sliceArr3;
+            }
+
         }
-
-        return sliceArr;
-
     }
 }
 

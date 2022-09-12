@@ -96,7 +96,7 @@ function WArray() {
         }
         if (true) {
             start = start > this.value.length ? [] : start;
-            end = end < start ? [] : end;
+            end = start > end ? [] : end;
 
 
             for (let i = start; i < end; i++) {
@@ -125,7 +125,7 @@ let wArray = new WArray();
 wArray.push(1, 2, 3, 4, 5, 6);
 console.log(`before: `, wArray);
 
-let sliceArray = wArray.slice4(1, 3);
+let sliceArray = wArray.slice4(-2, -1);
 console.log('after:', wArray);
 console.log("after : sliceArray = ", sliceArray)
 

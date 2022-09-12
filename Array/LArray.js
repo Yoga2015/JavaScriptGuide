@@ -233,8 +233,7 @@ function LArray() {
         try {
             if (true) {
                 start = start > this.value.length ? [] : start;
-                end = end < start ? [] : end;
-
+                end = start > end ? [] : end;
 
                 for (let i = start; i < end; i++) {
                     sliceArr1.push(this.value[i]);
@@ -326,15 +325,34 @@ function LArray() {
         if (out == undefined || out == null) {
             throw new Error('入参不合法')
         }
-        let foreachval = [];
         try {
             for (let k = 0; k < this.value.length; k++) {
-                foreachval.push.call(out, fcallback(this.value[k]));
+                // this.value.push.call(out, fcallback(this.value[k]));
+                // fcallback(this.value[k]).call(out)
+                out.push(fcallback.call(out, this.value[k]));
             }
         } catch (error) {
             console.log(error)
         }
         return out;
+    };
+
+    this.forEach2 = function (fcallback, out) {
+        if (typeof fcallback != 'function') {
+            throw new Error("fcallback 不是一个 function")
+        }
+        if (out == undefined || out == null) {
+            throw new Error('入参不合法')
+        }
+
+        try {
+            for (let k = 0; k < this.value.length; k++) {
+
+                console.log(fcallback.call(out, this.value[k]));
+            }
+        } catch (error) {
+            console.log(error)
+        }
     };
 
     /**
@@ -525,13 +543,26 @@ console.log(`before: `, lArray);
 // console.log(`after: `, lArray);
 // console.log(`after: mapArray = `, mapArray);
 
+//forEach字符串
+let out4 = '893ojejfkljio';
+out4.charAt(1);
+let wlog4 = function (idx) {
+    return this.charAt(idx);
+}
+lArray.forEach2(wlog4, out4);
+console.log('after:', lArray);
 
-// let out = [];
+// //forEach数组
+// let out = [];// new Array<Object>(); out 此时不仅仅是数组，out也是对象
+// out.name = 'weige';   //既然是对象就可以自定义 属性与属性值。
 // let wlog3 = function (element) {
+//     console.log(this.name);
 //     return element * element;
 // }
-// // forEach方法也可以接受第二个参数，绑定参数函数的this变量。
-// let forlog3 = lArray.forEach(wlog3, out);
+// // wlog3()  直接调用时，wlog3是一个 普通函数
+
+// //此时 wlog3 作为一个是 回调函数
+// let forlog3 = lArray.forEach2(wlog3, out);
 // console.log('after:', lArray);
 // console.log('after: forlog3 = ', forlog3);
 
@@ -568,7 +599,7 @@ console.log(`before: `, lArray);
 // console.log('after:', lArray);
 // console.log('after: reduceTotal = ', reduceTotal);
 
-let indexVal = 2;
-let index = lArray.indexOf(indexVal);
-console.log('after:', lArray);
-console.log('after: index = ', index);
+// let indexVal = 2;
+// let index = lArray.indexOf(indexVal);
+// console.log('after:', lArray);
+// console.log('after: index = ', index);

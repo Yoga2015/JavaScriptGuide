@@ -73,8 +73,8 @@ function WArray() {
 
 
 let wArray = new WArray();
-wArray.push(2, 1, 3, 6, 5, 7, 9, 8);
-// wArray.push(1, 2, 3, 4, 5, 6, 7, 8);
+wArray.push(2, 1, 4, 3, 5, 7, 9, 8);
+// wArray.push(1, 2, 4, 3, 6, 7,  8);
 console.log(`before: `, wArray);
 
 let sortArr2 = wArray.sort2();
