@@ -5,6 +5,18 @@ function Dog(name) {
     }
 }
 
+// let dogy = new Dog();
+
+//new 的底层原理
+let dogy = {};
+Dog.apply(dogy);
+dogx = {
+    name: name,
+    eat: function () {
+        console.log('func..eat gutou...');
+    }
+};
+
 // let dogx = new Dog('wangcai');
 
 //new 的底层原理

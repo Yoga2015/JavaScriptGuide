@@ -18,7 +18,7 @@ let Dog1 = Dog.bind(dogx);   //Dog 绑死 dogx 后返回一个新的函数，
 // }
 
 // apply() 、call() 起到的作用不仅仅是 临时绑定 对象（被绑定） ，
-// 同时 绑定者中的this指向 ，因apply() 、call() 的原因 ，导致 this 指向 被绑定的对象
+//同时 可以改变 绑定者中的this指向为  被绑定的对象。
 let dogy = { name: 'dogy' };
 Dog1.apply(dogy);
 
