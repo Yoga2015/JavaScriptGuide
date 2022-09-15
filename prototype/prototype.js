@@ -1,15 +1,3 @@
-// function Muqin() { };
-// let child = new Muqin();
-// child.constructor === Muqin;
-// Object.getPrototypeOf(child) === Muqin.prototype;
-
-// function Nana() { };
-// let father = new Nana();
-// father.constructor === Nana;
-// Object.getPrototypeOf(father) === Nana.prototype;
-
-
-
 function Grandma() { };
 let father = new Object();
 Grandma.apply(father);
@@ -17,7 +5,7 @@ Object.setPrototypeOf(father, Grandma.prototype);
 console.log(Object.getPrototypeOf(father) === Grandma.prototype);
 
 function Mother() { };
-Mother.prototype = father;
+Mother.prototype = father; //创建Mother构造函数后立即将Mother的原型对象指向father 
 
 let child = new Object();
 Mother.apply(child);

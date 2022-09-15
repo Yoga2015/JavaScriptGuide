@@ -1,5 +1,5 @@
 function WString() {
-    this.value = []; // 初始化 wArray对象 时，里面定义 一个空数组，将来用来装数据的容器
+    this.value = []; // 初始化  wString对象 时，里面定义 一个空数组，将来用来装数据的容器
     this.length = 0;  //因为是空数组，所以现在的长度是0
     /**
      * push（）方法用于在数组的末端添加 数组的元素，并返回添加新元素后的数组长度。
@@ -21,6 +21,31 @@ function WString() {
 
         return this.length;
     };
+
+    /**
+     * charAt() 方法返回指定位置的字符，参数是从0开始编号的位置。
+     * @param {*} item 
+     * @returns 
+     */
+    this.chartAt = function (item) {
+        if (item == undefined || item == null || item > this.value.length || item < 0) {
+            return this.value[0];
+        }
+
+        for (let i = 0; i < this.value.length; i++) {
+            if (i === item) {
+                return this.value[i];
+            }
+        }
+
+    };
+
 }
 
 let wString = new WString();
+wString.push('A', 'B', 'C', 'D');
+console.log('before: ', wString)
+
+let charAtString = wString.chartAt(3);
+console.log('charAtString = ', charAtString);
+
