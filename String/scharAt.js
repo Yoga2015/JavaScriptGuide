@@ -43,7 +43,7 @@ function WString() {
 }
 
 let wString = new WString();
-wString.push('A', 'B', 'C', 'D');
+wString.push('A', 'B', 'C', 'D', 'ab');
 console.log('before: ', wString)
 
 let charAtString = wString.chartAt(3);

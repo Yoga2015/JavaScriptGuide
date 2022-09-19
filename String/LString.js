@@ -1,3 +1,4 @@
+console.time('let"s see time console ')
 function WString() {
     this.value = []; // 初始化  wString对象 时，里面定义 一个空数组，将来用来装数据的容器
     this.length = 0;  //因为是空数组，所以现在的长度是0
@@ -52,6 +53,7 @@ function WString() {
      * @returns 
      */
     this.concat = function (...concatStr) {
+
         if (concatStr == undefined) {
             concatStr = undefined
         }
@@ -75,6 +77,7 @@ function WString() {
             console.log(error);
         }
 
+
     };
 
 }
@@ -88,4 +91,6 @@ console.log('charAtString = ', charAtString);
 
 let concatValueof = wString.concat('e', 'f', 1, undefined, null, 3, 0);
 console.log(' concatValueof = ', concatValueof)
+
+console.timeEnd('Time Taken ')
 

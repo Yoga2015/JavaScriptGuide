@@ -19,7 +19,8 @@ function WString() {
 
         this.length += item1.length;
 
-        return this.length;
+        return new String(this.value).toString();
+        // return this.length;
     };
     /**
      * concat() 方法用于 连接 两个字符串，返回一个新字符串，不改变原字符串
