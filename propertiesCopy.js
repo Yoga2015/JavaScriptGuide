@@ -7,8 +7,8 @@ let student = { name: 'weige', birthday: '1999-09-19 12:23:11' }
 student = {
     get age() {
         let current = new Date().getTime();
-        let birthday = new Date().getTime();
-        return current - birthday;
+        let birthday = new Date('1999-09-19 12:23:11').getTime();
+        return current - birthday
     },
     set age(value) {
         value: 22;
@@ -18,23 +18,29 @@ student = {
     }
 }
 
+console.log(student.age);
+
 student = {
     get birthday() {
+        let current = new Date().getTime();
+        let birthday = new Date('2020-09-19 12:23:11').getTime();
+        student.age = (current - birthday) / (24 * 60 * 60 * 1000 * 365);
+        return current - birthday;
 
     },
     set birthday(value) {
-        value: '2019-09-19 12:23:11';
+        value: '2020-09-19 12:23:11';
         writable: true;
         enumerable: true;
         configurable: true;
     }
 }
 
-for (let i in student) {
-    console.log(i)
-}
 
 console.log(student.birthday);
+console.log(student.age);
+
+
 
 
 
