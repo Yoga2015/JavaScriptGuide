@@ -61,5 +61,4 @@ Object.getOwnPropertyDescriptor(obj, 'c');
 /* 和写JAVA时一样， set、 get 函数方法自己写的时候是先写set ，才写get
 其实 这里 先写 get 后写set ,这个顺序不影响代码效果，没有规范不规范的说法 都是用的时候调用的 没有逻辑联系 */
 
-
 //set 、get最好是成对出现
