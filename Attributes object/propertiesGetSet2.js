@@ -12,7 +12,7 @@ student = {
         return birthdayVal / (24 * 60 * 60 * 1000 * 365);
     },
     set age(Val) {
-
+        console.log(Val)
     },
     get birthday() {
         return birthdayVal;
@@ -26,8 +26,8 @@ student = {
     }
 }
 
-student.birthday = '2000-09-19 12:23:11'
-
+student.birthday = '2010-09-19 12:23:11'
+student.birthday = '2010-10-19 12:23:11'
 console.log(student.birthday);
 
 console.log(student.age);
