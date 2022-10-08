@@ -1,4 +1,3 @@
-var fs = require('fs') // 引入文件 
 var myNumber = undefined;
 // 声明一个函数
 function addOne() {
