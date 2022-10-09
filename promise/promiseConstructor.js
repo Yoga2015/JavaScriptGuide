@@ -1,13 +1,13 @@
-let promise = new Promise(function (resolve, reject) { 
-    console.log(1)
-    if (true) {
-        //异步操作成功
-        resolve(value);
-    } else { 
-        //异步操作失败
-        reject(new Error());
-    }
-});
+// let promise = new Promise(function (resolve, reject) { 
+//     console.log(1)
+//     if (true) {
+//         //异步操作成功
+//         resolve(value);
+//     } else { 
+//         //异步操作失败
+//         reject(new Error());
+//     }
+// });
 
 /**
  * 上面代码中，Promise 构造函数接受一个函数作为参数，
@@ -24,10 +24,39 @@ let promise = new Promise(function (resolve, reject) {
  * 
  */
 
-function timeout(ms) { 
-    return new Promise(function (resolve, reject) { 
-        setTimeout(resolve,ms,'done')
-    })
-}
+// function timeout(ms) { 
+//     return new Promise(function (resolve, reject) { 
+//         setTimeout(resolve,ms,'done')
+//     })
+// }
 
-timeout(5000);
+// timeout(5000);
+
+
+/**
+ * Promise实例的then方法，用来添加回调函数。
+ * then方法可以接受两个回调函数：
+ * 第一个时异步操作成功时（变为fulfilled状态）时的回调函数；
+ * 第二个时异步操作失败（变为rejected）时的回调函数（该参数可以省略）。
+ * 一旦状态改变，就调用相应的回调函数
+ */
+
+let p1 = new Promise((resolve, reject) => { 
+    resolve("成功")
+})
+p1.then(console.log, console.error);
+
+let p2 = new Promise((resolve, reject) => {
+    reject(new Error('失败'))
+})
+p2.then(console.log, console.error);
+p2
+    .then(console.log(1))
+    .then(console.log(2))
+    .then(console.log(3))
+    .then(
+        console.log,
+        console.error
+    );
+
+
