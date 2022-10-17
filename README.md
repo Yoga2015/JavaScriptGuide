@@ -1,2 +1,2 @@
 # JavaScriptTest
-Implement methods in array objects using native JavaScript
+javascript Tutorials in action
