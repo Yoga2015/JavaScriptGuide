@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector&querySelectorAll</title>
+</head>
+
+<body>
+    <div id="myparent">
+        <p class="myclass">我是第一个css选择器</p>
+        <p class="myclass">我是第二个css选择器</p>
+        <p class="myclass">我是第三个css选择器</p>
+        <span class="h5Class"></span>
+    </div>
+    <form action="">
+        
+    </form>
+
+
+    <script>
+        var el1 = document.querySelector('.myclass');
+        var el2 = document.querySelectorAll('div.myclass,div.h5Class');
+        el1.innerHtml = '我第一次想修改第一个css选择器中的内容';
+        el2.innerHtml = '我想修改所有包含myclass选择器中的内容';
+        console.log(el1);
+        console.log(el2);
+
+        /**
+         * document.getElementsByTagName方法搜索 HTML 标签名，
+         * 返回符合条件的元素。它的返回值是一个类似数组对象（HTMLCollection实例），
+         * 可以实时反映 HTML 文档的变化。如果没有任何匹配的元素，就返回一个空集。
+        */
+        var paras = document.getElementsByTagName('p');
+        console.log(paras);
+        /**
+         * HTML 标签名是大小写不敏感的，因此getElementsByTagName方法也是大小写不敏感的。
+         * 另外，返回结果中，各个成员的顺序就是它们在文档中出现的顺序。
+        */
+
+        /**
+         * 如果传入*，就可以返回文档中所有 HTML 元素。
+        */
+        var allElement = document.getElementsByTagName('*');
+        console.log(allElement);
+
+        /**
+         *document.getElementsByClassName方法返回一个类似数组的对象（HTMLCollection实例），
+         包括了所有class名字符合指定条件的元素，元素的变化实时反映在返回结果中。 
+         由于class是保留字，所以 JavaScript 一律使用className表示 CSS 的class。
+         参数可以是多个class，它们之间使用空格分隔。
+         *
+        */
+        var elements = document.getElementsByClassName('myclass');
+        console.log(elements);
+        /**
+         * 与getElementsByTagName方法一样，getElementsByClassName方法不仅可以在document对象上调用，
+         * 也可以在任何元素节点上调用。
+        */
+
+    </script>
+</body>
+
+</html>

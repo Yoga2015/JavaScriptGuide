@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>给button上添加事件监听</p>
+        <button id="myBtn">按钮</button>
+        <p>手动点击按钮触发事件</p>
+        <p>
+            注意：
+            在这个例子中，使用addEventListener()添加一个事件处理程序。
+            虽然调用removeEventListener(上面看似使用了相同的参数，但实际上，
+            第二个参数与传入addEventListener()中的与第一个是完全不同的函数。
+            而传入removeEventListener()中的事件处理程序函数必须与传入addEventListener()中的相同
+        </p>
+
+        <p>交由document来触发，就是在页面加载完后自动触发事件，不用手动点击按钮触发事件</p>
+        <p>
+            总结：
+            1：相同事件绑定和解除，需要使用共用函数；
+            绑定和解除事件时 事件没有"on" 即onclick写成click
+
+            2：共用函数不能带参数；
+
+            大多数情况下，都是将事件处理程序添加到事件流的冒泡阶段，
+            这样可以最大限度地兼容各种浏览器。
+            最好只在需要在是时间到达目标之前截获它的时候将事件处理程序添加到捕获阶段。
+            如果不是特别需要，我们不建议在事件捕获阶段注册事件处理程序。
+        </p>
+    </div>
+
+    <!-- <script>
+        var btn = document.getElementById('myBtn');
+        btn.addEventListener('click', function () {
+            alert(this.id)
+        }, false)
+        btn.removeEventListener('click', function () {
+            alert(this.id)
+        }, false)
+
+        /**
+         * 在这个例子中，使用addEventListener()添加一个事件处理程序。
+            虽然调用removeEventListener(上面看似使用了相同的参数，但实际上，
+            第二个参数与传入addEventListener()中的与第一个是完全不同的函数。
+            而传入removeEventListener()中的事件处理程序函数必须与传入addEventListener()中的相同
+        */           
+    </script> -->
+    <script>
+        function elementTouch(event) {
+            alert(this.id)
+        }
+        var btn = document.getElementById('myBtn');
+        //给按钮 添加事件监听函数
+        btn.addEventListener('click', elementTouch, false)
+
+        //给按钮 移除事件监听函数
+        // btn.removeEventListener('click', elementTouch, false)
+
+        //触发事件
+        var event = new Event('click');
+        btn.dispatchEvent(event);
+
+        /**
+         * 总结：
+        1：相同事件绑定和解除，需要使用共用函数；
+        绑定和解除事件时 事件没有"on" 即onclick写成click
+
+        2：共用函数不能带参数；
+
+        大多数情况下，都是将事件处理程序添加到事件流的冒泡阶段，
+        这样可以最大限度地兼容各种浏览器。
+        最好只在需要在是时间到达目标之前截获它的时候将事件处理程序添加到捕获阶段。
+        如果不是特别需要，我们不建议在事件捕获阶段注册事件处理程序。
+
+        */
+    </script>
+
+</body>
+
+</html>

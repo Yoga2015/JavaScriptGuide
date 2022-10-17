@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成元素节点</title>
+</head>
+
+<body>
+    <h1>我是第一标题</h1>
+    <p> document.createDocumentFragment()方法生成一个空的文档片段（DocumentFragment实例）
+        DocumentFragment 是一个存在于内存的DOM片段，不属于当前文档，常常用来生成一段DOM结构，
+        然后再插入当前文档。这样做的好处在于，因为DocumentFragment不属于当前文档，
+        对它的任何改动，都不会引发网页的重新渲染，比直接修改当前文档的DOM有更好的性能表现。
+    </p>
+    <ul id="ul1"></ul>
+    <script>
+        var docfrag = document.createDocumentFragment();
+        for (let i = 1; i < 4; i++) {
+            var li = document.createElement('li');
+            li.textContent = 123;
+            docfrag.appendChild(li);
+        }
+        var ulelement = document.getElementById('ul1');
+        ulelement.appendChild(docfrag);
+        //文档片段 docfrag 包含四个<li> 节点，这些子节点被一次性插入了当前文档。
+    </script>
+</body>
+
+</html>

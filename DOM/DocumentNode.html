@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="d1">hello world</div>
+    <div id="d2">hello world</div>
+
+    <iframe id="editor" src="about:blank"></iframe>
+    <script>
+        var editor = document.getElementById('editor');
+        editor.contentDocument.designMode = 'on';
+    </script>
+
+    <script>
+            // //nextSibling
+            // var div1 = document.getElementById('d1');
+            // var div2 = document.getElementById('d2');
+            // //d1.nextSibling就是紧跟在d1后面的同级节点 d2
+            // console.log(d1.nextSibling === d2);  // true
+
+            // //previousSibling
+            // //d2.previousSibling就是d2前面的同级节点d1。
+            // console.log(d2.previousSibling === d1) // true
+
+            // //document.URL返回一个字符串，表示当前文档的网址。
+            // console.log(document.URL);
+            // //document.domain属性返回当前文档的域名，不包含协议和接口。
+            // console.log(document.domain);
+            // //Location对象是浏览器提供的原生对象，提供 URL 相关的信息和操作方法。
+            // console.log(document.location);
+
+            // console.log(document.lastModified);
+            // document.title = 'ABC';
+
+
+
+    </script>
+</body>
+
+</html>
