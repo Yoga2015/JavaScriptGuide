@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eventDelegation</title>
+</head>
+
+<body>
+    <h5>事件委托</h5>
+    事件委托 也称为 事件代理，在jquery 里面称为事件委派
+    <h5>事件委托原理</h5>
+    <p>
+    不是给每个子节点单独设置事件监听器，而是事件监听器设置在其父节点上，
+    然后利用冒泡原理影响设置每个子节点。
+    </p>
+    <p>描述下面的案例：
+        给ul 注册点击事件，然后利用 事件对象的target 来找到当前点击的li,
+        因为点击 li ，事件会冒泡到ul 上，ul 有注册事件，就会触发事件监听器
+    </p>
+    <ul class="ulFather">
+        <li>我是ul的子节点li</li>
+        <li>我是ul的子节点li</li>
+        <li>我是ul的子节点li</li>
+        <li>我是ul的子节点li</li>
+        <li>我是ul的子节点li</li>
+        <li>我是ul的子节点li</li>
+        <li>我是ul的子节点li</li>
+    </ul>
+
+    <p>委托的作用：我们只是操作了一次DOM ，提高了程序的性能</p>
+    <script>
+
+        var ulFather = document.querySelector('.ulFather');
+        //直接给 ul 有注册事件监听
+        ulFather.addEventListener('click', function (event) {
+            //当在ul中 点击 每一个 li时 都会触发 弹窗。
+            // alert('我是ul的子节点li');
+            event.target.style.color = 'red';
+
+        }, false)
+    </script>
+</body>
+
+</html>

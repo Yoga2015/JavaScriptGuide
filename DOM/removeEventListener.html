@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">监听一次，然后就移除的监听函数</button>
+    <script>
+        var btn = document.getElementById('btn')
+        btn.addEventListener('click', eventListener);
+        function eventListener() {
+            alert('点击一次就触发监听，然后一出监听')
+            btn.removeEventListener('click', eventListener)
+        }
+
+        btn.attachEvent('onclick', AttachEvent);
+        function AttachEvent() {
+            alert('添加 attachEvent事件监听 ie9 以前的版本支持')
+            btn.detachEvent('onclick', AttachEvent);
+        }
+    </script>
+</body>
+
+</html>

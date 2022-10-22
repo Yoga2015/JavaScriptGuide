@@ -1,5 +1,3 @@
-package cn.itcast.travel.domain;
-
 import java.io.Serializable;
 
 /**

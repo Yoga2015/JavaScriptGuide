@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onclick="showKey(event)">
+    <p>456</p>
+    <div>
+        <ul id="ul">
+            <li>item 4</li>
+            <li>item 5</li>
+            <li>item 6</li>
+        </ul>
+    </div>
+    <p>123</p>
+
+    <script>
+        var ul = document.getElementById('ul');
+
+        // 进入 ul 节点以后，mouseenter 事件只会触发一次
+        // 以后只要鼠标在节点内移动，都不会再触发这个事件
+        // event.target 是 ul 节点
+        ul.addEventListener('mouseenter', function () {
+            event.target.style.color = 'red';
+            setTimeout(function () {
+                event.target.style.color = '';
+            }, 500)
+        }, false)
+
+        // 进入 ul 节点以后，只要在子节点上移动，mouseover 事件会触发多次
+        // event.target 是 li 节点
+        ul.addEventListener('mouseover', function () {
+            event.target.style.color = 'yellow';
+            setTimeout(function () {
+                event.target.style.color = '';
+            }, 500)
+        }, false)
+
+        // 先进入 ul 节点，然后在节点内部移动，不会触发 mouseleave 事件
+        // 只有离开 ul 节点时，触发一次 mouseleave
+        // event.target 是 ul 节点
+        ul.addEventListener('mouseleave', function () {
+            event.target.style.color = 'purple';
+            setTimeout(function () {
+                event.target.style.color = '';
+            }, 500)
+        }, false)
+
+        // 先进入 ul 节点，然后在节点内部移动，mouseout 事件会触发多次
+        // event.target 是 li 节点
+        ul.addEventListener('mouseleave', function () {
+            event.target.style.color = 'green';
+            setTimeout(function () {
+                event.target.style.color = '';
+            }, 500)
+        }, false)
+
+        function showKey(e) {
+            alert('ALT key pressed:' + e.altKey);
+            alert('CTRL key pressed: ' + e.ctrlKey);
+            alert('META key pressed:' + e.metaKey);
+            alert('SHIFT key pressed:' + e.shiftKey);
+        }
+
+    </script>
+</body>
+
+</html>

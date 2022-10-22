@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopEventBubble</title>
+    <link rel="stylesheet" href="./stopEventBubble.css">
+    <style>
+        #grandfather {
+            border: 1px red solid;
+            background-color: red;
+            width: 400px;
+            height: 400px;
+        }
+
+        #father {
+            border: 1px green solid;
+            background-color: green;
+            width: 250px;
+            height: 250px;
+        }
+
+        #son {
+            border: 1px yellow solid;
+            background-color: yellow;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="grandfather">
+        grandfather
+        <div id="father">
+            father
+            <div id="son"> son</div>
+        </div>
+    </div>
+
+    <script>
+        /*  常见事件对象的属性和方法
+        阻止 事件冒泡 : 
+          标准写法：利用 事件对象里面的stopPropagation()方法   stop 停止 Propagation 传播
+          非标准写法：IE6-IE8利用事件对象 cancelBubble属性   cancel 取消  bubble 冒泡
+        */
+
+        var grandfather = document.getElementById('grandfather');
+        var father = document.getElementById('father');
+        var son = document.getElementById('son');
+
+        //son 设置为 事件冒泡阶段触发
+        son.addEventListener('click', function (event) {
+            alert('son');
+            //1    
+            //标准写法：利用 事件对象里面的stopPropagation()方法
+            // event.stopPropagation();  //stop 停止 //Propagation 传播  
+
+            //IE6-IE8利用事件对象 cancelBubble属性 阻止 事件冒泡
+            // event.cancelBubble = true;   //cancel 取消  bubble 冒泡
+
+            //2 阻止事件冒泡的兼容性解决方案
+            if (event && event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                window.event.cancelBubble = true;
+            }
+        }, false)
+        //当事件冒泡到 id为son的div元素 后，就不再向上冒泡.
+
+        //father 设置为 事件冒泡阶段触发
+        father.addEventListener('click', function (event) {
+            alert('father');
+
+            //2 阻止事件冒泡的兼容性解决方案
+            if (event && event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                window.event.cancelBubble = true;
+            }
+        }, false)
+        //grandfather 设置为 事件冒泡阶段触发
+        grandfather.addEventListener('click', function (event) {
+            alert('grandfather');
+            //2 阻止事件冒泡的兼容性解决方案
+            if (event && event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                window.event.cancelBubble = true;
+            }
+        }, false)
+
+    </script>
+
+    <script src="./stopEventBubble.js"></script>
+</body>
+
+</html>

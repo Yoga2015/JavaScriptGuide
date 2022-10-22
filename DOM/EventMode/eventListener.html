@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div onClick="alert(2)">
+        <button onClick="alert(1)">点击</button>
+    </div>
+
+    <button id="btn">提交</button>
+
+    <script>
+
+        var button = document.getElementById('btn');
+        function hello() {
+            alert(this.nodeName + '已提交'); //监听函数内部的this指向事件所在的对象
+            button.textContent = '已提交';
+        }
+        button.addEventListener('click', hello, false);
+        button.addEventListener('click', hello, false);
+        //如果为同一个事件多次添加同一个监听函数，该函数只会执行一次，
+        //多余的添加将自动被去除（不必使用removeEventListener方法手动去除）。
+
+        setTimeout(function () {
+            button.removeEventListener('click', hello, false);
+        }, 5000);
+    </script>
+</body>
+
+</html>

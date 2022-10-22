@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //WheelEvent 接口继承了 MouseEvent 实例，代表鼠标滚轮事件的实例对象。
+        // var wheelEvent = new WheelEvent(type, Options);
+
+        //KeboardEvent 用来新建 键盘事件 的实例
+        var keyboardEvent = new KeyboardEvent(keydown);
+
+        function showChar(e) {
+            console.log("ALT: " + e.altKey);
+            console.log("CTRL: " + e.ctrlKey);
+            console.log("Meta: " + e.metaKey);
+            console.log("Meta: " + e.shiftKey);
+        }
+
+        document.body.addEventListener('keydown', showChar, false);
+    </script>
+</body>
+
+</html>

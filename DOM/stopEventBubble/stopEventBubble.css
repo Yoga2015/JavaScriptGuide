@@ -1,0 +1,20 @@
+ #grandfather {
+     border: 1px red solid;
+     background-color: red;
+     width: 400px;
+     height: 400px;
+ }
+
+ #father {
+     border: 1px green solid;
+     background-color: green;
+     width: 250px;
+     height: 250px;
+ }
+
+ #son {
+     border: 1px yellow solid;
+     background-color: yellow;
+     width: 150px;
+     height: 150px;
+ }

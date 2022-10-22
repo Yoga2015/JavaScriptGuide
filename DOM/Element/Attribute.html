@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="myq">123</p>
+    <button id="mybtn">click</button>
+    <img id="myImage" src="./day.png" alt="photo">
+    <script>
+        var btn = document.getElementById('mybtn');
+
+        //getAttribute方法：读取mydiv的id的值
+        var id = btn.getAttribute('id');
+        // alert(id);
+
+        //setAttribute方法：设置button元素的name属性被设成myButton
+        btn.setAttribute('name', 'myButton');
+
+        //hasAttribute方法：判断当前元素节点是否有指定的属性。
+        btn.hasAttribute('bar') // false
+        btn.hasAttribute('id') // true
+
+        //removeAttribute方法: 当前元素节点中 移除指定属性。该方法没有返回值。
+        btn.removeAttribute('name');
+
+        //返回的都是属性节点对象，而不是属性值。
+        btn.attributes[1].name;
+        //返回的都是属性节点对象的属性值。
+        btn.attributes[0].value;
+
+        var img = document.getElementById('myImage');
+        img.src = 'E:\node.js\JavaScriptTest\DOM\Element\docker.png';
+
+        //使用Document节点的createTextNode方法创造一个文本节点。
+        var textNode2 = document.createTextNode('hi')
+        document.querySelector('P').appendChild(textNode2);
+    </script>
+</body>
+
+</html>
