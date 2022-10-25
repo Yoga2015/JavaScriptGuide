@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一行打印 5个星星</title>
+</head>
+
+<body>
+    <script>
+        /**
+        *  一行打印 5个星星 *  采取追加字符串的方式，这样可以打印到控制台上
+        * */
+        for (var i = 1; i <= 5; i++) {
+            console.log('*');
+        }
+
+        var str = '';
+        for (var i = 1; i <= 5; i++) {
+            str = str + '*'
+        }
+        console.log(str)
+
+        var sum = prompt('请输入星星的个数')
+        var str = '';
+        for (var i = 1; i <= sum; i++) {
+            str = str + '*'
+        }
+        console.log(str)
+
+    </script>
+</body>
+
+</html>

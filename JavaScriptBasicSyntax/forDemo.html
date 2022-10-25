@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环</title>
+</head>
+
+<body>
+    <script>
+        /** for循环
+         * 可以重复执行 相同 、不相同的代码 ,
+         * 因为我们有计数器变量 i 的存在 , i每一次循环，值都会变化 
+         * */
+
+        for (var i = 1; i < 10; i++) {
+            console.log(i); //可以重复执行 相同 、不相同的代码
+            console.log('这个人今年' + i + '岁了') //可以重复执行 不相同的代码
+        }
+
+        /**
+         * 输出一个人1~70岁
+         * */
+        for (var i = 1; i <= 70; i++) {
+            if (i == 1) {
+                console.log('这个人今年1岁，他出生了');
+            } else if (i == 70) {
+                console.log('这个人今年70岁了，他老了');
+            } else {
+                console.log('这个人今年' + i + '岁了');
+            }
+        }
+
+
+        /** 求 1 - 100 之间所有整数的累加和
+         * 1、需要循环 100 次， 所以需要一个计数器 i
+         * 2、需要一个存储结果的变量 sum, 但是初始值 一定是 0；
+         * 3、核心算法 ： 1+2+3+4+5......，sum = sum + i;
+         * 4、打印计算结果
+        */
+        var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            // sum = sum + i;
+            sum += i;
+        }
+        // console.log(sum)
+
+
+        /**  求 1 - 100 之间 所有数的平均值    50.5
+         * 
+         * 求平均值的方法： 1-100 之间累加的总和  除去  100 等于 50.5
+         * 
+         * 1、需要循环 100 次， 所以需要一个计数器 i
+         * 2、需要一个 sum 和的变量 ，还需要一个平均值 average 变量
+         * 3、打印计算结果
+        */
+        var sum = 0;
+        var average = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum = sum + i;
+        }
+        average = sum / 100;
+        console.log(average)  //50.5
+
+
+        /** 求 1-100之间所有偶数和奇数的和
+         * 1、需要循环 100 次， 所以需要一个计数器 i
+         * 2、需要一个 偶数 变量 even  ,一个奇数 变量odd
+        */
+        var sum = 0;
+        var even = 0;
+        var odd = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {   //能被2整除的就是偶数
+                even = even + i;
+            } else {        //否则就是奇数
+                odd = odd + i;
+            }
+        }
+        console.log('1-100之间所有的偶数和是：' + even);  //2550
+        console.log('1-100之间所有的奇数和是：' + odd);  //2500
+
+
+        /** 求 1-100之间所有能被 3 整除的数字的和
+         * 1、需要循环 100 次，所以需要一个计数器 i
+         * 2、需要一个 被3 整除的数字的和 result
+        */
+        var result = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                result = result + i
+            }
+        }
+        console.log('1-100之间所有能够被 3 整除的数字的和是' + result);
+
+       
+    </script>
+</body>
+
+</html>

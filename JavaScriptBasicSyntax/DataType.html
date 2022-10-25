@@ -20,12 +20,26 @@
         console.log(Number(age));  
     </script> -->
 
-    <script>
+    <!-- <script>
+        //计算年龄的案例
+
         var years = prompt('请输入你的年龄');  // years 取过来是字符串类型
         var BirthYears = new Date(years).getFullYear();
         var currentYears = new Date().getFullYear();
         var age = currentYears - BirthYears;
         alert('您今年已经' + age + '岁了');
+    </script> -->
+
+    <script>
+        /**加法器：
+         * 1、先弹出第一个输入框，提示用户输入第一个值 并保存起来
+         * 2、再弹出第一个输入框，提示用户输入第二个值 并保存起来
+         * 3、把两个值 通过parseInt()分别转为 数字型 ,然后相加计算出结果
+         * 4、弹出警示框alert（），把计算的结果输出
+        */
+        var num1 = prompt('简单加法器：\n 请输入第一个值');
+        var num2 = prompt('简单加法器：\n 请输入第二个值');
+        alert(parseFloat(num1) + parseFloat(num2));
     </script>
 </body>
 
