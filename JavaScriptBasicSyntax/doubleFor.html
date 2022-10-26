@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双重for 循环</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 打印 n行 n列星星
+         * 
+         * 要求用户输入行数 和 列数，之后在控制台打印用户输入行数和列数的星星
+         * 内层循环负责一行打印 n个星星
+         * 外层循环负责打印 n行
+         * 
+         * 需要保存  行数的 row 变量   列数的 column 变量   
+         * 1、先弹出第一个输入框，提示用户 请输入行数 并保存到 row 变量
+         * 2、再 弹出第二个输入框，提示用户 请输入列数，并保存到 column变量
+         * 3、for循环：
+         * 3.1弹出的次数 跟 行数 有关系 ，条件表达式  i <= row
+         *
+         * 注意：从prompt()取过来的数据 是 字符串型的需要转换为数字型
+        */
+
+        var rows = prompt('打印 n行 n列星星 \n 请您输入行数：');
+        var columns = prompt('请您输入列数：');
+        var str = '';
+        for (var i = 1; i <= rows; i++) {
+            for (var j = 1; j <= columns; j++) {
+                str = str + '*'
+            }
+            str = str + '\n'
+        }
+        console.log(str)
+        
+    </script>
+
+</body>
+
+</html>

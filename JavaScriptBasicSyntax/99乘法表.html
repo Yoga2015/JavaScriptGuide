@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        for (var i = 1; i <= 9; i++) {
+            for (j = 1; j <= i; j++) {
+                console.log(j + '*' + i + '=' + i * j + '\t');
+            }
+            console.log('\n');
+        }
+
+        /** 九九乘法表  分析：
+         * 
+         * 一共9行，但是每行的个数不一样，因此需要用到 双重for 循环
+         * 1、需要定义一个 str变量 ，它没有值的。
+         * 2、外层的 for循环 控制 行数 i ，循环9次，可以打印9行
+         * 3、里层的 for循环 控制 每行公式   
+         * 4、核心算法：每一行 公式的个数正好 和 行数一致 ， 就 j <= i ;
+         * 5、每一行每个公式 之间  \t空格隔开  ，打印完毕，
+         * 6、每行打印完毕，都需要重新换一行
+         * 
+        */
+        var str = '';
+        for (var i = 1; i <= 9; i++) {
+            for (j = 1; j <= i; j++) {
+                // 1 x 2 = 2;
+                // str = str + '*';   ===   str += '*';
+                str += j + 'x' + i + '=' + i * j + '\t';
+            }
+            str += '\n';
+        }
+        console.log(str);
+
+    </script>
+</body>
+
+</html>
