@@ -10,6 +10,12 @@
     -options：可选参数，以什么编码格式来读取文件
 
     -callback：必选参数，读取文件后，通过回调函数拿到读取的结果
+
+    1、引入 fs 文件系统模块
+
+    2、fs.readFile(要读取的文件的路径,读取文件的编码格式, function(err,dataStr){
+        //执行语句  ：  输出 文件内容
+    })
  */
 
 const fs = require('fs')
@@ -37,6 +43,12 @@ fs.readFile('./file/1.txt', 'utf-8', function (err, dataStr) {
 
     -callback：必选参数，读取文件后，通过回调函数拿到读取的结果
 
+     1、引入 fs 文件系统模块
+
+     2、fs.writeFile(要读取的文件的路径,'写入文件的内容',写入文件的编码格式,function(err,dataStr){
+        //执行语句  ：  输出 文件内容
+    })
+    
   -示例代码：
  */
 
