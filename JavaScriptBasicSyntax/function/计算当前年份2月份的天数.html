@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算当前年份2月份的天数</title>
+</head>
+
+<body>
+<script>
+/**
+ * 用户输入年份，输出当前年份2月份的天数
+ * 
+ * 二月份的天数主要取决于年份是不是闰年，
+ * 如果是闰年 ，则 2月份有29天，
+ * 如果是平年 ，则 2月份有28天。
+ * 
+ * 判断闰年的公式: 能被4 整除 并且不能被100整除，或者能被400整除出
+ * 
+*/
+
+function getYear() {
+
+    var year = prompt("请您输入年份：")
+
+    if (isRunYear(year)) {
+        alert('您输入的年份:' + year + '是闰年，闰年2月份有29天');
+    } else {
+        alert('您输入的年份:' + year + '是平年，平年2月份有28天');
+    }
+
+}
+
+getYear();
+
+
+function isRunYear(year) {
+
+    //如果是闰年 返回true ,否则 返回 false
+    var flag = false;
+
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        flag = true;
+    }
+    return flag;
+}
+</script>
+
+
+</body>
+
+</html>

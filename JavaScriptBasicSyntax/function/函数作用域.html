@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>JavaScript 作用域（scope）指的是 变量 存在的范围。</h3>
+    目的是 为了提供程序的可靠性，更重要的是减少命名冲突。<br>
+    在 ES5 中，Javascript 只有两种作用域：全局作用域 、 局部作用域（函数作用域）<br>
+
+    <h3>变量作用域的分类</h3>
+    在JavaScript中，根据作用域的不同，变量可以分为两种：全局变量、局部变量<br>
+
+    <div>
+        <h3>从执行效率来看全局变量和局部变量的区别</h3>
+        1、全局变量：在任何一个地方都可以使用，只有在浏览器关闭的时候才会销毁，比较占内存空间<br>
+        2、局部变量 ：只在函数内部使用，当其所在的代码块被执行时，会被初始化，当代码运行结束后，就会被就会销毁，比较更节省内存空间。
+    </div>
+
+    <script>
+
+        var num = 10;  //全局作用域 全局变量
+
+        function fn() {
+            var num = 20;  //局部作用域（函数作用域） 局部变量
+            console.log(num);
+        }
+
+        fn();
+
+    </script>
+
+
+    <div>
+        <h3>在 ES6 中，Javascript 块级作用域 ： if {} 、for{} </h3>
+    </div>
+
+    <script>
+
+        //外面的是不能调用 num 的
+        if (4 > 2) {
+            var num = 10;
+        }
+        console.log(num);
+
+    </script>
+</body>
+
+</html>

@@ -15,3 +15,17 @@ for (var i = 0; i < arr.length; i++) {
 average = sum / arr.length;
 console.log('数组中所有元素的和：' + sum);
 console.log('数组中的元素的平均值：' + average);
+
+
+/**  删除 数组 [2, 6, 1, 7, 4] 里面的第一个元素 2
+ *  
+ */
+
+let arr1 = [];
+for (var i = 0; i < arr.length; i++) {
+    if (arr[i] != arr[0]) {
+        arr1[arr1.length] = arr[i];
+    }
+}
+
+console.log(arr1);

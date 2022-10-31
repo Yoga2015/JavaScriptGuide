@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数 -- 判断闰年</title>
+</head>
+
+<body>
+<script>
+    /** 函数 -- 判断闰年
+     
+        要求： 输入一个年份，判断是否时 闰年
+        判断闰年公式: 能被4 整除 并且不能被100整除，或者能被400整除出
+
+        * 
+    */
+
+    function isRunYear(year) {
+
+        //如果是闰年 返回true ,否则 返回 false
+        var flag = false;
+
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            flag = true;
+        }
+        return flag;
+    }
+
+    console.log(isRunYear(2000));
+    console.log(isRunYear(1999));
+    console.log(isRunYear(2022));
+
+</script>
+
+</body>
+
+</html>

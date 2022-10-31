@@ -197,8 +197,8 @@ function WArray() {
         }
         let result = '';
         for (let i = 0; i < this.value.length; i++) {
-            let item = this.value[i];
-            result += item;
+            result += this.value[i];
+
             // result += joinStr;  //但是最后一位元素后面是不能加 有分隔符的
 
             //通过下标判断最后一个元素是最准确的，这里通过下标来判断数组中最后一位元素
@@ -244,6 +244,6 @@ console.log(`before: `, wArray);
 // console.log(`after: `, wArray);
 // console.log(`after: item5 = `, joinStr);
 
-let joinStr = wArray.join8('hello');
+let joinStr = wArray.join8('|');
 console.log(`after: `, wArray);
 console.log(`after: joinStr = `, joinStr);

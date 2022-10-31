@@ -1,3 +1,4 @@
+//创建数组并初始化赋值
 var arr = [1, 2, 3];
 
 //获取（访问）数组元素
@@ -23,10 +24,3 @@ for (var i = 0; i <= arr.length; i++) {
     console.log(arr[i]);
 }
 
-
-var arr1 = [2, 6, 1, 7, 4];
-var sum = 0;
-for (var i = 0; i <= arr1.length; i++) { 
-    sum = sum + arr1[i];
-}
-console.log(sum)

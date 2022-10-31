@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是函数</title>
+</head>
+
+<body>
+    <div>
+        什么是函数？
+        就是 封装了一段 可被重复调用执行的代码块。通过此代码可以实现大量代码的重复使用
+        <br>
+        为什么使用函数？
+        因为函数只需写一次，等我要使用的时候，我只要去调用一下这个函数就可以帮我们实现大量代码的重复使用。
+        <br>
+        目的 ：就是让大量代码重复使用。
+
+    </div>
+    <script>
+        // 求 1-10 之间所有数的和？  求总和公式：（首项 + 末项） * 末项  / 2  = 总和
+        var sum = 0;
+        for (var i = 1; i <= 10; i++) {
+            sum = sum + i;
+        }
+        console.log(sum)  // 55
+
+        // 求 10-50 之间所有数的和？
+        var sum = 0;
+        for (var i = 10; i <= 50; i++) {
+            sum = sum + i;
+        }
+        console.log(sum)  //1230
+
+        /**
+         * 以上两个例子 的代码是不是 重复率特别高呀？
+         * 我干脆把它封装到一个函数里面去，等我要使用的时候，
+         * 我只要去调用一下这个函数就可以帮我们实现这个计算效果，
+         * 而不用重复写这么多代码。
+         * 
+         * 下面开始使用函数来实现大量代码的重复使用。
+        */
+        function getSum(num1, num2) {
+            var sum = 0;
+            for (var i = num1; i <= num2; i++) {
+                sum = sum + i;
+            }
+            console.log(sum)
+        }
+
+        getSum(1, 10);  //55
+        getSum(10, 20);  // 1230
+        getSum(1, 100);   //5050
+
+
+
+        
+        
+
+
+
+    </script>
+</body>
+
+</html>

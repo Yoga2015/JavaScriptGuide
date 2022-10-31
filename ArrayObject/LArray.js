@@ -169,6 +169,7 @@ function LArray() {
         return result;
 
     };
+    
 
     /**
      * concat()方法 用于多个数组的合并。它将新数组的成员，添加到原数组成员的后部。
@@ -509,9 +510,9 @@ console.log(`before: `, lArray);
 // console.log(`after:  UNshift = `, UNshift);
 
 
-// let joinStr = lArray.join('|');
-// console.log(`after: `, lArray);
-// console.log(`after: joinStr = `, joinStr);
+let joinStr = lArray.join('|');
+console.log(`after: `, lArray);
+console.log(`after: joinStr = `, joinStr);
 
 
 // let ConcatArr = lArray.concat('[5,6],[8,9]');
@@ -544,13 +545,13 @@ console.log(`before: `, lArray);
 // console.log(`after: mapArray = `, mapArray);
 
 //forEach字符串
-let out4 = '893ojejfkljio';
-out4.charAt(1);
-let wlog4 = function (idx) {
-    return this.charAt(idx);
-}
-lArray.forEach2(wlog4, out4);
-console.log('after:', lArray);
+// let out4 = '893ojejfkljio';
+// out4.charAt(1);
+// let wlog4 = function (idx) {
+//     return this.charAt(idx);
+// }
+// lArray.forEach2(wlog4, out4);
+// console.log('after:', lArray);
 
 // //forEach数组
 // let out = [];// new Array<Object>(); out 此时不仅仅是数组，out也是对象

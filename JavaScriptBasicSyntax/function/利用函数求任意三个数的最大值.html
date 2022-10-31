@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用函数求任意三个数的最大值</title>
+</head>
+
+<body>
+    <script>
+
+        /**
+         * 利用函数求任意三个数的最大值
+         * 核心思路：
+         * 1、需要一个临时变量 max 为 大值 ,然后 将 第一个数 等于 max, max = num1
+         * 2、将第一个数和第二数进行比较，比较出来最大值 赋值给 临时变量 max
+         * 3、用 临时变量 max 和 第三个 数 进行比较，要么 临时变量 max 是最大值，
+         * 要么 第三个数是最大值。
+        */
+
+        var num1 = prompt('请输入第一个数字');
+        var num2 = prompt('请输入第二个数字');
+        var num3 = prompt('请输入第三个数字');
+
+        //方法一
+        function getMax(num1, num2, num3) {
+
+            var max = num1;
+
+            if (num1 > num2) {
+                max = num1;
+            } else {
+                max = num2;
+            }
+
+            if (max > num3) {
+                return max;
+            } else {
+                return num3
+            }
+
+        }
+
+        //方法二  三元运算符
+        function getMax(num1, num2, num3) {
+            var max = num1 > num2 ? num1 : num2;  //注：这里是将num1和num2比较后将最大值赋给max
+            return max > num3 ? max : num3;  //将max和num3比较后，函数结果返回最大值
+        }
+
+
+        var result = getMax(num1, num2, num3);
+        alert(result);
+    </script>
+</body>
+
+</html>

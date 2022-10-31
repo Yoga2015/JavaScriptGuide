@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arguments的使用</title>
+</head>
+
+<body>
+    <h5>arguments的使用</h5>
+    当我们不确定前端会传递过来多少个参数的时候，可以用arguments来获取。<br>
+    在JavaScript中，arguments实际上它是当前函数的一个内置对象。<br>
+    所有的函数都内置了一个 arguments对象，arguments对象中存储了传递的所有实参。<br>
+    arguments 是函数中内置的一个对象，它的作用是存储了传递过来的所有实参。<br>
+
+
+    <script>
+// arguments的使用
+function fn() {
+    console.log(arguments);
+    console.log(arguments.length);
+    console.log(arguments[2]);
+
+    for (var i = 0; i <= arguments.length; i++) {
+        console.log(arguments[i])
+    }
+}
+
+
+fn(1, 2, 3);
+fn(1, 2, 3, 4, 5);
+/** 从 F12的控制台里看出，arguments 是一个伪书数组，
+ *  并不是一真正意义上的数组
+ * 1、具有数组的length 属性
+ * 2、按照索引的方式进行存储的
+ * 3、他没有真正数组的一些方法，比如 push()、pop()等等
+ * 
+*/
+    </script>
+
+<script>
+    // 利用函数的arguments求任意个数的最大值
+    function getMax() {
+
+        var max = arguments[0];
+
+        for (var i = 0; i < arguments.length; i++) {
+            if (arguments[i] > max) {
+                max = arguments[i];
+            }
+        }
+        
+        return max;
+    }
+
+    console.log(getMax(1, 2, 3));
+    console.log(getMax(1, 2, 3, 4));
+    console.log(getMax(1, 2, 13, 40, 15));
+</script>
+
+</body>
+
+</html>
