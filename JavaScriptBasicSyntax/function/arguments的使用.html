@@ -58,6 +58,19 @@ fn(1, 2, 3, 4, 5);
     console.log(getMax(1, 2, 3));
     console.log(getMax(1, 2, 3, 4));
     console.log(getMax(1, 2, 13, 40, 15));
+    
+
+    //现在大家不用arguments 了，而是用 ...num 的形式 接受不确定的个数的实参
+    function fn(...num){
+       var newArr = [];
+       for (var i = 0; i < num.length; i++) {
+            newArr[newArr.length] = num[i]
+        }
+
+        return newArr;
+    }
+
+    fn(6,7,8,9);   // [6, 7, 8, 9]
 </script>
 
 </body>

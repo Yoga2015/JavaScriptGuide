@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript预解析</title>
+</head>
+
+<body>
+    <script>
+        // 1 问
+        console.log(num); //Uncaught ReferenceError: num is not defined
+
+
+
+        //2  问
+        console.log(num); //undefined    坑1
+        var num = 100;
+        //以上代码 在 js引擎看来 相当于执行了以下代码
+
+        var num;  //因为首先 var 提升先 ，然后只是声明了 num变量， 但是并没有赋值。 
+        console.log(num);  //往上找 num 变量的值，但没有，故报： undefine
+        num = 100;
+
+
+
+        //3 问
+        fn();   //能正常输出 11，为什么？
+
+        function fn() {
+            console.log(11);
+        }
+        //以上代码 在 js引擎看来 相当于执行了以下代码
+
+        function fn() {  //因为首先 function函数 提升先
+            console.log(11);
+        }
+        fn();
+
+
+
+        //4 问
+        fun();  //报错 fun is not a function  坑2
+
+        var fun = function () {
+            console.log(22);
+        };
+        //以上代码 在 js引擎看来 相当于执行了以下代码
+
+        var fun;
+        fun();
+        fun = function () {
+            console.log(22);
+        };
+
+
+        /** 想解决以上问题，必须了解JavaScript的运行机制，也就是说 预解析。
+         * 
+        JavaScript代码是由浏览器中的 JavaScript解析器（引擎） 来执行的。
+        
+        JavaScript解析器在运行JavaScript代码的时候分为两步： 预解析  和 代码执行。
+        
+        1、js 引擎运行 js 代码分为两步： 预解析 和 代码执行
+        1.1 预解析 ：js 引擎 会把 js 里面所有的 var ，还有function 提升到当前作用域 的最前面
+        1.2 代码执行： 按照代码书写的顺序从上往下执行
+        
+        2、预解析 分为  变量预解析（变量提升） 和 函数预解析 (函数提升)
+        2.1  变量提升  就是把 所有的变量声明 提升到 当前的作用域最前面  不提升赋值操作。
+        3.1  函数提升  就是把 所有的函数声明 提升到 当前的作用域最前面  不调用函数。
+        
+        */
+    </script>
+</body>
+
+</html>
