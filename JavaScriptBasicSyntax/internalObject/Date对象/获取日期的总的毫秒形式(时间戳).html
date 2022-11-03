@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取日期的总的毫秒形式(时间戳)</title>
+</head>
+
+<body>
+<script>
+/*
+    有三种方法可以 获得Date 总的毫秒数（ 时间戳 ），
+    不是当前时间的毫秒数 ,而是距离 1970年1月1号过了多少毫秒数
+*/
+
+//1、通过valueof()   getTime();
+var date = new Date();
+console.log(date.valueOf());  //就是 我们现在时间  距离 1970.1.1 总毫秒数
+console.log(date.getTime()); //1667443057453
+// 2、简单的写法 （开发种最常用的写法）
+var date1 = +new Date();
+console.log(date1);  //1667443057453
+//3、HTML5 新增的 获取 总的毫秒数
+console.log(Date.now());  //1667443057453
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装一个函数 返回当前时间</title>
+</head>
+
+<body>
+    <script>
+        //要求封装一个函数 返回当前时间 08:08:08
+        function getTime() {
+            var time = new Date();
+
+            var hours = time.getHours();//返回当前小时
+            hours = hours < 10 ? '0' + hours : hours;
+
+            var minutes = time.getMinutes();//返回当前分钟
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            var seconds = time.getSeconds();//返回当前秒钟
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            return hours + ':' + minutes + ':' + seconds;
+        }
+        console.log(getTime());  // 10:14:02
+    </script>
+</body>
+
+</html>
