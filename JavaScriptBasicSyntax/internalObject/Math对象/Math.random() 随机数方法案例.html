@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>得到一个两数之间的随机整数</title>
+</head>
+
+<body>  猜数字游戏
+    <script>
+        /**
+         * 1、Math.random() 随机数方法  random() 返回一个随机的小数  0  =< x < 1
+         * 2、这个方法里面不跟参数
+        */
+        console.log(Math.random()); // 0.2856626929444379 、0.6463100974868912
+
+        /**
+             得到一个两数之间的随机整数  并且 包含 这两个整数
+            公式：  
+            Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+        
+        */
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log(getRandom(1, 10)); //一会 7，一会 2 ，一会  4
+
+        // 3、随机点名
+        var arr = ['李四', '张三', '李小龙', '叶问', '陈真', '威哥'];
+        // console.log(arr[0]);  这个写死了无法随机点名
+        // console.log(arr[getRandom(0, 4)]); //还可以继续优化
+        console.log(arr[getRandom(0, arr.length - 1)]);
+
+    </script>
+</body>
+
+</html>
