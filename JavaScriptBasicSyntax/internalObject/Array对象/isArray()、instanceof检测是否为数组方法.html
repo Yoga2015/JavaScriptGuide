@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>检测过来的参数是否为数组</title>
+</head>
+
+<body>
+<script>
+// 检测过来的参数是否为数组
+
+// 反转数组
+function reverse(arr) {   //传过来的参数没做判断
+    if (Array.isArray(arr)) {
+        var newArr = [];
+        for (var i = arr.length - 1; i >= 0; i--) {
+            newArr[newArr.length] = arr[i];
+        }
+        return newArr;
+    } else {
+        return 'error 这个参数要求必须是数组格式[1,2,3]'
+    }
+}
+
+console.log(reverse([3, 6, 9])); //[9, 6, 3]
+
+//因为传递过去的不是数组，所以会原封不动的把 newArr这个空数组 返回 
+console.log(reverse(1, 2, 3)); // [] 
+
+//所以这里有一个需求就是 检测是否为数组 
+//（1） instanceof  运算符  它可以用来检测是否为数组
+var arr = [];
+var obj = {};
+console.log(arr instanceof Array); //true
+console.log(obj instanceof Array); //false
+
+//(2) Array.isArray(参数);  HTML5新增的方法  ie9以上版本支持
+console.log(Array.isArray(arr)); //true
+console.log(Array.isArray(obj)); //false
+
+// Array.isArray 优于 instanceof
+
+</script>
+</body>
+
+</html>

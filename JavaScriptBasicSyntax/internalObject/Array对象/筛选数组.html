@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筛选数组</title>
+</head>
+
+<body>
+<script>
+    /*有一个包含工资的数组[1600,1200,2000,2200,1900] ,
+        要求把数组种工资超过2000的删除，剩余的放到新数组里面
+    */
+    var arr = [1600, 1200, 2000, 2200, 1900];
+    var newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < 2000) {
+            // newArr[newArr.length] = arr[i];
+            newArr.push(arr[i]);
+        }
+    }
+    console.log(newArr); // [1600, 1200, 1900]
+
+</script>
+</body>
+
+</html>

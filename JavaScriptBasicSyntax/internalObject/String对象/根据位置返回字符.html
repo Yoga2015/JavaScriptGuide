@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据位置返回字符</title>
+</head>
+
+<body>
+    <script>
+        // 根据位置返回字符  根据索引号返回字符
+
+        // 1、charAt(index) 根据位置返回字符  从0开始
+        let str = 'green';
+        console.log(str.charAt(1));  // r
+        console.log(str.charAt(4)); // n
+        // 遍历所有的字符
+        for (let i = 0; i < str.length; i++) {
+            console.log(str.charAt(i))
+        }   //g r e e n
+
+        // 2、charCodeAt(index) 获取 指定位置处字符的ASCII码(index索引号)
+        // 目的：判断用户按下了哪个键
+        console.log(str.charCodeAt(0));  //0 位置上是 g 对应 ASCII码表中的103
+
+        // 3、str[index] HTML5新增
+        console.log(str[4]); // n
+    </script>
+</body>
+
+</html>

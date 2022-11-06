@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的不可变性</title>
+</head>
+
+<body>
+    <script>
+        //字符串的不可变性
+        var str = 'green';
+        console.log(str);
+        str = 'red';
+        console.log(str);
+        //当重新给 str 赋值的时候，常量 'green' 不会被改变，依然在内存种
+        //重新给字符串赋值，会重新在内存中开辟空间，这个特点就是字符串的不可变
+
+
+        //由于字符串的不可变，在大量拼接字符串的时候会有效率问题
+        var str = '';
+        for (let i = 0; i < 100000000; i++) {
+            str += 'i';
+        }
+        console.log(str);
+        // 循环一千万次时页面就会开始变卡，甚至卡死了，因为占用了太多内存资源了
+
+    </script>
+</body>
+
+</html>

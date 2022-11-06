@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slice() 提取目标数组一部分元素</title>
+</head>
+
+<body>
+<script>
+
+/* slice() 提取目标数组一部分元素 ，返回一个新数组，原数组不变
+    它的第一个参数为起始位置（从0开始），
+    第二个参数 为终止位置 （但该位置的元素本身不包括在内）。
+    如果忽略第二个参数，则一直返回到原数组的最后一个成员。
+*/
+let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+console.log(arr.slice(1));  // ['b', 'c', 'd', 'e', 'f']
+console.log(arr.slice(1, 2));  // ['b'] 
+console.log(arr.slice(1, 3));  // ['b', 'c'] 
+
+
+
+
+</script>
+</body>
+
+</html>

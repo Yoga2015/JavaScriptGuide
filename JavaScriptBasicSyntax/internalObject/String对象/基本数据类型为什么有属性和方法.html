@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本数据类型为什么有属性和方法</title>
+</head>
+
+<body>
+<script>
+// 下面代码有什么问题？
+let str = 'red';  //str 是基本数据类型
+console.log(str.length);  // 返回 3
+
+/** 对象：才有属性和方法  复杂数据类型才有属性和方法
+ * 
+ *  基本数据类型为什么会有 length 属性呢？
+ * 
+ *  奇怪了，按道理 基本数据类型 是没有属性和方法的，而对象才有属性和方法 ，
+ *  但是上面的代码却可以执行？
+*/
+//这是因为 js引擎 会把 基本数据类型 包装为 复杂数据类型，其执行过程如下：
+//(1)把 基本数据类型 包装为 复杂数据类型
+let temp = new String('red');
+//(2) 把临时变量的值给 str
+str = temp;  
+//(3) 销毁 这个临时变量
+temp =  null;
+
+
+</script>
+</body>
+
+</html>

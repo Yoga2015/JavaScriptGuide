@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组转换为字符串</title>
+</head>
+
+<body>
+    <script>
+        //数组转换为字符串
+
+        //1、 toSting()  将数组转换为 字符串  没有参数
+        let arr = [1, 2, 3];
+        console.log(arr); //[1, 2, 3]
+        console.log(arr.toString()); //1,2,3
+
+        //2、join(分隔符)  
+        let arr1 = ['red', 'green', 'yellow'];
+        console.log(arr1);  //['red', 'green', 'yellow']
+        console.log(arr1.join('-')); //red-green-yellow
+        console.log(arr1.join('&')); //red&green&yellow
+        console.log(arr1.join('|')); //red|green|yellow
+
+
+    </script>
+</body>
+
+</html>

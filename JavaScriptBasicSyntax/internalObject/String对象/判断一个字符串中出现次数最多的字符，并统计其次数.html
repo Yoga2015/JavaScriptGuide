@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断一个字符串中出现次数最多的字符，并统计其次数</title>
+</head>
+
+<body>
+    <!-- <script>
+        /** 判断对象中是否有该属性
+        * 有一个对象   调用对象属性的方法：  对象名['属性名']
+        * 通过  对象名['属性名'] 调用对象属性时，
+        * 当对象中没有此属性时，此时也相当于给该对象添加这个属性，然后才调用
+        */
+        var o = {
+            age: 18
+        };
+        if (o['age']) {
+            console.log('里面有该属性')
+        } else {
+            console.log('没有该属性')
+        }
+    </script> -->
+
+<script>
+/**
+ * 判断一个字符串 'abcoerfojkwofedo' 中出现次数最多的字符，并统计其次数
+ * 
+ * 核心算法： 
+ * 利用 charAt(index) 根据位置返回字符  遍历这个字符串
+ * 把每个字符都存储给对象，如果对象没有该属性，就为 1，如果存在了就 +1
+ * 遍历对象，得到最大值和该字符
+ * 
+ * 1、声明一个空对象 o 
+ * 2、for遍历这个字符串 str  
+ * 2.1 利用 charAt(index) 根据位置返回字符 并赋值给 变量 chars
+ * 2.2 条件判断 o对象中是否 有 该属性
+*/
+let str = 'abcoerfojkwofedo';
+let obj = {};
+for (let i = 0; i < str.length; i++) {
+    let chars = str.charAt(i);  //chars 是 字符串的每一个字符
+    if (obj[chars]) {   //obj[chars] 得到的是属性值
+        obj[chars]++;
+    } else {
+        obj[chars] = 1;
+    }
+}
+console.log(obj);
+
+/** 2、遍历对象  用 for in 循环
+ *  遍历出对象中出现次数最多的字符 ，以及其出现的次数
+ */
+let max = 0;
+let chars = '';
+for (let k in obj) {
+    // k 得到的是 属性名
+    // obj[k] 得到的是属性值
+    if (obj[k] > max) {
+        max = obj[k];   //字符出现的次数
+        chars = k;   //哪个字符呢
+    }
+}
+
+console.log('出现次数最多的字符是: ' + chars)
+console.log(chars + ' 字符串出现的次数是: ' + max)
+</script>
+</body>
+
+</html>
