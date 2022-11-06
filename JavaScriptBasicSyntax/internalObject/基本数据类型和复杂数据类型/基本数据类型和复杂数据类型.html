@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本数据类型和复杂数据类型</title>
+</head>
+
+<body>
+    <script>
+        // 基本数据类型 null  返回的是一个空的对象   object
+        var timer = null;
+        console.log(typeof timer); //类型是  object
+        //如果有个变量我们以后打算存储为对象，暂时没想好放啥，这个时候就给 null
+
+
+        // 基本数据类型 是存放在栈里面  里面直接开辟一个空间存放的是值
+        let age = 18;
+
+        //复杂数据类型 首先 在栈里面 存放地址 十六进制表示  然后这个地址指向堆里面的数据
+        var arr = [1, 2, 3];
+
+
+        // 基本数据类型传参
+        let num = 10;
+        num = 20;
+        console.log(num);  //20
+
+
+        function fn(a) {
+            a++;
+            console.log(a);   //11
+        }
+
+        let x = 10;
+        fn(x);
+        console.log(x);   //10
+
+        // 复杂数据类型传参
+        function Person(name) {
+            this.name = name;
+        };
+        function f1(x) {  // x = p
+            console.log(x.name);  //2、这个输出什么？ 李四
+            x.name = '张三';
+            console.log(x.name);  //3、这个输出什么？ 张三
+        }
+        var p = new Person('李四');
+        console.log(p.name);  //1、这个输出什么？  李四
+        f1(p);
+        console.log(p.name);   //4、这个输出什么？ 张三
+
+    </script>
+</body>
+
+</html>
