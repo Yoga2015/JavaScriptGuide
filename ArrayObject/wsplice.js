@@ -23,8 +23,8 @@ function WArray() {
     };
 
     /**
-     * splice方法用于删除原数组的一部分成员，
-     * 并可以在删除的位置添加新的数组成员，返回值是被删除的元素。
+     * 1、splice方法用于删除原数组的一部分成员，
+     * 1.1、并可以在删除的位置添加新的数组成员，返回值是被删除的元素。
      * 注意，该方法会改变原数组。
      */
     this.splice = function (start, end) {
@@ -36,6 +36,7 @@ function WArray() {
         if (end === undefined || null || 0) {
             return [];
         }
+
     };
 }
 
