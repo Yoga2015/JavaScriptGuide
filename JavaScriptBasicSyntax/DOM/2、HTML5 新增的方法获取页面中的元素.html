@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 新增的方法获取页面中的元素</title>
+</head>
+
+<body>
+<h3>HTML5 新增的方法 是 IE9以上才支持的</h3>
+<div class="box">盒子</div>
+<div class="box">盒子</div>
+<div id="nav">
+    <ul>
+        <li>首页</li>
+        <li>产品</li>
+    </ul>
+</div>
+<script>
+    /** HTML5 新增的三个获取页面中的元素的接口
+     * 1、document.getElementsByClassName('类名'); 根据 类名 返回元素对象集合
+     * 2、document.querySelector('选择器');   返回指定选择器的 第一个元素
+     *    切记 里面的选择器需要加符号 .box   #nav
+     * 3、querySelectorAll() 返回指定选择器的所有元素对象集合
+    */
+
+    //1、getElementsByClassName() 根据类名获得某些元素集合
+    let boxs = document.getElementsByClassName('box');
+    console.log(boxs); //HTMLCollection(2) [div.box, div.box]
+
+    //2、querySelecter 返回指定选择器的 第一个元素
+    // 切记 里面的选择器需要加符号 .box   #nav
+    let firstBox = document.querySelector('.box');
+    console.log(firstBox); // <div class="box">盒子</div>
+    let nav = document.querySelector('#nav');
+    console.log(nav); // <div id="nav">...</div>
+    let li = document.querySelector('li');
+    console.log(li); //<li>首页</li>
+
+    //3、querySelectorAll() 返回指定选择器的所有元素对象集合
+    let allBox = document.querySelectorAll('.box');
+    console.log(allBox);  //NodeList(2) [div.box, div.box]
+    let lis = document.querySelectorAll('li');
+    console.log(lis);  // NodeList(2) [li, li]
+</script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取特殊元素（body,html）</title>
+</head>
+
+<body>
+    <script>
+        //1、获取body 元素
+        let bodyelement = document.body;
+        console.log(bodyelement); //<body>...</body>
+
+        //2、获取 html 元素
+        // let htmlElement = document.html;  不行的
+        // console.log(htmlElement);  //undefined
+        let htmlElement = document.documentElement;
+        console.log(htmlElement); //<html lang="en">...</html>
+    </script>
+</body>
+
+</html>

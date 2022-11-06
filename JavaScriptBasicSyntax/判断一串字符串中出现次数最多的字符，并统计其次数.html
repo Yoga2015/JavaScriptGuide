@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断一串字符串中出现次数最多的字符，并统计其次数</title>
+</head>
+
+<body>
+
+    <!-- <script>
+        /** 判断对象中是否有该属性
+        * 有一个对象   调用对象属性的方法：  对象名['属性名']
+        * 通过  对象名['属性名'] 调用对象属性时，
+        * 当对象中没有此属性时，此时也相当于给该对象添加这个属性，然后才调用
+        */
+        var o = {
+            age: 18
+        };
+        if (o['age']) {
+            console.log('里面有该属性')
+        } else {
+            console.log('没有该属性')
+        }
+</script> -->
+
+    <script>
+        /** 判断 str字符串 'sdfaffafnzaxcv' 中出现次数最多的字符，并统计其次数
+         * 
+         * 核心算法： 
+         * 利用 charAt(index) 根据位置返回字符  for寻遍历这个字符串
+         * 然后把每个字符都存储给对象，如果对象没有该属性，就等于 1，如果存在了就 +1
+         * 遍历对象，得到最大值和该字符。
+             1、声明一个空对象 obj 
+            2、 for循环遍历 str字符串，
+            3、 把 str字符串 里面的每个字符一一取出来，利用 charAt(index) 根据位置返回字符 并把该字符就赋值给 chars 变量；
+            4、 条件判断 obj[chars] ， obj 对象中是否有 chars 属性，
+            4.1 若 obj 对象中没 chars 属性 就给 obj对象添加这个chars属性 ,并给 chars 属性 赋值 1
+            4.2  //若 obj 对象中有 chars 属性 就 chars 属性值 +1
+        */
+
+        var str = 'sdfaffafnzaxcv';
+        var obj = {};
+        for (let i = 0; i < str.length; i++) {
+            let chars = str.charAt(i); //charAt()根据索引号返回字符 ，并把返回的字符 赋值给 chars 变量 
+            if (obj[chars]) { //条件判断 obj 对象中是否有 chars 属性
+                obj[chars]++;  //若 obj 对象中有 chars 属性 就 chars 属性值 +1
+            } else {
+                obj[chars] = 1;  //若 obj 对象中没 chars 属性 就给该对象添加这个chars属性 ,并给 chars 属性 赋值 1
+            }
+        }
+        console.log(obj); //{ s: 1, d: 1, f: 4, a: 3, n: 1, z: 1, x: 1, c: 1, v: 1 }
+
+        /**
+         * 当把 str 字符串中每一个字符都 添加给obj对象作为属性后，用for in循环遍历对象，
+         * 遍历出对象中出现次数最多的字符 ，以及其出现的次数
+         *  5、声明一个变量 max 并赋值 0，作为最大值
+         *  6、声明一个空字符串 chars 用来存放出现次数最多的字符
+         *  7、用 for in循环遍历对象
+         * 
+        */
+
+        let max = 0;
+        let chars = '';
+        for (let k in obj) {
+            // k 得到的是 属性名
+            //obj[k] 得到的是 属性值
+            if (obj[k] > max) {
+                max = obj[k];  //字符出现的次数
+                chars = k;  //哪个字符呢
+            }
+        }
+        console.log('出现次数最多的字符是：' + chars); //出现次数最多的字符是：f
+        console.log('出现了 ' + max + ' 次'); // 出现了 4 次
+    </script>
+
+</body>
+
+</html>
