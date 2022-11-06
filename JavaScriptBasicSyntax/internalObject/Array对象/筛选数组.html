@@ -9,21 +9,32 @@
 </head>
 
 <body>
-<script>
-    /*有一个包含工资的数组[1600,1200,2000,2200,1900] ,
-        要求把数组种工资超过2000的删除，剩余的放到新数组里面
-    */
-    var arr = [1600, 1200, 2000, 2200, 1900];
-    var newArr = [];
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] < 2000) {
-            // newArr[newArr.length] = arr[i];
-            newArr.push(arr[i]);
-        }
-    }
-    console.log(newArr); // [1600, 1200, 1900]
+    <script>
+        /*有一个包含工资的数组[1600,1200,2000,2200,1900] ,
+            要求把数组种工资超过2000的删除，剩余的放到新数组里面
+        */
+        function salary(arr) {
+            if (Array.isArray(arr)) {
+                var newArr = [];
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] < 2000) {
+                        // newArr[newArr.length] = arr[i];
+                        newArr.push(arr[i]);
+                    }
+                }
+                return newArr;
+            } else {
+                return '入参不合法，必须是数组格式'
+            }
 
-</script>
+        }
+
+        let arr1 = salary([1600, 1200, 2000, 2200, 1900]);
+        console.log(arr1);  //[1600, 1200, 1900]
+        let arr2 = salary(['c', 'a', 'z', 'a']);
+        console.log(arr2); // []
+
+    </script>
 </body>
 
 </html>
