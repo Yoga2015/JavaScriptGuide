@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿淘宝显示隐藏密码文明案例</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .box input {
+            width: 370px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+
+        .box img {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 24px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <label for="">
+        <img src="./close.png" id="eye">
+    </label>
+<input type="password" id="pwd">
+</div>
+
+<script>
+/** 仿淘宝显示隐藏密码文明案例
+ * 1、点击眼睛按钮，把密码框类型改为文本框 就可以看见里面的密码
+ * 2、一个按钮两个状态，点击一次，切换为文本框，继续点击一次切换为密码框
+ * 3、算法：利用一个flag变量，来判断flag的值，flag的值默认是 0 密码框 
+ *   如果flag的值是 0 就切换为密码框，然后将 flag的值设置为 1
+ *   如果flag的值是 1 就切换为文本框，然后将 flag的值设置为 0 
+*/
+
+// 1、事件源 获取元素
+let eye = document.getElementById('eye');
+let pwd = document.getElementById('pwd');
+//2、给 事件源 注册事件（添加事件） ，事件处理程序
+let flag = 0;
+eye.onclick = function () {
+//点击一次之后，flag 一定要变化
+    if (flag == 0) {
+        pwd.type = 'text'; //把密码框切换为文本框
+        eye.src = './open.png';
+        flag = 1;  //赋值操作
+    } else {
+        pwd.type = 'password'; //把文本框切换为密码框
+        eye.src = './close.png';
+        flag = 0;
+    }
+}
+
+</script>
+</body>
+
+</html>

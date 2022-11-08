@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环精灵图背景</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <script>
+        //1、获取元素  所有的 小 li
+        let lis = document.querySelectorAll('li');
+        for (let i = 0; i < lis.length; i++) {
+            //让索引号 乘以 44 就是每一个 li 的背景y 坐标， index  就是我们的 y 坐标
+            let index = i * 44
+            lis[i].style.backgroundPosition = '0 -' + index + 'px';
+        }
+    </script>
+</body>
+
+</html>

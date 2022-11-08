@@ -12,19 +12,26 @@
     <script>
         //要求封装一个函数 返回当前时间 08:08:08
         function getTime() {
-            var time = new Date();
+            let date = new Date();
 
-            var hours = time.getHours();//返回当前小时
+            let year = date.getFullYear();
+            let month = date.getMonth();
+            let dates = date.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',];
+            var day = date.getDay();
+
+            var hours = date.getHours();//返回当前小时
             hours = hours < 10 ? '0' + hours : hours;
 
-            var minutes = time.getMinutes();//返回当前分钟
+            var minutes = date.getMinutes();//返回当前分钟
             minutes = minutes < 10 ? '0' + minutes : minutes;
 
-            var seconds = time.getSeconds();//返回当前秒钟
+            var seconds = date.getSeconds();//返回当前秒钟
             seconds = seconds < 10 ? '0' + seconds : seconds;
 
-            return hours + ':' + minutes + ':' + seconds;
+            return '今天是 ' + year + '年 ' + month + '月 ' + dates + '号 ' + arr[day] + hours + ':' + minutes + ':' + seconds;
         }
+
         console.log(getTime());  // 10:14:02
     </script>
 </body>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改元素属性</title>
+</head>
+
+<body>
+    <div>
+        <button id="llj">李连杰</button>
+        <button id="zwz">赵文卓</button>
+    </div>
+    <img src="lilianjie.png" alt="" title="李连杰">
+
+    <script>
+        //1、获取元素
+        let llj = document.getElementById('llj');
+        let zwz = document.getElementById('zwz');
+        let img = document.querySelector('img');
+        zwz.onclick = function () {
+            img.src = 'zhaowenzhuo.png';
+            img.title = '赵文卓';
+        }
+        llj.onclick = function () {
+            img.src = 'lilianjie.png';
+            img.title = '李连杰';
+        }
+    </script>
+</body>
+
+</html>

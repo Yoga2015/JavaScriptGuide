@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css样式属性操作</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <div>123</div>
+
+    <script>
+        //1、事件源 获取元素
+        let div = document.querySelector('div');
+        //2、注册事件 ，事件处理程序
+        div.onclick = function () {
+            // div.style 里面的属性 采用驼峰命名法
+            div.style.backgroundColor = 'red';
+            div.style.width = '300px';
+            div.style.height = '300px';
+        }
+    </script>
+</body>
+
+</html>
