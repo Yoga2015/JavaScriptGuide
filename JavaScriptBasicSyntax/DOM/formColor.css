@@ -1,0 +1,32 @@
+   * {
+       margin: 0;
+       padding: 0;
+   }
+
+   body {
+       width: auto;
+       height: auto;
+       background: url(./1.png) no-repeat center top;
+   }
+
+   li {
+       list-style: none;
+   }
+
+   .baidu {
+       overflow: hidden;
+       margin: 100px auto;
+       background-color: #fff;
+       width: 410px;
+       padding-top: 3px;
+   }
+
+   .baidu li {
+       float: left;
+       margin: 0 1px;
+       cursor: pointer;
+   }
+
+   .baidu img {
+       width: 100px;
+   }

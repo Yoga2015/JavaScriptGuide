@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标经过下拉菜单</title>
+    <!-- Bootstrap -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="./jquery-3.3.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./bootstrap.min.js"></script>
+    <style>
+        #ul1 {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">微博
+        <ul id="ul2">
+            <li><a href="#">私信</a></li>
+            <li><a href="#">评论</a></li>
+            <li><a href="#">@我</a></li>
+        </ul>
+    </ul>
+    <script> 
+        // 鼠标经过下拉菜单
+        let nav = document.getElementById('nav');
+        let ul1 = document.getElementById('ul1');
+
+        //2、注册事件，事件处理程序
+        ul1.onmouseover = function () {
+            var docfrag = document.createDocumentFragment();
+            for (let i = 1; i < 4; i++) {
+                var li = document.createElement('li');
+                li.textContent = '123';
+                docfrag.appendChild(li);
+            }
+            var ulelement = document.getElementById('ul1');
+            ulelement.appendChild(docfrag);
+
+        }
+        ul1.onmouseout = function () {
+            uls.style.display = none;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>百度换肤色</title>
+<link rel="stylesheet" href="./formColor.css">
+</head>
+<body>
+    <ul class="baidu">
+        <li><img src="./1.png" alt=""></li>
+        <li><img src="./2.png" alt=""></li>
+        <li><img src="./3.png" alt=""></li>
+        <li><img src="./4.png" alt=""></li>
+    </ul>
+
+    <script>
+        /** 给一组元素注册事件
+         * 1、给 4个 小图片 利用循环注册点击事件
+         * 2、当点击第一个图片，让页面背景改为当前的图片
+         * 核心算法： 把当前图片的src 路径取过来，给body 作为背景即可
+        */
+        //事件源 获取元素   写法更严谨
+        let imgs = document.querySelector('.baidu').querySelectorAll('img');
+        // console.log(imgs); //NodeList(4) [img, img, img, img]
+        for (let i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
+                //this.src 就是我们点击图片的路径
+                // console.log(this.src);
+                // 把这个路径 this.src 给body 就可以了
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
