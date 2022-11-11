@@ -1,0 +1,26 @@
+ .tab_list {
+     padding: 10px;
+     display: inline-grid;
+ }
+
+ .tab_list .current {
+     background-color: #e4393c;
+     color: #fff;
+ }
+
+ .tab_list li {
+     height: 39px;
+     line-height: 39px;
+     padding: 0 20px;
+     text-align: center;
+     cursor: pointer;
+     /*把鼠标指针的形状弄成一只伸出食指的手*/
+     display: inline-block;
+     /*使一些块元素并排显示*/
+ }
+
+ .item {
+     padding: 1px 50px;
+     font-size: 14px;
+     display: none;
+ }

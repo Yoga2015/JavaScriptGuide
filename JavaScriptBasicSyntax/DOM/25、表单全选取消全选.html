@@ -11,10 +11,10 @@
 </head>
 
 <body>
-    <table class="table table-bordered" style="width: 600px;margin: 10px;">
+    <table class="table table-bordered" style="width: 600px;margin: 10px auto;">
         <thead>
             <tr>
-                <td><input type="checkbox" id="j_cbAll"></td>
+                <td><input type="checkbox" id="Allcheck"></td>
                 <td>商品</td>
                 <td>价钱</td>
             </tr>
@@ -35,6 +35,11 @@
                 <td>华为P50</td>
                 <td>4599</td>
             </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>redmi</td>
+                <td>1599</td>
+            </tr>
         </tbody>
     </table>
 
@@ -46,32 +51,42 @@
          *  如果有一个没选中，上面全选就不选中。
          * 3、可以设置一个变量，俩控制全选是否选中
         */
-        // 1、事件源  获取元素
-        let j_cbAll = document.getElementById('j_cbAll');
-        let tbs = document.getElementById('tb').getElementsByTagName('input');
-        // 2、注册事件  事件处理程序
-        j_cbAll.onclick = function () {
+
+        //1、全选和取消全选
+
+        // 事件源  获取元素
+        let Allcheck = document.getElementById('Allcheck');
+        let sonChecks = document.getElementById('tb').getElementsByTagName('input');
+        // 注册事件  事件处理程序
+        Allcheck.onclick = function () {
             //this.checked 它可以得到当期复选框的选中状态如果是true 就是选中，如果是false就是未选中
-            console.log(this.checked);
-            for (let i = 0; i < tbs.length; i++) {
-                tbs[i].checked = this.checked;
+            console.log(this.checked);  //返回 true 说明全选框 已选中
+            for (let i = 0; i < sonChecks.length; i++) {
+                sonChecks[i].checked = this.checked;
             }
 
         }
-        // 3、给下面所有复选框绑定点击事件
-        for (let i = 0; i < tbs.length; i++) {
-            tbs[i].onclick = function () {
-                //定义 flag  控制全选按钮是否选中
+
+
+        // 2、下面复选框需要全部选中，上面全选框才能选中 做法：给下面所有复选框绑定点击事件,
+        //    每次点击下面的某一个复选框时，都要循环检查下面的每一个复选框是否全被选中
+        for (let i = 0; i < sonChecks.length; i++) {
+
+            sonChecks[i].onclick = function () {
+
+                //定义 flag  控制全选按钮是否选中  默认是true
                 let flag = true;
-                // 4、每次点击，都要循环查看下面所有的复选框是否全部选中
-                for (let i = 0; i < tbs.length; i++) {
+                // 4、每次点击下面的某一个复选框时，都要循环检查下面的每一个复选框是否全被选中
+                for (let i = 0; i < sonChecks.length; i++) { //上面for循环用i，这里又可以用 i，是因为作用域不同 
                     //只要有一个没选中
-                    if (!tbs[i].checked) {
+                    if (!sonChecks[i].checked) { //如果有一个没有选中，退出for 循环
                         flag = false;
-                        break; // 退出for 循环 这样可以提高执行效率，因为只要有一个没有选中，剩下的就无需循环
+                        break;
+                        // 退出for 循环 这样可以提高执行效率，因为只要有一个没有选中，剩下的就无需循环
                     }
                 }
-                j_cbAll.checked = flag;
+
+                Allcheck.checked = flag;
             }
         }
     </script>
