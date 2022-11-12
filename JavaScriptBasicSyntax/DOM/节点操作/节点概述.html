@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点概述</title>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima">x</span>
+        </div>
+    </div>
+
+    <ul>
+        <li>123</li>
+        <li>456</li>
+        <li>789</li>
+    </ul>
+    <script>
+        // 1、父节点 parentNode
+        let erweima = document.querySelector('.erweima');
+        // let box = document.querySelector('.box');
+        // 得到的是离元素最近的父级节点（亲爸爸），如果找不到父节点就返回为 null
+        console.log(erweima.parentNode);;
+
+        // DOM提供的方法（API）获取
+        let ul = document.querySelector('ul');
+        let lis = ul.querySelector('li');
+
+        // 2、子节点  
+        //parentNode.childNodes 所有的子节点 包含 元素节点 文本节点 等
+        console.log(ul.childNodes);  // NodeList(7) [text, li, text, li, text, li, text]
+        console.log(ul.childNodes[0].nodeType);   //3
+        console.log(ul.childNodes[1].nodeType);   //1
+        console.log(ul.childNodes[2].nodeType);   //1
+        // parentNode.children  获取所有的子元素节点  也是我们开发常用的
+        console.log(ul.children);  // HTMLCollection(3)[li, li, li]
+
+
+        // 3、子节点--->获取第一个子元素和最后一个子元素
+
+        // (1) firstChild  第一个子节点  不管是文本节点还是元素节点
+        console.log(ul.firstChild);  //#text
+        console.log(ul.lastChild);  //#text
+
+        // (2)、firstElementChild 返回第一个子元素节点
+        console.log(ul.firstElementChild);   // <li>123</li>
+        // lastElementChild 返回最后一个子元素节点
+        console.log(ul.lastElementChild);   // <li>789</li>
+        //这两个方法有兼容性问题，IE9 以上不支持
+
+        // （3）实际开发的写法  既没有兼容性问题又返回第一个子元素
+        console.log(ul.children[0]);  // <li>123</li>
+        console.log(ul.children[ul.children.length - 1]);  // <li>789</li>
+    </script>
+</body>
+
+</html>

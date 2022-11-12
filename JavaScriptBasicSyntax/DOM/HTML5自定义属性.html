@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5自定义属性</title>
+</head>
+
+<body>
+    <div getTime='20' data-index="1" data-list-name="walking"></div>
+    <script>
+        let div = document.querySelector('div');
+        //打印 获取过来的属性的值
+        console.log(div.getTime);   //undefined
+        //获取HTML5自定义的属性 必须是通过 getAttribute('属性') 来获取
+        console.log(div.getAttribute('getTime'));   //20
+        console.log(div.getAttribute('data-list-name'));   //walking
+        //设置HTML5自定义属性方式：
+        console.log(div.setAttribute('data-time', 2));
+
+        // HTML5 新增 的获取自定义属性的方法  它只能获取data-开头的
+        // dataset 是一个集合，里面存放了所有以 data 开头的自定义属性
+        console.log(div.dataset);  //DOMStringMap {index: '1', time: '2'}
+        console.log(div.dataset.index);  // 1
+        console.log(div.dataset['index']);   // 1
+        // 如果自定义属性里面有多个-链接的单词，我们获取的时候采取 驼峰命名法
+        console.log(div.dataset.listName);   // walking
+        console.log(div.dataset['listName']);  // walking
+
+    </script>
+</body>
+
+</html>
