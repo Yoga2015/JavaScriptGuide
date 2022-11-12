@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建节点</title>
+</head>
+
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+    <script>
+        //获取元素
+        let ul = document.querySelector('ul');
+
+        //1、创建节点 元素节点   document.createElement('属性')
+        let li = document.createElement('li');
+        //上面代码中，你只是创建了元素节点，但是你没告诉人家你创建的元素放在哪里，
+        //人家怎么拿到并插入ul 中呢？所以你需要把创建的元素添加到指定指定的HTML元素中。
+
+        // 2、添加节点  
+        // node.appendChild(child)  node是父级  child是子级 , 后面追加元素节点  类似于数组中的push
+        ul.appendChild(li);   //
+        // node.appendChild()  方法将一个节点添加到指定父节点的子节点列表末尾，类似于css里面的after伪元素
+
+        //3、添加节点到指定位置    node.insertBefore(child, 指定元素)
+        let lili = document.createElement('li');
+        ul.insertBefore(lili, ul.children[0]);   //把 lili 节点 指定添加到 ul元素中作为首个li
+
+        //4、 我们想要页面添加一个新的元素 :  1、创建元素  2、添加元素
+
+
+    </script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复制节点</title>
+</head>
+<body>
+<ul>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul>
+<script>
+/* 复制节点 （克隆节点）
+node.cloneNode() 方法 返回调用该方法的节点的一个副本。也称为克隆节点，拷贝节点
+注意： 
+如果括号参数为 空 或者为 false , 则浅拷贝 ，即只克隆复制节点本身，不克隆里面的子节点
+*/
+let ul = document.querySelector('ul');
+//1、node.cloneNode(); 括号参数为 空 或者为 false , 则浅拷贝 ,只复制标签不复制里面的内容
+// let lili = ul.children[0].cloneNode();
+//2、node.cloneNode(true); 括号参为 true , 则深拷贝 ,复制标签还复制里面的内容
+let lili = ul.children[0].cloneNode(true);
+ul.appendChild(lili);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兄弟节点</title>
+</head>
+
+<body>
+    <p>我是p</p>
+    <div>我是div</div>
+    <span>我是span</span>
+    <script>
+        let div = document.querySelector('div');
+
+        //1、 nextSibling  下一个兄弟节点   包含 元素节点 或者 文本节点等等
+        console.log(div.nextSibling); //下一个兄弟节点是 空格 或者 换行,所以属于文本节点 #text 
+        //   previousSibling  上一个兄弟节点 
+        console.log(div.previousSibling); // #text
+
+        //2、nextElementSibling 得到下一个兄弟元素节点
+        console.log(div.nextElementSibling); //<span>我是span</span>
+        //   previousElementSibling  得到上一个兄弟元素节点
+        console.log(div.previousElementSibling); // <p>我是p</p>
+
+    </script>
+</body>
+
+</html>

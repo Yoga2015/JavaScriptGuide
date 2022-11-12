@@ -1,0 +1,36 @@
+    .nav {
+        margin: 50px;
+        line-height: 20px;
+        color: #333;
+        display: list-item;
+        background: #e3e4e5;
+    }
+    .nav>li {
+        display: inline-block;
+        padding: auto auto;
+        width: 124px;
+        height: 150px;
+    }
+
+    .nav>li>a:hover {
+        border: 1px solid #fecc5b;
+        color: red;
+    }
+
+    .nav>li>ul {
+        display: none;
+        position: absolute;
+        top: 41px;
+        padding: auto auto;
+        border-left: 1px solid #fecc5b;
+        border-right: 1px solid #fecc5b;
+    }
+
+    .nav ul li {
+        /* border-bottom: 1px solid #fecc5b; */
+        display: inline-block;
+    }
+
+    .nav ul li a:hover {
+        color: red;
+    }
