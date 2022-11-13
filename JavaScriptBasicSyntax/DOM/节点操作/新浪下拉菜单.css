@@ -1,34 +1,33 @@
     .nav {
         margin: 50px;
-        line-height: 20px;
+        height: 100%;
+        line-height: 40px;
         color: #333;
-        display: list-item;
         background: #e3e4e5;
     }
+
     .nav>li {
+        position: relative;
         display: inline-block;
-        padding: auto auto;
-        width: 124px;
-        height: 150px;
+        padding: auto;
+        width: 110px;
     }
 
     .nav>li>a:hover {
-        border: 1px solid #fecc5b;
         color: red;
     }
 
     .nav>li>ul {
         display: none;
         position: absolute;
-        top: 41px;
-        padding: auto auto;
+        top: 40px;
+        list-style: none;
         border-left: 1px solid #fecc5b;
         border-right: 1px solid #fecc5b;
     }
 
     .nav ul li {
-        /* border-bottom: 1px solid #fecc5b; */
-        display: inline-block;
+        border-bottom: 1px solid #fecc5b;
     }
 
     .nav ul li a:hover {
