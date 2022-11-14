@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>动态生成表格</title>
+<link rel="stylesheet" href="./动态生成表格.css">
+</head>
+<body>
+
+<table cellspacing="0">
+<thead>
+<tr>
+    <th>姓名</th>
+    <th>科目</th>
+    <th>成绩</th>
+    <th>操作</th>
+</tr>
+</thead>
+<tbody>    </tbody>
+</table>
+
+<script>
+//1、先去准备数据好学生的数据   
+let datas = [{
+name: '李小龙',
+subject: 'java',
+score: 70,
+},
+{
+name: 'walking',
+subject: 'java',
+score: 100,
+},
+{
+name: '陈真',
+subject: 'java',
+score: 88,
+}];
+/**
+ * 上面面已准备好了三个对象的数据（（学生数据））并储存到datas数组里。
+ * tbody的里面下面的结构是先有行的，行里面有若干个单元格的.
+ * 现在就可以把这些学生数据放到这个tbody的里面来，根据你有多少数据（多少个对象），
+ * 就生成多少行 ，依次显示出来。
+ * 那里面因为行很多，所以先把行创建好之后。所以我们必须通过循环来创建行咱们在创建单元格
+ */
+
+/*往tbody里面创建行：有几个人我们就创建几行。
+那么有几个人我们怎么得到的呢？可以通过我们数组datas的长度,可以得到里面存了多少个人。
+往tbody里面放数据，所以先获取tbody 元素
+*/
+
+let tbody = document.querySelector('tbody');
+for (let i = 0; i < datas.length; i++) {   //外面的for循环管行 tr
+//1、创建行
+let tr = document.createElement('tr');
+// 往 tbody 插入行
+tbody.appendChild(tr); //通过for循环把 行 创建完毕，并往tbody里插入了
+
+//2、行里面创建单元格 td（跟数据有关系的3个单元格）, 单元格的数量 取决于 每个对象里面的属性个数 , for循环遍历对象 data[i]
+for (let k in datas[i]) {    //里面的for循环管行 td  
+    //创建单元格
+    let td = document.createElement('td');
+    // 把对象里面的属性的属性值 给 td
+    console.log(datas[i][k]);
+    td.innerHTML = datas[i][k];
+    tr.appendChild(td);
+}
+//3、创建有删除2个字的单元格
+let td = document.createElement('td');
+td.innerHTML = '<a href="javascript:;">删除</a>';
+tr.appendChild(td);
+}
+
+//4、 删除操作行  删除的是当前链接的li  它的父亲
+//先获取元素 a
+let as = document.querySelectorAll('a');
+// 给所有 a 注册onclick事件  
+for (let i = 0; i < as.length; i++) {
+as[i].onclick = function () {
+    //点击 a 删除当前a 所在的行(链接的爸爸的爸爸)  node.removeChild(child)
+    tbody.removeChild(this.parentNode.parentNode); //li的父节点是 tbody ,可以通过ul来删除 当前 a 所在的li
+}
+}
+</script>
+</body>
+
+</html>

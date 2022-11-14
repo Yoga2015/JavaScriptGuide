@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态生成表格</title>
+    <link rel="stylesheet" href="./动态生成表格.css">
+</head>
+
+<body>
+
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody> </tbody>
+    </table>
+
+    <script>
+        /**  动态生成表格  （学生成绩表格）
+           *   table的thead部分几乎固定的，不需动态生成的。不用操作
+           *  1、 tbody 里面的行数 是根据 有多少个人（对象）, 就生成多少行, 
+           *  这里我们用 数组 datas 来存储 学生（对象）， 存储了三个学生（三个对象），
+           *  所以需要在tbody 里面生成三行，通过for循环遍历 datas的长度 从而得到生成多少行。
+           * 2、生成行有了，每一行里面都有单元格
+            //怎么知道 每一行需要多少单元格？ 可以通过对象的属性个数决定需要多少个单元格
+          */
+        let datas = [{
+            name: '李连杰',
+            subject: 'java',
+            score: 60,
+        },
+        {
+            name: '溥仪',
+            subject: 'java',
+            score: 100,
+        },
+        {
+            name: '陈真',
+            subject: 'java',
+            score: 90,
+        },];
+
+        let tbody = document.querySelector('tbody');
+        for (let i = 0; i < datas.length; i++) {
+            //1、创建 行
+            let tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            //上面就根据 数组datas 的长度就生成多少行，现在行有了，每一行里面都有单元格
+            //怎么知道 每一行需要多少单元格？ 可以通过对象的属性个数决定需要多少个单元格
+
+            //2、创建单元格，并往单元格里插入数据
+            for (let k in datas[i]) {  // datas[i] 就代表一个对象，现在for...in遍历一个对象，获取其中属性个数
+                let td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            //上面就生成了单元格，并往单元格里插入了对应的数据。现在还是剩下 '操作'部分的单元格没生成了
+            //3、创建 '操作'部分的单元格
+            let td = document.createElement('td');
+            //往单元格插入 删除按钮，这个删除按钮就用超链接 a 来做。
+            td.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(td);
+        }
+
+        // 4、删除行 
+        // 事件源  获取元素
+        let as = document.querySelectorAll('a');
+        // 注册事件   事件处理程序  给一个a 注册点击事件，从而删除行
+        for (let i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                //怎么删除行？ 超链接 a 的 父节点是 td ，td 的父节点是 tr , tr 的父节点是tbody
+                //删除的是在tbody里面 的行，删除子节点用  node.removeChild(child)   
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
