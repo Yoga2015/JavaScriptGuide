@@ -17,9 +17,13 @@
             <li>item 6</li>
         </ul>
     </div>
-    <p>123</p>
+    <p>我是一段不愿意分享的文字</p>
 
     <script>
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        })
+
         var ul = document.getElementById('ul');
 
         // 进入 ul 节点以后，mouseenter 事件只会触发一次

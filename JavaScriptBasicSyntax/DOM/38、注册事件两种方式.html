@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件方式</button>
+    <button>方法监听注册方式</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+
+        /**1、传统注册事件方式
+            同一个元素同一个事件只能设置一个事件处理函数，
+            最后注册的处理函数将会覆盖前面注册的处理函数
+        */
+        btns[0].onclick = function () {
+            alert('传统注册事件方式1')
+        }
+        btns[0].onclick = function () {
+            alert('传统注册事件方式2')
+        }
+
+        /**2、方法监听注册方式
+        （1）里面的事件类型是字符串 必定加 引号  而且不带on
+        （2）同一个元素同一个事件可以添加多个事件处理函数,按注册顺序依次执行
+        */
+        if (btns[1].addEventListener) {
+            btns[1].addEventListener('click', function (event) {
+                alert('方法监听注册方式 1');
+            }, false)
+            btns[1].addEventListener('click', function (event) {
+                alert('方法监听注册方式 2');
+            }, false)
+        } else {
+
+          // 3、attachEvent ie9 以前的版本支持
+            btns[1].attachEvent('onclick', function (event) {
+                alert('attachEvent ie9 以前的版本支持');
+            }, false)
+        }
+
+
+    </script>
+</body>
+
+</html>

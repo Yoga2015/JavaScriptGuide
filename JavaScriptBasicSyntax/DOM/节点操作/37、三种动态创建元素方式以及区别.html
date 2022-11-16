@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三种动态创建元素方式以及区别</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <p>123</p>
+    <div class="inner"></div>
+    <div class="create"></div>
+
+
+    <script>
+        //window.onload的意思是 当我们整个页面加载完了,我再去调用里面的JS
+        window.onload = function () {
+
+        }
+
+        //三种动态创建元素方式以及区别
+
+        // 1、document.write() 创建元素  如果页面文档流加载完毕，再调用这句话会导致页面重绘
+        // let btn = document.querySelector('button');
+        // btn.onclick = function () {
+        //     document.write('<div>456</div>');
+        // }
+        /**
+         * 但是我点击按钮后，整个页面的原先的内容都没了，只有一个div了，这就叫做页面重绘，
+         * 重新给我们绘制了一个新的HTML页面。但是这种效果不好，我们原先的内容已经没了。
+        */
+
+        // 2、element.innerHTML 创建元素
+        let inner = document.querySelector('.inner');
+        for (let i = 0; i <= 100; i++) {
+            inner.innerHTML = '<a href="javascript:;">搜索</a>'
+        }
+
+
+        // 3、document.createElement();
+        let create = document.querySelector('.create');
+        for (let i = 0; i <= 100; i++) {
+            let a = document.createElement('a');
+            create.appendChild(a);
+        }
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+
+<body>
+    <ul id="ul">
+        <li>123</li>
+        <li>456</li>
+        <li>789</li>
+    </ul>
+    <script>
+        // 事件委托的核心原理： 给父节点 添加 监听器 ，利用事件冒泡影响每个子节点
+        var ul = document.getElementById('ul');
+        ul.addEventListener('click', function (e) {
+            // alert('123');
+            // e.target 这个可以得到我们点击的对象
+            e.target.style.backgroundColor = 'pink';
+        });
+        /**
+         * 上面代码中，click事件的监听函数定义在<ul>节点，但是实际上，
+         * 它处理的是子节点<li>的click事件。这样做的好处是：
+         * 只要定义一个监听函数，就能处理多个子节点的事件，而不用在每个<li>节点上定义监听函数。
+         * 而且以后再添加子节点，监听函数依然有效。
+        */
+
+
+    </script>
+</body>
+
+</html>

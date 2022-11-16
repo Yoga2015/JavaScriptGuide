@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事件对象的常见属性和方法</title>
+</head>
+<body>
+<div style="background-color: pink ; width: 90px; height: 90px;">123</div>
+<div><a href="https://www.baidu.com/">百度</a></div>
+<form action="https://weibo.com/">
+    <input type="submit" value="提交" name="sub">
+</form>
+<script>
+    // 1、返回事件对象类型
+    let div = document.querySelector('div')
+    div.addEventListener('click', fn);
+    div.addEventListener('mouseover', fn);
+    function fn(e) {
+        console.log(e.type);  //mouseover 、click
+    }
+
+    //2、阻止默认行为 （事件） 比如：让链接不跳转  或者 让提交按钮不提交
+    let a = document.querySelector('a');
+    a.addEventListener('click', function (e) {
+        e.preventDefault();
+    });
+
+    //3、传统的注册方式  
+    a.onclick = function (e) {
+        //普通浏览器  e.preventDefault();  方法
+        e.preventDefault();
+        //低版本浏览器  e.returnValue;  方法
+        e.returnValue;
+
+        //我们可以利用 return false 也能阻止默认行为，没有兼容性问题。
+        //特点 : return后面的代码不会执行了，而且只限于传统的注册方式
+        return false;
+        alert(110);
+    }
+</script>
+</body>
+
+</html>
