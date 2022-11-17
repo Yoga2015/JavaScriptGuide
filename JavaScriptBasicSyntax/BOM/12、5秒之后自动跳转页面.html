@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5秒之后自动跳转页面</title>
+</head>
+
+<body>
+    <h3>应用场景：当你在某个网页（如：新浪域名）的地址栏处输入 ：不是该域名下的文件路径 时，就用到</h3>
+    <div></div>
+    <script>
+        //利用定时器做倒计时效果
+        // 时间到了，就跳转页面。使用location.href
+        let div = document.querySelector('div');
+        let timer = 5;
+
+        // setInterval(function () {
+        //     if (timer == 0) {
+        //         location.href = 'https://www.baidu.com/';
+        //     } else {
+        //         div.innerHTML = '您将在' + timer + '秒之后跳转首页';
+        //         timer--;
+        //     }
+        // }, 1000)
+
+        fn();   //提前调用就为了预防出现空白
+
+        setInterval(fn, 1000);
+        function fn() {
+            if (timer == 0) {
+                location.href = 'https://www.baidu.com/';
+            } else {
+                div.innerHTML = '您将在' + timer + '秒之后跳转首页';
+                timer--;
+            }
+        }
+    </script>
+    获取url的参数数据
+</body>
+
+</html>

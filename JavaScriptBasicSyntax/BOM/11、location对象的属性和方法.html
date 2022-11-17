@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location对象的属性和方法</title>
+</head>
+
+<body>
+    protocol://host[:port]/path.[?query]#fragment <br>
+    http://www.studycairo.xyz/index.html?name=walking&age=18#link <br>
+    通信协议 :// 主机域名 文件地址 ？参数&参数 #锚点 <br>
+    <hr>
+    <button>点击</button>
+    <script>
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            //location对象的属性
+            console.log(location.href);   //获取 完整的 URL 
+            console.log(location.search);   //获取 完整的 URL 
+
+            // location.href = 'https://www.baidu.com/'; //点击按钮就重定向到 百度 页面 
+
+            //location.assign()  跟href 一样，可以跳转页面
+            // 它记录浏览历史，所以可以实现 后退 功能
+            location.assign('https://www.baidu.com/');
+
+            // location.replace()    跟href 一样，可以跳转页面
+            // 它不记录浏览历史，不可以实现 后退 功能
+            location.replace('https://www.baidu.com/');
+
+            location.reload(true);
+
+        })
+    </script>
+</body>
+
+</html>
