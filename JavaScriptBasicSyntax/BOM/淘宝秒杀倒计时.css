@@ -1,0 +1,26 @@
+ .box {
+     margin: 100px 100px;
+     background-color: #f40;
+     height: 180px;
+     width: 430px;
+     text-align: center;
+     color: white;
+     font-size: 30px;
+ }
+
+
+ .timevalue {
+     margin-top: 50px;
+     margin-left: 50px;
+ }
+
+ span {
+     width: 40px;
+     height: 25px;
+     text-align: center;
+     padding: 20px;
+     background-color: #2f3430;
+     margin-right: 20px;
+     color: white;
+     font-size: 20px;
+ }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5秒后之后自动关闭广告图片</title>
+</head>
+
+<body>
+    <img src="./lilianjie.png" alt="" class="photo">
+
+    <button>停止定时器</button>
+    <h3>点击 停止定时器 按钮后， 5秒不会自动关闭广告图片</h3>
+
+    <script>
+        let photo = document.querySelector('.photo');
+        let btn = document.querySelector('button');
+        let time1 = setTimeout(function () {
+            photo.style.display = 'none';
+        }, 5000);
+
+        //清楚定时器
+        btn.addEventListener('click', function () {
+            clearTimeout(time1);
+        })
+
+    </script>
+</body>
+
+</html>
