@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset和style的区别</title>
+    <style>
+        /* 内嵌样式表 */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 10px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" style="width: 100px;"></div>
+    <script>
+        //offset和style的区别
+        let box = document.querySelector('.box');
+        console.log(box.offsetWidth);  //200  没有单位
+
+        //style只能获取行内样式表中的样式值
+        console.log(box.style.width); //100px 有单位
+        box.offsetWidth = '300px';  //无作用 ，offsetWidth只能获取，不能赋值
+        box.style.width = '300px';
+
+    </script>
+</body>
+
+</html>

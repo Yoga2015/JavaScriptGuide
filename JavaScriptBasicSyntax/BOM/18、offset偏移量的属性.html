@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态获取元素的位置、大小</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .father {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px;
+        }
+
+        .son {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-left: 50px;
+        }
+
+        .w {
+            /* width: 100px; */
+            height: 100px;
+            background-color: green;
+            /* 上边 | 左边右边 | 下边 */
+            margin: 0 auto 200px;
+            /* 左边内边距 10 px ，右边内边距 10 px  */
+            padding: 10px;
+            border: 10px solid goldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="w"></div>
+
+    <script>
+        //offset系列 
+        let father = document.querySelector('.father');
+        let son = document.querySelector('.son');
+
+        //1、可以获取元素的 偏移 位置 ，是相对带有定位的父元素，返回的不带单位的数值
+        console.log(father.offsetTop);   // 200  看 margin ,结合父元素的 
+        console.log(father.offsetLeft);   // 200  看 margin
+
+        //它以带有定位的父亲为准， 如果 没有父亲 或者 父亲没有定位 则以body为准
+        console.log(son.offsetLeft);  //150 ,目前 父元素 father没带定位，css给父元素添加 position 
+
+        console.log(son.offsetLeft);  // 50  现在 父元素 father带定位，css给父元素添加了 position  
+        console.log(son.offsetTop);  // 0
+
+
+        let w = document.querySelector('.w');
+
+        //2、可以获取元素自身的大小（宽度和高度）  是包含 padding + border + width
+        console.log(w.offsetWidth); // 140  宽度
+        console.log(w.offsetHeight); // 140 高度
+
+        //3、返回带有定位的父亲，否则返回的是body
+        console.log(son.offsetParent);  // 返回带有定位的父亲，否则返回的是body。
+        console.log(son.parentNode); //返回父亲,是最近一级的父亲 ，亲爸爸，不管父亲有没有定位
+
+    </script>
+</body>
+
+</html>

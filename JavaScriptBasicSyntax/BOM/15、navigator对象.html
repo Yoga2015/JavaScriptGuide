@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator对象</title>
+</head>
+
+<body>
+    123
+    <script>
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            window.location.href = "https://weibo.com/u/page/follow/5603090279";     //跳转到手机端的页面
+        } else {
+            window.location.href = "https://weibo.com/u/page/follow/5603090279";     //跳转到pc端的页面
+        }
+
+    </script>
+</body>
+
+</html>
