@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./bootstrap.min.css">
+</head>
+
+<body>
+    <h3>青春不常在，抓紧谈恋爱</h3>
+    <table class="table table-bordered">
+        <!-- 第一行 -->
+        <tr>
+            <td>我是</td>
+            <td>
+                <input type="radio" name="sex" id="man">
+                <img src="./man.jpg">
+                <label for="man" name="sex">男&nbsp;</label>
+
+                <input type="radio" name="sex" id="woman">
+                <img src="./woman.jpg">
+                <label for="woman" name="sex">女</label>
+            </td>
+        </tr>
+        <!-- 第二行 -->
+        <tr>
+            <td>生日</td>
+            <td>
+                <select name="year">
+                    <option selected="selected">--请选择年份--</option>
+                    <option>2000</option>
+                    <option>1999</option>
+                    <option>1998</option>
+                    <option>1997</option>
+                </select>
+                <select name="month">
+                    <option selected="selected">--请选择月份--</option>
+                    <option>12</option>
+                    <option>11</option>
+                    <option>10</option>
+                    <option>9</option>
+                </select>
+                <select name="day">
+                    <option selected="selected">--请选择日期--</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </td>
+        </tr>
+        <!-- 第三行 -->
+        <tr>
+            <td><label for="address">常住地</label></td>
+            <td> <input type="text" name="address" id="address"></td>
+        </tr>
+        <!-- 第四行 -->
+        <tr>
+            <td>婚姻状况</td>
+            <td>
+                <input type="radio" name="marriage" id="m-wh" checked="checked">
+                <label for="m-wh">未婚</label>
+                <input type="radio" name="marriage" id="m-wh">
+                <label for="m-ly">离异</label>
+                <input type="radio" name="marriage" id="m-wh">
+                <label for="m-so">丧偶</label>
+            </td>
+        </tr>
+        <!-- 第五行 -->
+        <tr>
+            <td><label for="education">学历</label></td>
+            <td> <input type="text" name="address" id="education"></td>
+        </tr>
+        <!-- 第六行 -->
+        <tr>
+            <td>喜欢的类型</td>
+            <td>
+                <input type="checkbox" name="love">可爱的&nbsp;
+                <input type="checkbox" name="love">小鲜肉&nbsp;
+                <input type="checkbox" name="love">老辣肉&nbsp;
+                <input type="checkbox" name="love">都喜欢
+            </td>
+        </tr>
+        <!-- 第七行 -->
+        <tr>
+            <td>自我介绍</td>
+            <td>
+                <textarea name="textarea" id="" cols="25" rows="5"></textarea>
+            </td>
+        </tr>
+        <!-- 第八行 -->
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="免费注册">
+            </td>
+        </tr>
+        <!-- 第九行 -->
+        <tr>
+            <td></td>
+            <td>
+                <!-- 单选按钮 和 复选框 可以设置check属性，当页面打开的时候就可以默认选中这个按钮。 -->
+                <input type="checkbox" name="checkbox" checked="checked">我已阅读并接受注册条款 <br>
+            </td>
+        </tr>
+        <!-- 第十行 -->
+        <tr>
+            <td></td>
+            <td>
+                <a href="javascript:;">我是会员，立即登录</a>
+            </td>
+        </tr>
+        <!-- 第十一行 -->
+        <tr>
+            <td></td>
+            <td>
+                <h4>我承诺</h4>
+                <ul>
+                    <li>稳重</li>
+                    <li>靠谱</li>
+                    <li>孝顺</li>
+                    <li>阳光</li>
+                    <li>乐观</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

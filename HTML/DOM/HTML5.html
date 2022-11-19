@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿京东放大效果页面</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./bootstrap.min.css">
+</head>
+
+<body>
+    <img src="img/31.png" alt="">
+    <img src="../32.png" alt="">
+    <hr>
+    <!-- 外部链接 加上 https：// + 域名  -->
+    <a href="http://www.baidu.com" target="_blank">百度</a>
+    <!-- 内部链接 -->
+    <a href="./index.html" target="_blank">点击</a>
+
+    <!-- 可以放文件在页面上让别人来下载文件 -->
+    <a href="./bootstrap-4.6.1-dist.zip">点击</a>
+
+    <!-- 超链接 锚点 -->
+    <a href="#work">相关著作</a>
+    <a href="#awards">5 获奖记录</a>
+    <hr>
+
+    <div></div>
+    <a id="work">相关著作</a>
+    <p>
+        在下面的书中，李小龙生前得以出版的，仅有《基本中国拳法》（1963年）、《咏春拳》（1972年）两本
+        1963年
+        基本中国拳法
+        Chinese Gung—Fu
+        出版这本书时，李小龙时年23岁。
+        1972年
+        咏春拳
+        Wing Chun Kung—Fu
+        属名“严镜海著，李小龙技术编辑”。
+        1975年
+        截拳道之道
+        Tao of Jeet Kune Do
+        由李小龙的遗孀琳达女士和武术理论作家吉尔伯特·约翰逊合作，
+    </p>
+
+
+    <a id="awards"></a> 获奖记录
+    <p>
+        获奖时间 奖项名称 获奖结果
+        2005 香港电影金像奖大会“百年光辉之星”奖 获奖
+        2005 国家“中外文化交流突出贡献奖” 获奖
+        2005 中国电影走向世界杰出贡献奖 获奖
+        2005 中国电影百年百位优秀演员 获奖
+        2004 英国传媒协会“传奇大奖” 获奖
+        1999 美国演艺同业公会“终身成就奖” 获奖
+        1999 美国政府“多米尼加艺术奖” 获奖
+        1998 中国武术协会“武术巨星奖” 获奖
+        1993 香港电影金像奖大会“终身成就奖” 获奖
+        1972 台湾金马奖“最佳技艺奖”[7] 获奖
+
+        获奖时间 奖项名称 获奖结果
+        1958 香港校际拳击赛冠军 获奖
+        1957 圣芳济书院校际西洋拳击少年组冠军 获奖
+    </p>
+    <hr>
+
+    <table class="table table-bordered">
+        <thead>
+            <th>厉害人物</th>
+            <th>相关著作</th>
+            <th>获奖时间</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td colspan="2">跨列合并：colspan</td>
+                <!-- <td>3</td> -->
+            </tr>
+            <tr>
+                <td rowspan="2">跨行合并：rowspan</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <!-- <td>7</td> -->
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <hr>
+    <dl>
+        <dt>选购指南</dt>
+        <dd>手机</dd>
+        <dd>电视</dd>
+        <dd>笔记本</dd>
+
+        <dt>关于小米</dt>
+        <dd>了解小米</dd>
+        <dd>联系我们</dd>
+    </dl>
+    <hr>
+
+
+    <label for="text">用户名：</label>
+    <input type="text" name="username" id="text"> <br>
+
+
+    <input type="radio" name="sex" id="man"> <label for="man">男</label>
+    <input type="radio" name="sex" id="woman"> <label for="woman">女</label>
+    <hr>
+
+    <form action="./index.html" method="get" name="name1">
+
+        <!-- text 文本框 用户可以里面输入任何文字 , maxlength属性 规定输入字段中的字符的最大长度-->
+        用户名：<input type="text" name="username" placeholder="请输入用户名" maxlength="7"><br>
+
+        <!-- password 密码框，用户看不见输入的密码。 -->
+        密码：<input type="password" name="password" placeholder="请输入密码" maxlength="6"><br>
+
+        <!-- radio 单选框 可以实现多选一  , 加了 name属性后就不会出现重复选中的想象了 -->
+        性别： 男 <input type="radio" name="sex"> 女 <input type="radio" name="sex"><br>
+
+        <!-- checkbox 复选框可以实现多选 -->
+        爱好： 吃饭<input type="checkbox" name="hobby" checked="checked">
+        抽烟<input type="checkbox" name="hobby">
+        烫头<input type="checkbox" name="hobby"><br>
+
+        所在地区：
+        <select>
+            <!-- option 里定义 selected="selected" 属性时，当前即为默认选中项 -->
+            <option selected="selected">北京</option>
+            <option>上海</option>
+            <option>广州</option>
+            <option>深圳</option>
+        </select><br>
+
+        <label for="textarea">个人介绍：</label>
+        <textarea id="textarea" cols="30" rows="3" placeholder="请输入内容">
+
+    </textarea><br>
+
+        <!-- file 文件域 使用场景 上传文件使用的 -->
+        上传头像：<input type="file" name="file" value="选择文件"><br>
+
+        <!-- 普通按钮  后期结合 js  搭配使用-->
+        <input type="button" value="发生短信验证"><br>
+
+        <!-- 单选按钮 和 复选框 可以设置check属性，当页面打开的时候就可以默认选中这个按钮。 -->
+        <input type="checkbox" name="checkbox" checked="checked">我已阅读并接受注册条款 <br>
+        <!-- 提交按钮 ，结合 form的 action 属性一起使用-->
+        <!-- 点击了提交按钮，就可以把 表单域form 里面的表单元素 里面的值 提交给后台服务器 -->
+        <input type="submit" value="免费注册">
+        <!-- 重置按钮可以还原表达元素初始的默认状态 -->
+        <input type="reset" value="重置"><br>
+
+    </form>
+
+
+
+
+
+
+
+</body>
+
+</html>
