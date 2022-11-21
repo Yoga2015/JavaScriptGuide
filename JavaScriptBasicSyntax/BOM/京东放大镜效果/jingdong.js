@@ -56,7 +56,7 @@ window.addEventListener('load', function () {
         if (maskMoveX <= 0) {
             maskMoveX < 0;
         } else if (maskMoveX >= maskMaxX) {
-            mask = maskMaxX;
+            maskMoveX = maskMaxX;
 
         }
         // 遮挡层 是个正方形的，正方形的宽度和高度是一样的 300 * 300 ，完全可以把它替换成maskMax
@@ -74,15 +74,18 @@ window.addEventListener('load', function () {
         // （2）、求出大图片移动距离公式：
         // 大图片移动距离 = 遮挡层移动距离 * 大图片最大移动距离 / 遮挡层的最大移动距离 
         // 大图片
-        var bigImg = document.querySelector('.bigImg');
+        var bigImage = document.querySelector('.bigImg');
         // 大图片最大移动距离
-        var bigMaxX = bigImg.offsetWidth - big.offsetWidth;
-        var bigMaxY = bigImg.offsetHeight - big.offsetHeight;
+        var bigMaxX = bigImage.offsetWidth - big.offsetWidth;
+        var bigMaxY = bigImage.offsetHeight - big.offsetHeight;
         // 大图片的移动距离  X  Y
-        var bigMoveX = maskMoveX * bigMaxX / maskMaxX;
-        var bigMoveY = maskMoveY * bigMaxY / maskMaxX;
-        bigImg.style.left = -bigMoveX + 'px';
-        bigImg.style.top = -bigMoveY + 'px';
+        // 根据公式计算大图片的移动距离
+        var bigMoveX = maskMoveX / maskMaxX * bigMaxX;
+        var bigMoveY = maskMoveY / maskMaxY * bigMaxY;
+        // console.log(bigMoveX, bigMoveY);
+        // ❤ 注意：遮罩层移动的方向与大图移动的方向是相反的，所有前面应该加一个-号
+        bigImage.style.left = -bigMoveX + 'px';
+        bigImage.style.top = -bigMoveY + 'px';
 
     })
 

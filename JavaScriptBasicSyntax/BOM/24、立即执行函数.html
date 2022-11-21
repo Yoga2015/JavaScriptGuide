@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+    <script src=""></script>
+</head>
+
+<body>
+    123
+
+    <script>
+        // 1、普通函数 ，需要调用，才能执行
+        function fn() {
+            console.log(1);
+        }
+        fn();
+
+        // 2、立即执行函数 , 不需要调用，立马能够自己执行的函数
+        // 语法：  (function(){})()    或者   (function(){}());
+
+        //（1）  (function () { })() 
+        (function () {
+            console.log(1);  //1   不需要调用，也能执行
+        })();   //第二个小括号可以看做是调用函数
+
+        // 也可以传递参数进来
+        (function (a, b) {
+            console.log(a + b);   //3
+        })(1, 2);
+
+
+        //（2）   (function () { }());
+        (function (a, b) {
+            console.log(a + b);
+        }(5, 5));
+
+// 这里面的函数，除了可以写匿名函数之外，
+// 其实你在这里面也可以给他写个名字。也是不报错的。也能够正常执行
+
+//3、立即执行函数最大的作用 就是 独立创建了一个作用域。你会发现  立即执行函数 里面
+// 所有的变量都是一个局部变量，等这个函数运行完毕之后，立马就能够释放完毕了。
+
+// 比如这里有两个 立即执行函数 ，在这两个立即执行函数里面，都设置了一个名为 num的变量，
+// 也就是相同命名的变量，虽然现在变量名字有冲突，但是，它不会影响我们代码的运行，
+// 因为它们是在不同的作用域里面
+    </script>
+</body>
+
+</html>
