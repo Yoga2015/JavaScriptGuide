@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓动动画添加回调函数</title>
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 100px;
+            background-color: pink;
+        }
+    </style>
+    <script src="./animation.js"></script>
+</head>
+
+<body>
+    <button class="btn300">移动300</button>
+    <button class="btn600">移动600</button>
+    <div></div>
+    <script>
+
+        //获取元素
+        let div = document.querySelector('div');
+        let btn300 = document.querySelector('.btn300');
+        let btn600 = document.querySelector('.btn600');
+
+        btn300.addEventListener('click', function () {
+            animation(div, 300, function () {
+                div.style.backgroundColor = 'pink';
+            });
+        });
+        btn600.addEventListener('click', function () {
+            animation(div, 600, function () {
+                div.style.backgroundColor = 'yellow';
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

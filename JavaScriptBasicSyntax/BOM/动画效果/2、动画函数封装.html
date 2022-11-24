@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现动画效果原理</title>
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            /*该元素生成一个块级元素盒，在正常的流中，该元素之前和之后产生换行。 */
+            display: block;
+            width: 300px;
+            height: 300px;
+            top: 200px;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 动画函数封装:
+        // 注意，在这里面封装，需要有2个参数传进来，动画对象 和 移动到的距离 。
+        // 1、到底哪个元素来做动画呀？（ 动画对象 ）
+        // 2、到哪个位置结束呀？并不是每一个人走的步数是一样的。 （移动到的距离）
+        // 所以我们这个函数里面需要传递两个参数： 动画对象 和 移动到的距离 。
+        function animation(obj, target) {
+            // 想让它不断的在动，所以我们下一步利用定时器不断的重复这一步操作
+            let timer = setInterval(function () {
+                //通过条件判断 ，到一定位置就停下来
+                if (obj.offsetLeft >= target) {
+                    //停止动画  ，本质是停止定时器
+                    clearInterval(timer)
+                }
+                obj.style.left = obj.offsetLeft + 1 + 'px'; //offsetLeft只能获取不能赋值
+            }, 30);
+        }
+
+        //获取元素
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+        animation(div, 300);
+        animation(span, 500);
+
+        /* 上面我们把这些实现动画效果的代码，来了一个封装，封装成了一个函数，
+        这样的话，不同的对象都可以调用这个函数，都实现动画效果了。 */
+
+    </script>
+</body>
+
+</html>

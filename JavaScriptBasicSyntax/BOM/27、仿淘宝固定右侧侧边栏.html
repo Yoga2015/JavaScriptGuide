@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿淘宝固定右侧侧边栏</title>
+    <style>
+        body {
+            padding: 0 50px;
+        }
+
+        .sliderBar {
+            height: 180px;
+            width: 60px;
+            background-color: rgb(0, 162, 255);
+            border-radius: 10px;
+            position: absolute;
+            right: 0;
+            top: 200px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 12px;
+
+        }
+
+        .header {
+            height: 100px;
+            background-color: pink;
+        }
+
+        .banner {
+            height: 200px;
+            background-color: rgb(0, 213, 255);
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sliderBar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+
+    <script>
+        // 1、获取元素
+        let sliderBar = document.querySelector('.sliderBar');
+        let banner = document.querySelector('.banner');
+        // console.log(banner.offsetTop); // 被卷去头部的大小
+        //为什么写在外面？因为这个banner.offsetTop,在你没有滚动的时候，这个banner会往上走啊，所以应该写在滚动的外面的.
+        let bannerTop = banner.offsetTop;
+
+        //3.1、当出现跳跃现象 ，所以当我们侧边栏固定定位之后，侧边栏的位置 应该变化的数值   
+        let sliderBarTop = sliderBar.offsetTop - bannerTop;
+        //4.1 获取 main 主体元素  
+        let main = document.querySelector('.main');
+        let goback = document.querySelector('.goBack');
+        let mainTop = main.offsetTop; //获取 main元素距离页面顶部的距离
+
+        // 2、注册页面滚动事件 scroll
+        document.addEventListener('scroll', function () {
+            // console.log(window.pageYOffset); //获取页面被卷去的头部 值
+
+            // 3、当页面滚动到一定位置（滚动到banner盒子），侧边栏改为固定定位。什么位置？
+            // 当我们页面被卷去的头部大于等于 172（注意不要写死）时，此时，侧边栏改为固定定位
+            if (window.pageYOffset >= bannerTop) {
+                sliderBar.style.position = 'fixed';
+                sliderBar.style.top = sliderBarTop + 'px';
+            } else {
+                sliderBar.style.position = 'absolute';
+                sliderBar.style.top = '200px';
+            }
+
+            // 4、当我们页面滚动到main盒子，就显示 goback模块
+            if (window.pageYOffset >= mainTop) {
+                goback.style.display = 'block';
+                //给goback 注册点击事件， 返回页面顶部 
+                goback.addEventListener('click', function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+
+                })
+            } else {
+                goback.style.display = 'none';
+            }
+
+            //注意 window.pageYOffset 有兼容性问题
+        })
+
+    </script>
+</body>
+
+</html>

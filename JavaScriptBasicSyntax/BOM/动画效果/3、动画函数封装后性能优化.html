@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给不同对象添加不同定时器</title>
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            /*该元素生成一个块级元素盒，在正常的流中，该元素之前和之后产生换行。 */
+            display: block;
+            width: 300px;
+            height: 300px;
+            top: 200px;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        如果多个元素都使用这个动画函数，每次都要 let 声明定时器，我们可以给不同的元素使用不同的定时器 (自己专门用自己的定时器)。
+        核心原理 : 利用JS是一门动态语言，可以很方便地给当前对象添加属性 。
+    </p>
+    <div></div>
+    <span></span>
+    <script>
+        // let obj = {};
+        // obj.name = 'walking';   //利用了给对象添加属性的方法，给它实现赋值操作。
+
+        //给不同的元素指定了不同的定时器
+        function animation(obj, target) {
+            // 想让它不断的在动，所以我们下一步利用定时器不断的重复这一步操作
+            obj.timer = setInterval(function () {
+                //通过条件判断 ，到一定位置就停下来
+                if (obj.offsetLeft >= target) {
+                    //停止动画  ，本质是停止定时器
+                    clearInterval(obj.timer)
+                }
+                obj.style.left = obj.offsetLeft + 1 + 'px'; //offsetLeft只能获取不能赋值
+            }, 30);
+        }
+
+        //获取元素
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+
+        animation(div, 300);
+        animation(span, 500);
+
+        // 这样有两个好处:
+        // 第一，我们避免了let 声明变量, 不在内存中开辟空间了，因为我这个obj已经存在，只是给它添加一个属性而已。
+        // 第二，看字面意思就更好理解了，你看，如果把div传过来，那就是div的timer。如果把span转过来，那它就专门属于span的timer。就每个人都有自己专门的定时器了，那这样就不会有困扰问题了。
+        // 所以在这里面我们实现了一个很好的思路：给不同的元素指定了不同的定时器。
+    </script>
+</body>
+
+</html>

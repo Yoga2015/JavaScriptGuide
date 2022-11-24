@@ -1,4 +1,4 @@
-// 1、整个案例可以分为三个功能模块：
+// 整个案例可以分为三个功能模块：
 // (1)、鼠标经过 preview_img 小图片盒子，黄色的遮挡层和大图片盒子显示，离开隐藏两个盒子功能。
 // (2)、黄色遮挡层跟随鼠标功能。
 // (3)、移动黄色遮挡层，大图片跟随移动功能。
@@ -11,8 +11,7 @@ window.addEventListener('load', function () {
     var mask = document.querySelector('.mask');  //黄色遮挡层
     var big = document.querySelector('.big');  //大图片
 
-    //注册事件   事件处理程序
-    // (1)鼠标经过 preview_img小图片盒子，就显示 和 隐藏 mask黄色的遮挡层和big大图片盒子
+    // 1、鼠标经过 preview_img 小图片盒子，就显示 和 隐藏 mask黄色的遮挡层 和 big大图片盒子
     preview.addEventListener('mousemover', function () {
         mask.style.display = "block";
         big.style.display = "block";
@@ -22,7 +21,7 @@ window.addEventListener('load', function () {
         big.style.display = "none";
     });
 
-    // 2、案例分析：
+    // 案例分析：
     // (1)、黄色遮挡层 跟随 鼠标功能。
     // (2)、把 鼠标在页面中的坐标 给 遮挡层 不合适，因为 遮挡层坐标 以父盒子为准。
     //      （此时我们应该把 鼠标在盒子内的坐标，给这个黄色的遮挡层才是合适的。）
@@ -41,17 +40,15 @@ window.addEventListener('load', function () {
         //(1) 先计算出 鼠标在盒子内的坐标  注意父元素一直到body层 之间 有没有定位
         var x = e.pageX - preview.offsetLeft;
         var y = e.pageY - preview.offsetTop;
-        // console.log(x, y);
-        //记得把鼠标设置在黄色遮挡层中间
-        //(2) 减去 盒子高度 300 的一半是150 ，就是mask的最终left和top值了
+
+        //(2) 把鼠标设置在黄色遮挡层中间 减去 盒子高度 300 的一半是150 ，就是mask的最终left和top值了
         //(3)mask遮挡层移动的距离
         var maskMoveX = x - mask.offsetWidth / 2;
         var maskMoveY = y - mask.offsetHeight / 2;
 
-        //(4) 如果 x 坐标 小于了 0 ，就让他停在 0 的位置
-        // 遮挡层的最大移动距离   
-        maskMaxX = preview.offsetWidth - mask.offsetWidth;
-        maskMaxY = preview.offsetHeight - mask.offsetHeight;
+        //(4) 如果 x 坐标 小于了 0 ，就让他停在 0 的位置 
+        var maskMaxX = preview.offsetWidth - mask.offsetWidth;   //遮挡层的最大移动距离 
+        var maskMaxY = preview.offsetHeight - mask.offsetHeight;  //遮挡层的最大移动距离 
 
         if (maskMoveX <= 0) {
             maskMoveX < 0;

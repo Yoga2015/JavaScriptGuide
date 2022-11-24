@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮事件触发动画效果</title>
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            /*该元素生成一个块级元素盒，在正常的流中，该元素之前和之后产生换行。 */
+            display: block;
+            width: 300px;
+            height: 300px;
+            top: 300px;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        有的情况下，不是说页面一打开这个盒子就会在走，需要某一定的事件来触发它，它才走的。
+        比如说轮播图，我点了按钮，才播放下一张图，所以在这里我们也准备一个按钮，来触发这个动画效果。
+        但是正因为有这么一个 点击按钮 的事件来触发动画效果，此时又繁生出一个问题，就是当我们不断的点击按钮，这个盒子的速度会越来越快，而且盒子 移动到的距离 超出了浏览器窗口，因为开启了太多的定时器。
+        解决方案 ：
+        就是让我们元素只有一个定时器执行。
+        先清除以前的定时器，只保留当前一个定时器执行。
+    </p>
+    <button>点击才触发动画效果</button>
+    <div></div>
+    <span></span>
+    <script>
+        // let obj = {};
+        // obj.name = 'walking';   //利用了给对象添加属性的方法，给它实现赋值操作。
+
+        //给不同的元素指定了不同的定时器
+        function animation(obj, target) {
+            // 当我们不断的点击按钮，这个按钮的速度会越来越快，因为开启了太多的定时器。
+            // 解决方案 ：就是让我们元素只有一个定时器执行
+            //先清除以前的定时器，只保留当前一个定时器执行
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                //通过条件判断 ，到一定位置就停下来
+                if (obj.offsetLeft >= target) {
+                    //停止动画  ，本质是停止定时器
+                    clearInterval(obj.timer)
+                }
+                //这是匀速运动效果
+                obj.style.left = obj.offsetLeft + 1 + 'px'; //offsetLeft只能获取不能赋值
+
+            }, 30);
+        }
+
+        //获取元素
+        let div = document.querySelector('div');
+        let span = document.querySelector('span');
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            animation(div, 300);
+            animation(span, 500);
+        })
+
+    // 现在我们这个盒子在运动的时候，是按照一种匀速的动画来运行的，按照一像素走，走，走，看起来不太流畅
+    // 也就是说，他们保持同样的速度，类似于我们CS3中的匀速运动。
+    // 其实，我们完全还可以让我们的动画变得更好看一些，按照一种缓动的动画来运行。
+
+
+    </script>
+
+</body>
+
+</html>

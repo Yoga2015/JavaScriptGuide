@@ -7,45 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scroll系列</title>
     <style>
-        div {
+        .scrollCotent {
             width: 200px;
             height: 200px;
             background-color: pink;
             border: 10px solid yellow;
             overflow: auto;
+            /* 防止元素溢出 */
         }
     </style>
 </head>
 
 <body>
-    <div>
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-        我是一个内容我是一个内容我是一个内容
-
-
+    <div class="scrollCotent">
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
+        我是一个内容我是一个div
     </div>
 
     <script>
         let div = document.querySelector('div');
-        //  console.log(div.scrollTop);  //0
+        //  console.log(div.scrollTop);  //0  
         //  console.log(div.scrollLeft);  //0
-        // console.log(div.scrollHeight);   //不包含边框10px ,仍是 200px
-        // console.log(div.scrollWidth);   //不包含边框10px ,仍是 200px
+        // console.log(div.scrollHeight);   //200px ，不包含边框10px 
+        // console.log(div.scrollWidth);   //200px  ，不包含边框10px
 
-        //当内容特别多 超出这个div盒子时
+        //当内容特别多 超出这个div盒子时  高度发生变化
         console.log(div.scrollHeight);  //274
         console.log(div.clientHeight);   //200
 
@@ -54,9 +49,6 @@
             console.log(div.scrollTop);  // 20.15
             console.log(parseInt(div.scrollTop));  //20
         })
-
-
-
     </script>
 </body>
 

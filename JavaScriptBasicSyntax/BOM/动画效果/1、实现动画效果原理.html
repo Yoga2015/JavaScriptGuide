@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现动画效果原理</title>
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 实现动画效果 步骤：
+        // 1、先获取盒子，然后通过 offsetLeft 获取盒子当前位置。
+        // 2、让盒子在当前位置加上一个移动距离   （此元素没有添加定位 就动不了）
+        // 3、利用定时器不断重复这个操作。
+        // 4、加一个结束定时器的条件。
+        // 5、注意：此元素需要 添加定位, 才能使用 element.style.left
+
+        let div = document.querySelector('div');
+        div.style.left = div.offsetLeft + 5 + 'px';  //offsetLeft只能获取不能赋值
+        // 现在已经动起来了，只是动了一步而已。
+        // 想让它不断的在动，所以我们下一步利用定时器不断的重复这一步操作
+        let timer = setInterval(function () {
+            //通过条件判断 ，到一定位置就停下来
+            if (div.offsetLeft >= 400) {
+                //停止动画  ，本质是停止定时器
+                clearInterval(timer)
+            }
+            div.style.left = div.offsetLeft + 5 + 'px'; //offsetLeft只能获取不能赋值
+        }, 30);
+
+
+        /*      现在我们 让页面中 一个元素 实现了动态效果了，但是我们在页面中，可能有很多个地方都需要有动画效果呀，
+                但我不能每个元素，需要动画，我就要写一次这些实现动画效果的代码吧，这样是不是很麻烦呀。
+                所以我们 何不把这些 实现动画效果的代码 写成一个函数，给它封装起来，
+                哪个元素需要这个动画效果，来调用这个函数就可以了。 
+        */
+    </script>
+</body>
+
+</html>
