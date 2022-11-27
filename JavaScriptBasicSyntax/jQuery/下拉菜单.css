@@ -13,15 +13,16 @@ a {
 }
 
 .nav {
-    margin: 100px;
+    margin: 10px 30px;
 }
 
 .nav>li {
     position: relative;
     float: left;
-    width: 80px;
+    width: 230px;
     height: 41px;
     text-align: center;
+    background-color: #eee;
 }
 
 .nav li a {
