@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery操作样式之css方法</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>123</div>
+    <script>
+        // jQuery操作样式之css方法
+
+        $(function () {
+            console.log($('div').css('width'));
+
+            $('div').css('width', '300px');
+
+            // 参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开，属性可以不用加引号
+            $('div').css({
+                width: 400,
+                height: 400,
+                color: 'yellow',
+                //如果是 复合属性 则必须采取驼峰命名法，如果值不是数字，则需要加引号
+                backgroundColor: 'red',
+                fontSize: '30px'
+            });
+
+        });
+    </script>
+</body>
+
+</html>

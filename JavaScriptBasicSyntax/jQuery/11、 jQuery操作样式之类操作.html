@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery操作样式之类操作</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <style>
+        .current {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px auto;
+            transition: all 0.5s;
+        }
+
+        .fontContent {
+            color: red;
+            width: 300px;
+            height: 300px;
+            font-size: 30px;
+            background-color: yellow;
+            transition: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="current">123</div>
+    <script>
+        $(function () {
+            //1、添加类  addClass()
+            $('div').click(function () {
+                // $(this).addClass('current');
+            });
+
+            //2、移除类  removeClass()
+            $('div').click(function () {
+                $(this).removeClass('fontContent');
+            });
+
+            //3、切换类  toggleClass()
+            //  当单击按钮的时候，修改div的类样式，再次单击按钮的时候，切换回原来的类样式
+            $('div').click(function () {
+                $(this).toggleClass('fontContent');
+            });
+        })  
+    </script>
+</body>
+
+</html>

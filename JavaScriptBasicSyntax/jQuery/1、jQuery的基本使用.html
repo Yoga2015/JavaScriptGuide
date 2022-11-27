@@ -17,9 +17,13 @@
 </head>
 
 <body>
-    <div>等DOM树渲染之后，才再来执行JS</div>
+    <div class="one">等DOM树渲染之后，才再来执行JS</div>
 
     <script>
+        let one = document.querySelector('.one');
+        one.addClass = 'two';
+        $('.one').addClass('two');
+        $('.one').removeClass('two');
         // $('div').hide();
 
         //1、等着页面 DOM加载完成 再去执行 JS代码
