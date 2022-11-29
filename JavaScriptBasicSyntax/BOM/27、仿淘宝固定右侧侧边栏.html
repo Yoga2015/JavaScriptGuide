@@ -11,6 +11,8 @@
             padding: 0 50px;
         }
 
+        
+
         .sliderBar {
             height: 180px;
             width: 40px;
@@ -51,7 +53,6 @@
 
 <body>
     <div class="sliderBar">
-
         <span class="goBack">顶部</span>
     </div>
     <div class="header w">头部区域</div>
@@ -90,17 +91,15 @@
             // 4、当我们页面滚动到main盒子，就显示 goback模块
             if (window.pageYOffset >= mainTop) {
                 goback.style.display = 'block';
-                //给goback 注册点击事件， 返回页面顶部 
-                goback.addEventListener('click', function () {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: "smooth"
-                    });
 
-                })
             } else {
                 goback.style.display = 'none';
             }
+
+            //给goback 注册点击事件， 返回页面顶部 
+            goback.addEventListener('click', function () {
+                window.scroll(0, 0);
+            })
 
             //注意 window.pageYOffset 有兼容性问题
         })
