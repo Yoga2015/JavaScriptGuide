@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称 为解构赋值
+
+        // 1 变量的解构和赋值
+
+        // let a  = 1;
+        // let b  = 2;
+        // let c  = 3;
+
+        // let a = 1, b = 2, c = 3;
+        let [a, b, c] = [1, 2, 3];
+        // 上面代码表示，可以从数组中提取值，按照对应位置，对变量赋值。
+
+        let [foo, [bar, baz]] = [1, [2, 3]];  //解构并赋值
+
+        let [fo, [ba, ze]] = [1, [2, 3], 4];   //不完全解构，部分匹配到的，解构赋值依然可以成功
+
+        //交换变量的值
+        let x = 2;
+        let y = 3;
+        [x, y] = [y, x]
+        //上面代码交换变量x和y的值，这样的写法不仅简洁，而且易读，语义非常清晰。
+
+
+        //2 数组的解构
+        const F4 = ['张三', '老刘', '王五', '李四'];
+        let [zhang, liu, wang, li] = F4;
+        /* 相当于我声明了4个变量，而每一个变量，它里面的值就是数组 对应的位置它里面的值。 */
+        console.log(zhang);  //张三
+        console.log(liu);   //老刘
+        console.log(wang);  //王五
+        console.log(li);  //李四
+
+        //3 函数参数解构赋值
+        function add([x, y]) {
+            return x + y;
+        }
+
+        add([1, 2]); // 3
+        // 函数add的参数表面上是一个数组，但在传入参数的那一刻，数组参数就被解构成变量x和y。
+        // 对于函数内部的代码来说，它们能感受到的参数就是x和y。
+
+
+
+        //4 对象的解构
+        let { bo, ho, ko } = { bo: 10, ho: 20, ko: 30 };
+
+        // 也就是说，对象的解构赋值的内部机制，是先找到同名属性，
+        // 然后再赋给对应的变量。真正被赋值的是后者，而不是前者。
+
+        let { foo: bao } = { foo: 'aaa', bar: 'bbb' };
+        // bao // "aaa"
+        foo // error: foo is not defined
+
+        // 上面代码中，foo是匹配的模式，baz才是变量。
+        // 真正被赋值的是变量baz，而不是模式foo。
+
+        let obj = { first: 'hello', last: 'world' };
+        let { first: f, last: l } = obj;
+        // f // 'hello'
+        // l // 'world'
+
+
+        let { y1, y2 } = { y1: 'aaa', y3: 20, y2: 'bb' };
+
+        // 提取JSON数据 ，解构赋值 对 提取 JSON对象中的数据，尤其有用。
+        const zhao = {
+            name: '赵四',
+            age: 25,
+            xiaopin: function () {
+                console.log("我可以演不差钱");
+            }
+        };
+
+        // let { name, age, xiaopin } = zhao; //相当于我声明了3个变量，而且还对这3个变量赋值
+        console.log(name, age);   // 赵四 25
+        // 上面代码可以快速提取 JSON 数据的值。
+
+        // console.log(xiaopin);  // ƒ ()
+        // xiaopin();   //我可以演不差钱
+
+
+
+        //实际中，属性解构用得不较少，方法解构用得比较多
+        // zhao.xiaopin();
+        // zhao.xiaopin();
+        //zhao.xiaopin();
+        // 上面每一次调用，这个 zhao 变量字符 算是 重复了，那我们就可以对它进行解构，简化它
+        let { xiaopin } = zhao;
+        xiaopin();   //此时就不用在前面写 zhao 这个变量了
+
+        /* 这种简便的写法，说白了，新特性的产生都是为了让开发者编写代码更加方便，
+           发现有重复的地方，我们就它去掉。以后如果遇到方法频繁调用，
+           这个时候就可以想到解构赋值，用上它，让我们的代码更加简洁。 */
+
+    </script>
+</body>
+
+</html>

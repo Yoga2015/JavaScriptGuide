@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6模板字符串</title>
+</head>
+
+<body>
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+    </ul>
+    <script>
+        // ES6 引入新的声明字符串的方式模板字符串
+
+        //ES5 语法
+        let str1 = '我是字符串！';
+        console.log(str1, typeof str1); //我是字符串！ string
+
+        //1、声明
+        let str2 = `我是一个字符串！`;
+        console.log(str2, typeof str2);  //我是一个字符串！ string
+
+        //2、内容中可以直接出现换行符
+        let str3 = `<ul>
+                        <li>张三</li>
+                        <li>李四</li>
+                        <li>王五</li>
+                    </ul>`;
+        console.log(str3);
+
+        // 3、变量拼接
+        let handsome = 'walking';
+        // let out = handsome +'是我最崇拜的人';  //ES5
+        let out = `${handsome}是我最崇拜的人`;  //ES6
+        console.log(out);  // walking是我最崇拜的人
+    </script>
+</body>
+
+</html>
