@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script>
+  // 量词符 ： 用来设定某个模式出现的次数
+  // 简单理解：就是让下面的 a 这个字符重复多少次
+  // let reg = /^a$/;
+
+  //  * 相当于 >= 0    让前面的 a 可以出现0次或者很多次 
+  let reg = /^a*$/;
+  console.log(reg.test(''));  //true
+  console.log(reg.test('a'));   //true
+  console.log(reg.test('aaaaa'));   //true
+
+  //  + 相当于 >= 1      让前面的 a可以出现 1次或者很多次
+  let reg = /^a+$/;
+  console.log(reg.test(''));  //false
+  console.log(reg.test('a'));   //true
+  console.log(reg.test('aaaaa'));   //true
+
+  //  ?  相当于 1 || 0    让前面的 a 只可以出现1次 或者 0 次 ，其余都是false 
+  let reg = /^a?$/;
+  console.log(reg.test(''));  //true
+  console.log(reg.test('a'));   //true
+  console.log(reg.test('aaaaa'));   //false
+
+  //  {3} 就是重复3次     让前面的 a 可以重复出现3次
+  let reg = /^a{3}$/;
+  console.log(reg.test(''));  //false
+  console.log(reg.test('a'));   //false
+  console.log(reg.test('aaaa'));   //false
+  console.log(reg.test('aaa'));   //true
+
+  //  {3, }  大于等于3    让前面的 a 可以重复出现  大于等于3次
+  let reg = /^a{3,}$/;
+  console.log(reg.test(''));  //false
+  console.log(reg.test('a'));   //false
+  console.log(reg.test('aaaa'));   //true
+  console.log(reg.test('aaa'));   //true
+
+
+  //  {3,16}  大于等于3 并且 小于等于16   
+  let reg = /^a{3,16}$/;    //让前面的 a 可以重复出现 大于等于3次 并且 小于等于16次
+  console.log(reg.test(''));  //false
+  console.log(reg.test('a'));   //false
+  console.log(reg.test('aaaaaaaaaaaaaaaa'));   //true
+  console.log(reg.test('aaa'));   //true
+  console.log(reg.test('aaaaaaaaaaaaaaaaaa'));   //false
+</script> -->
+
+  <script>
+    // 量词是用来设定某个模式出现的次数
+    //这个模式用户只能输入英文字母、数字、下划线、短横线，但是有 边界符和[]，这就限定了只能多选1
+    let reg = /^[a-zA-Z0-9_-]$/;
+    console.log(reg.test('aa'));   //false
+    console.log(reg.test('a'));   //true
+    console.log(reg.test('K'));   //true
+    console.log(reg.test('!'));   //false   这里不包含 ！ 叹号
+    console.log(reg.test('19'));   //false
+    console.log('--------------');
+
+    //[]中括号 里的 字符可以重复出现 大于等于 6次 并且 小于等于16次  
+    let reg1 = /^[a-zA-Z0-9_-]{6,16}$/;
+    console.log(reg1.test('aaa'));    //false
+    console.log(reg1.test('bbbbbb'));  //true
+    console.log(reg1.test('abcdefgh'));  //true
+    console.log(reg1.test('aabbcc'));  //true
+    console.log(reg1.test('aabbccddeeffjjhhiijjkk')); //false
+    console.log(reg1.test('walking001')); //true
+    console.log(reg1.test('Amy001')); //true
+    console.log(reg1.test('Amy-009')); //true
+    console.log(reg1.test('yes_001')); //true  
+  </script>
+
+</body>
+
+</html>

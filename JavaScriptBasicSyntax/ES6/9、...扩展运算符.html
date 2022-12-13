@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>... 扩展运算符</title>
+</head>
+
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+
+    <audio src="./happy.mp3" autoplay controls></audio>
+    <video autoplay controls="controls" width="300px" height="300px">
+        <source src="./二进制转化为十进制.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        // ...  扩展运算符 能将 数组 转换为 逗号分隔的 参数序列
+        // 声明一个数组 ...
+        const F3 = ['赵四', '小沈阳', '宋小宝']; // =>'赵四','小沈阳','宋小宝'
+
+        // 声明一个函数
+        function chunwan() {
+            console.log(arguments);
+        }
+
+        //可以放 在函数调用 里  ， 把数组 转换为 参数序列 ，用逗号分隔
+        chunwan(...F3); // => chunwan('赵四','小沈阳','宋小宝')
+    </script>
+
+    <script>
+        // 1、数组的合并   
+        const kuaizi = ['王太利', '肖央'];
+        const fenghuang = ['曾毅', '玲花'];
+        // const superStar = kuaizi.concat(fenghuang);
+        const superStar = [...kuaizi, ...fenghuang]
+        console.log(superStar);  // ['王太利', '肖央', '曾毅', '玲花']
+
+        //2、数组的克隆
+        const sanzhihua = ['A', 'B', 'C'];
+        const sanyecao = [...sanzhihua];
+        console.log(sanyecao);['A', 'B', 'C']
+
+        // 3、将伪数组转为真正的数组
+        const btns = document.querySelectorAll('button');
+        console.log(btns);  // NodeList(3)[button, button, button]   伪数组
+
+        const btnArr = [...btns];
+        console.log(btnArr);  //[button, button, button]
+
+    </script>
+</body>
+
+</html>
