@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包思考题</title>
+</head>
+
+<body>
+  <script>
+    // 思考题 1：
+    // var name = 'the window';   //这是全局作用域，所以它是在window对象下声明的name属性
+    // var object = {
+    //   name: 'my object',
+    //   getNameFunc: function () {  // 这里并没有访问另一个作用域的变量，所以就没有产生闭包
+    //     return function () {
+    //       return this.name;   //立即执行函数是 立马能够自己执行的函数，所以里面的this指向的是window对象
+    //     };
+    //   }
+    // };
+
+    // console.log(object.getNameFunc()());   //   the window
+
+    // 拆开分析：  object.getNameFunc()() 
+
+    // 1、第一个括号（）
+    // var f = object.getNameFunc();  //这语句有一个返回值，如下：
+    // 类似于
+    // var f = function () {
+    //   return this.name
+    // }
+
+    // 2、第二个括号（）
+    // f();
+
+
+
+    // 思考题 2：
+    var name = 'the window';   //这是全局作用域，所以它是在window对象下声明的name属性
+    var object = {
+      name: 'my object',
+      getNameFunc: function () {
+        var that = this;   //此时 this 指向它的调用者： object ，然后赋值给 that 变量
+        return function () {
+          return that.name;   //立即执行函数是 立马能够自己执行的函数，所以里面的this指向的是window对象
+        };
+      }
+    };
+
+    console.log(object.getNameFunc()());    // my object
+
+    // var f = object.getNameFunc();
+    // var f = function () {
+    //   return that.name;
+    // }
+    // f();
+
+  </script>
+</body>
+
+</html>

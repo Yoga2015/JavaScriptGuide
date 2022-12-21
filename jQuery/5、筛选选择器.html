@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筛选选择器（重点）</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+    <div class="grandfather">
+        <div class="father">
+            <div class="son">儿子</div>
+            <div>女儿</div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <p class="myp">我是p</p>
+        <span>我是span</span>
+        <div>
+            <p>我是p</p>
+            <p>我是p</p>
+            <p>我是p</p>
+            <p>我是p</p>
+        </div>
+
+        <ul>
+            <li>我是li</li>
+            <li>我是li</li>
+            <li>我是li</li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            //1、查找父级 ,返回最近一级的父级元素 : $('.son').parent();  
+            console.log($('.son').parent()); //S.fn.init [div.father]
+
+            //2、查找 子级 ,最近一级（亲儿子） 相当于 $('ul>li')  
+            $('.nav').children('p').css('color', 'yellow'); // S.fn.init [p ]
+
+            //3、查找 ul下的所有li元素 , 相当于 $('ul li')， 后代选择器 包括儿子和孙子
+            console.log($('div').find('p')); //S.fn.init(5) [p.myp, p, p, p, p]
+
+            //4、兄弟元素 siblings :查找兄弟节点 ，不包括自己   $('.son').siblings('div');
+            console.log($('.son').siblings('div')); //S.fn.init [div, ]
+
+            // 5、查找当前元素之后所有的同辈元素 $('.myp').nextAll();
+            console.log($('.myp').nextAll()); //S.fn.init(2) [span, div, ]
+
+            // 6、查找当前元素之前所有的同辈元素 $('p').prevAll();
+            console.log($('p').prevAll()); //S.fn.init(3) [p, p, p]
+
+            //7、判断当前的元素是否含有某个类名   如果有，就返回true
+            console.log($('div:first').hasClass('grandfather'));    //true
+
+            //8、获取到的li 元素中，选择索引号 为2 的元素，索引号index从0开始
+            $('ul li').eq(2).css('color', 'pink');
+
+
+        });
+
+
+        // // JS中遍历DOM树
+
+        // //沙箱：模拟环境，模拟环境。语法：（function(){//TODO}());
+        // (function () {
+        //     let obj = document.documentElement; //获取对象html
+        //     console.log(obj);
+        //     function forDom(obj) {
+        //         let children = obj.children;
+        //         forChildren(children);
+        //     };
+
+        //     function forChildren(children) {
+        //         for (let i = 0; i < children.length; i++) {
+        //             let child = children[i];
+        //             showName(child);
+        //             child.children && forDom(child);//&&前面的逻辑语如果是false，后半句不执行
+        //         }
+        //     };
+
+        //     function showName(node) {
+        //         console.log(`节点的名字：${node.nodeName}`);//模板字符串，不理解的参见我的另一篇博客。
+        //     };
+        //     forDom(obj);
+        // }());
+
+    </script>
+</body>
+
+</html>

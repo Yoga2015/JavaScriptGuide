@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链式编程</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+
+</head>
+
+<body>
+    我是文字
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <button>按钮6</button>
+
+    <script>
+        $(function () {
+
+            //事件源 获取元素 ;  注册事件  ，事件处理函数
+
+            //1、隐式迭代  给所有的按钮都绑定了点击事件
+            $('button').click(function () {
+                // //2、给当前的元素设置背景颜色
+                // $(this).css('background', 'pink');
+                // // 3、其余的兄弟去掉背景颜色  siblings()  隐式迭代
+                // $(this).siblings('button').css('background', '');
+
+                /* 上面出现了两次 $(this)，这代码重复了。但这里面我们还可以采取一种更好的写法，
+                   也是我们这里面比较强大的一种思想，它就是链式编程。
+                */
+
+                //链式编程
+                //给当前的元素设置背景颜色为pink ,其余的兄弟去掉背景颜色 
+                $(this).css('background', 'pink').siblings().css('background', '');
+                //我的颜色为粉红色 ，我的兄弟的颜色为空
+
+                // $(this).siblings().css('color', 'pink');
+                //我的兄弟变为粉红色，我本身不变颜色
+
+                //最后是给我的兄弟的爸爸 div  变化颜色
+                $(this).siblings().parent().css('color', 'red');
+
+            });
+
+
+
+
+
+        });  
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数 面试题</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        let obj = {
+            name: 'walking',
+            age: 20,
+            say: () => {
+                alert(this.age)  //因为 window对象下没有age属性,所以弹出 undefined
+            }
+        }
+
+        obj.say(); // obj.say() === window.obj.say()
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优化下拉菜单</title>
+    <link rel="stylesheet" href="./下拉菜单.css">
+    <script src="./jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+    <ul class="nav">
+        <!-- 第一个 li -->
+        <li>
+            <a href="#">Xiaomi手机</a>
+            <ul>
+                <li>
+                    <a href="https://www.mi.com/mi12s-ultra">
+                        <img src="./xiaomi12U.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">Xiaomi 12S Ultra</a>
+                </li>
+                <li>
+                    <a href="">5999元</a>
+                </li>
+            </ul>
+        </li>
+        <!-- 第二个 li -->
+        <li>
+            <a href="#">Redmi手机</a>
+            <ul>
+                <li>
+                    <a href="https://www.mi.com/shop/buy/detail?product_id=16642">
+                        <img src="./redmi12pro+.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">Redmi Note 12 5G</a>
+                </li>
+                <li>
+                    <a href="">1199元</a>
+                </li>
+            </ul>
+        </li>
+        <!-- 第三个 li -->
+        <li>
+            <a href="#">电视</a>
+            <ul>
+                <li>
+                    <a href="https://www.mi.com/mitv-great/hyaline">
+                        <img src="./xiaomiTV.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">小米透明OLED电视</a>
+                </li>
+                <li>
+                    <a href="">299元</a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+    <script>
+        $(function () {
+
+            // 1、 滑动效果
+            // 鼠标经过
+            // $('.nav>li').mouseover(function () {
+            //     // $(this) jQuery 当前元素  this 不加引号
+            //     // $(this).children('ul').show(200); // show() 显示元素
+
+            //     $(this).children("ul").slideDown(200);  //下拉效果
+            // });
+
+            // //鼠标离开
+            // $('.nav>li').mouseout(function () {
+            //     // $(this).children('ul').hide(200);  // hide() 隐藏元素
+
+            //     $(this).children("ul").slideUp(200);  //上拉拉效果
+            // })
+
+            // 事件切换    
+            // hover([over,]out) ,over 相当于mouseenter ,out 相当于mouseleave
+
+            //事件切换  hover  就是 鼠标经过和离开的复合写法
+            // $('.nav>li').hover(function () {
+            //     $(this).children("ul").slideDown(200);   //下拉效果
+            // }, function () {
+            //     $(this).children("ul").slideUp(200);  //上拉效果
+            // })
+
+            //事件切换  hover  就是 如果只写一个函数，那么鼠标经过和鼠标离开都会触发这个函数
+            $('.nav>li').hover(function () {
+                // stop() 必须写到 动画的前面
+                $(this).children("ul").stop().slideToggle(200);   //事件切换效果
+            })
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则表达式的替换 replace()</title>
+</head>
+
+<body>
+  <textarea name="" id="message" cols="30" rows="5"></textarea><button>提交</button>
+  <div></div>
+  <script>
+    // 正则表达式的替换 replace()
+    //语法：  stringObject.replace(regexp / substr, replacement)
+
+    //替换 replace()
+    let str = 'andy和red';
+    // let newStr = str.replace('andy', 'yellow');   //默认返回一个新的字符串
+
+    // 正则表达式的替换
+    let newStr = str.replace(/andy/, 'yellow');   //默认返回一个新的字符串
+    console.log(newStr);
+
+    // 敏感词替换   敏感词不只一个，有很多个
+    let text = document.querySelector('textarea');
+    let btn = document.querySelector('button');
+    let div = document.querySelector('div');
+    btn.onclick = function () {
+      div.innerHTML = text.value.replace(/激情|gay/gi, '**');
+    }
+
+  </script>
+
+</body>
+
+</html>

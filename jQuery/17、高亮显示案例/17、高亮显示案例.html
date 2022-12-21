@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="./高亮显示案例.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <a href="#"><img src="images/01.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/02.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/03.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/04.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/05.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/06.jpg" alt="" /></a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        $(function () {
+            //鼠标 进入 的时候，其他的li 标签 透明度：0.5
+            $(".wrap li").hover(function () {
+                $(this).siblings().stop().fadeTo(10, 0.5);
+            }, function () {
+                //鼠标离开，其他li 透明度改为 1
+                $(this).siblings().stop().fadeTo(10, 1);
+            })
+        })
+    </script>
+</body>
+
+</html>

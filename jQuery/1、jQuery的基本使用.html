@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">等DOM树渲染之后，才再来执行JS</div>
+
+    <script>
+        let one = document.querySelector('.one');
+        one.addClass = 'two';
+        $('.one').addClass('two');
+        $('.one').removeClass('two');
+        // $('div').hide();
+
+        //1、等着页面 DOM加载完成 再去执行 JS代码
+        // $(document).ready(function () {
+        //     $('div').hide();
+        // });
+
+        //2、等着页面 DOM加载完成 再去执行 JS代码
+        // $(function () {
+        //     $('div').hide();
+        // });
+
+
+        // $ 是 jQuery的 别称（另一个名字）
+        // jQuery(function () {
+        //     alert(11);
+        // })
+        // $(function () {
+        //     alert(22);
+        // });
+
+        // jQuery对象 和 DOM对象
+
+        //1、 DOM对象: 用 原生JavaScript 获取过来的对象 就是 DOM对象
+        let mydiv = document.querySelector('div');
+        console.dir(mydiv);  // div
+
+        //2、 jQuery对象：用 jQuery的方式，通过 $()的方式 获取过来的对象 就是 jQuery对象  
+        // 本质：通过 $把 DOM元素进行了包装
+        $('div');  // $('div') 是一个jQuery对象
+        console.dir($('div'));
+
+        //3、jQuery对象 只能 使用 jQuery方法。 DOM对象 则 使用原生的JavaScript 属性和方法
+        // mydiv.style.display = 'none';
+        // $('div').hide();
+        $('div').style.display = 'none';  //报错 
+        mydiv.hide();   //报错 
+    </script>
+
+
+</body>
+
+</html>

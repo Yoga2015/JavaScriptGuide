@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数</title>
+</head>
+
+<body>
+    <script>
+        // ES6 引入 rest 参数 （形式为 ...变量名） ，用于获取函数的参数，用来代替 arguments
+
+        // ES5 获取实参的方式
+        function person() {
+            console.log(arguments);   //输出的是对象
+        }
+        person('张三', '李四', '王老五');
+
+        // rest 参数 搭配的变量是一个数组，该变量将多余的参数放入数组中。数组特有的方法都可以使用。  
+        function people(...values) {
+            console.log(values);   //输出的是数组形式，那我们就可以使用数组的方法了
+            //  filter、some、every、map、sort、reverse
+        }
+        people('丽丽', '君君', 'walking');
+
+        //rest 参数 必须要放到参数最后
+        function fn(x, y, ...values) {
+            console.log(x);  //  1
+            console.log(y);  //  2
+            console.log(values);   // [3, 4, 5, 6]
+        }
+
+        fn(1, 2, 3, 4, 5, 6);
+
+
+
+    </script>
+</body>
+
+</html>

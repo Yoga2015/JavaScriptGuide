@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM对象 和 jQuery对象 相互转换</title>
+<script src="./jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <video src="./soundmark.mp4" muted></video>
+    <script>
+        // 1、DOM对象 转换为 jQuery对象 :  $(DOM对象)
+
+        // (1)我们直接获取视频，得到就是 jQuery对象
+        // $('video');
+
+        //(2) 我们已经使用原生 js 获取过来 DOM对象
+        let myvideo = document.querySelector('video');
+        // $(myvideo).play();  jQuery里面没有play 这个方法
+        myvideo.play();
+
+
+        // 2、jQuery对象 转换为 DOM对象  :
+
+        // （1） $('div')[index]  index 是索引号
+        $('video')[0].play();
+        // （2） $('div').get(index)  index 是索引号     
+        $('video').get(0).play();
+
+    </script>
+</body>
+
+</html>

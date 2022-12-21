@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东服饰精品案例</title>
+    <script src="../jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="./京东服饰精品案例.css">
+    <!-- 入口函数 -->
+    <script>
+        // 核心原理: 鼠标经过左侧盒子某个li ，就让内容区相对应图片显示，其余的图片隐藏。
+        // 需要得到当前小 li的索引号，就可以显示对应索引号的图片。
+        // jQuery得到当前元素索引号 $(this).index()
+        // 中间对应的图片可以通过 eq(index) 方式选择
+        // 显示元素show()  隐藏元素hide()
+
+        $(function () {
+            //1、鼠标经过左侧盒子某个li 
+            $('#left li').mouseover(function () {
+
+                //2、得到当前小li 的索引号
+                let index = $(this).index();
+
+                //3、让右侧的盒子相应索引号的图片显示出来就好了
+                // $('#content div').eq(index).show();
+
+                // //4、让右侧 其余的图片(其他的兄弟) 隐藏起来   （隐式迭代）
+                // $('#content div').eq(index).siblings().hide();
+
+                // 让右侧的盒子相应索引号的图片显示出来, 让右侧 其余的图片(其他的兄弟) 隐藏起来 
+                $('#content div').eq(index).show().siblings().hide();
+
+
+                //5、给当前的元素设置背景颜色,
+                // $(this).css('background', 'yellow');
+                // //6、其余的兄弟去掉背景颜色  siblings() 查找兄弟节点，不包括自己 （隐式迭代）
+                // $(this).siblings('li').css('background', '');
+
+                $(this).css('background', 'yellow').siblings('li').css('background', '');
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul id="left">
+            <li><a href="#">女靴</a></li>
+            <li><a href="#">雪地靴</a></li>
+            <li><a href="#">冬裙</a></li>
+            <li><a href="#">大衣</a></li>
+            <li><a href="#">毛衣</a></li>
+            <li><a href="#">棉服</a></li>
+            <li><a href="#">女裤</a></li>
+            <li><a href="#">羽绒服</a></li>
+            <li><a href="#">牛仔裤</a></li>
+        </ul>
+        <div id="content">
+            <div>
+                <a href="#"><img src="images/女靴.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/雪地靴.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/冬裙.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/大衣.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/毛衣.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/棉服.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/女裤.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/羽绒服.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="images/牛仔裤.jpg" width="200" height="250" /></a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

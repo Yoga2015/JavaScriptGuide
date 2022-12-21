@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery基本选择器、层次选择器、筛选选择器</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+    <div>我是div</div>
+    <div id="mydiv">我是mydiv</div>
+    <div class="nav">我是 nav div</div>
+    <p>我是 p</p>
+
+    <p class="red">我是 p</p>
+    <p class="red">我是 p</p>
+    <ul>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+    </ul>
+    <ol>
+        <li>我是ol 的li <span>123</span></li>
+        <li>我是ol 的li <span>456</span></li>
+        <li>我是ol 的li <span>789</span></li>
+        <li>我是ol 的li</li>
+    </ol>
+
+    <script>
+        $(function () {
+    //1、基本选择器
+    console.log($('#mydiv'));  //S.fn.init [div#mydiv]
+    console.log($('.nav'));  //S.fn.init [div.nav]
+    console.log($('p,ul,ol')); //S.fn.init(3) [p, ul, ol ]
+
+    // 并集选择器 :选择页面中所有的 div 与  p，设置 其 背景为红色
+    $('div,p').css('background', 'red');
+
+    // 交集选择器 ：选择页面中 所有class为red 的 段落，设置其背景为yellow色
+    $('p.red').css('background', 'yellow')
+
+    //2、层次选择器         
+    console.log($('ul li')); //S.fn.init(3) [li, li, li,li]
+    console.log($("ol li span")); //S.fn.init [span ]
+
+    // 子代选择器 ： 选择 ol下的 li下的 所有span子元素，设置其背景为 yellow 色
+    $('ol>li>span').css('background', 'yellow');
+
+    // 后代选择器 ：选择 ol下的所有 li元素，设置其字体颜色为红色
+    $('ul li').css('color', 'red');
+
+
+
+            //3、 筛选选择器
+            $('ul li:first').css('color', 'red');
+            $('ul li:last').css('color', 'blue');
+            //获取到的li 元素中，选择索引号 为2 的元素，索引号index从0开始
+            $('ul li').eq(2).css('color', 'pink');
+            $('ol li:odd').css('color', 'yellow');
+            $('ol li:even').css('color', 'green');
+
+        })
+    </script>
+</body>
+
+</html>

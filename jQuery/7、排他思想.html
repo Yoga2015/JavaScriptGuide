@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排他思想</title>
+<script src="./jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    如果有同一组元素，我们想要某一个元素实现某种样式，需要用到循环的排他思想算法
+    1、所有元素全部清除样式 （干掉其他人）
+    2、给当前元素设置样式（留下我自己）
+    3、注意顺序不能颠倒，首先干掉其他人，再设置自己
+    首先先排除其他人，然后才设置自己的样式，这种排除其他人的思想我们称为排他思想
+    <div>
+        <button>按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+        <button>按钮4</button>
+        <button>按钮5</button>
+        <button>按钮6</button>
+    </div>
+<script>
+    /**
+     * 点击 按钮1，按钮1 颜色 从 默认色 变 pink，
+     * 点击 按钮2，按钮1 颜色 从 pink 变回 默认色，按钮2 颜色从默认色变pink
+     * 依次类推。。。。。。
+    */
+    $(function () {
+        //事件源 获取元素 ;  注册事件  ，事件处理函数
+
+        //1、隐式迭代  给所有的按钮都绑定了点击事件
+        $('button').click(function () {
+            //2、给当前的元素设置背景颜色
+            $(this).css('background', 'pink');
+            // 3、其余的兄弟去掉背景颜色  siblings() 查找兄弟节点 ，不包括自己  隐式迭代
+            $(this).siblings('button').css('background', '');
+        });
+
+        //首先先排除其他人，然后才设置自己的样式，这种排除其他人的思想我们称为排他思想
+
+    })
+</script>
+</body>
+
+</html>

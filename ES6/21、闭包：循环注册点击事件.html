@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>循环注册点击事件</title>
+</head>
+
+<body>
+  <ul class="nav">
+    <li>豆腐</li>
+    <li>鸡蛋</li>
+    <li>排骨</li>
+    <li>青菜</li>
+  </ul>
+
+  <script>
+    // 闭包应用：点击 li 输出当前 li的索引号 。 
+
+
+    // 核心思路：利用 动态添加属性 的方式。
+    // 1、先找到要进行操作的元素 ，精准定位到它
+    let lis = document.querySelector('.nav').querySelectorAll('li');
+
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].index = i;   // 每循环遍历出一个li，就给它添加 index属性，属性值是 i ,i 是从0开始的
+      lis[i].onclick = function () {
+        console.log(this.index);
+      };
+    };
+
+    // 2、利用闭包的方式 : 得到当前 小li 的索引号
+    // for (let j = 0; j < lis.length; j++) {
+    //   //  利用 for循环创建了 4个立即执行函数
+    //   (function (j) {
+    //     // console.log(j);    // 0  1  2  3
+    //     lis[j].onclick = function () {
+    //       console.log(j);
+    //     }
+    //   })(j);
+    // }
+
+    //立即执行函数也称为 小闭包，因为立即执行函数里面的任意一个函数都可以使用它的 j 这个变量
+
+  </script>
+</body>
+
+</html>

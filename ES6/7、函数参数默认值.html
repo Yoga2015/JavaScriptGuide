@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数参数默认值</title>
+</head>
+
+<body>
+<script>
+// ES6 允许给 函数参数（形参） 赋值初始值、
+// 1、形参初始值  
+function add(a, b, c = 10) {
+    return a + b + c;
+}
+let result = add(1, 2, 3);  //6
+console.log(result);
+
+
+function add(a, b, c) {
+    return a + b + c;
+}
+// 少传一个参数
+let result2 = add(1, 2);  //NaN
+console.log(result2);
+
+
+function add(a, b, c = 10) {    //具有 默认值的参数，  一般位置要靠后 （潜规则）
+    return a + b + c;
+}
+// 少传一个参数，就用使用默认值
+let result3 = add(1, 2);  // 13  
+console.log(result3);
+
+
+function add(a, c = 10, b) {    //具有 默认值的参数，  一般位置要靠后 （潜规则）
+    return a + b + c;
+}
+// 少传一个参数，
+let result4 = add(1, 2);  // NaN
+console.log(result4);
+
+
+//2、默认值还可以 与 解构赋值 结合
+// function connect(options){   //下面 options又写重了
+//     let host = options.host;  //可以通过解构赋值来简化代码量
+//     let username = options.username; 
+// }
+
+
+function connect({ host = '127.0.0.1', username, password, port }) {
+    console.log(host);   //没传递的参数，就是用默认值
+    console.log(username);
+    console.log(password);
+    console.log(port);
+}
+
+connect({
+    // host: 'www.baidu.com',
+    username: 'root',
+    password: 'root',
+    port: 3306
+})
+
+// 所以说在 默认值 这一块，还可以 与 解构赋值 结合，
+//     1、让我们属性用起来更方便，
+//     2、少传个参数时，就设置默认值
+</script>
+</body>
+
+</html>

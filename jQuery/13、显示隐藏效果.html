@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示-隐藏-切换效果</title>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <style>
+        div {
+            display: none;
+            width: 150px;
+            height: 150px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+    <script>
+        $(function () {
+            // //显示    元素不多时也可以通过索引号定位  
+            // $("button").eq(0).click(function () {
+            //     //speed: “slow”,“normal”, or “fast” 效果不够优美 ，所以用 1000毫秒 动画时长毫秒数值代替提升美感
+            //     //easing: 默认是  swing , 也可以使用 linear
+            //     //fn ：回调函数，在动画完成时 执行的函数，每个元素执行一次。
+            //     $("div").show("slow", "swing", function () {
+            //         alert(11);
+            //     })
+            // })
+
+            //显示    元素不多时也可以通过索引号定位  
+            $("button").eq(0).click(function () {
+                $("div").show(1000, "swing", function () {
+                    alert("显示");
+                })
+            })
+            //隐藏
+            $("button").eq(1).click(function () {
+                $("div").hide(1000, "swing", function () {
+                    alert("隐藏");
+                })
+            })
+
+            //切换
+            $("button").eq(2).click(function () {
+                // $("div").toggle(1000, function () {
+                //     alert("点击后切换：显示 或 隐藏 ");
+                // })
+
+                $("div").toggle(1000);
+
+                // 实际开发中下，我们一般都不加参数，直接 显示 或者 隐藏就可以了。
+            })
+
+        })
+    </script>
+</body>
+
+</html>

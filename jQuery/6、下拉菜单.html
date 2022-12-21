@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉菜单</title>
+    <link rel="stylesheet" href="./jQuery-下拉菜单.css">
+    <script src="./jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+    <ul class="nav">
+        <!-- 第一个 li -->
+        <li>
+            <a href="#">微博</a>
+            <i class="icomoon"></i>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- 第二个 li -->
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+        <!-- 第三个 li -->
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+    <script>
+        $(function () {
+            //鼠标经过
+            $('.nav>li').mouseover(function () {
+                // $(this) jQuery 当前元素  this 不加引号
+                $(this).children('ul').show(); // show() 显示元素
+            });
+
+            //鼠标离开
+            $('.nav>li').mouseout(function () {
+                $(this).children('ul').hide();  // hide() 隐藏元素
+            })
+
+            //因为 $('.nav>li')给我们做了隐私迭代了，所以我们不需要再使用for循环，再给它遍历绑定事件了。
+
+        });
+
+    </script>
+
+</body>
+
+</html>
