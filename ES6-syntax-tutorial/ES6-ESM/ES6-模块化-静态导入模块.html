@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6-模块化1</title>
+</head>
+
+<body>
+  <script type="module">
+    // 1、通用的导入方式
+    // // 导入（引入） m1.js 模块内容
+    // import * as m1 from "./src/js/m1.js";
+    // console.log(m1);
+
+    // // 导入 m2.js 模块内容
+    // import * as m2 from "./src/js/m2.js";
+    // console.log(m2);
+
+    // // 导入 m3.js 模块内容
+    // import * as m3 from "./src/js/m3.js";
+    // console.log(m3);
+
+
+    // 2、使用 解构赋值 方式 导入模块
+    // import { school, teach } from "./src/js/m1.js";
+    // import { school as heima, findJob } from "./src/js/m2.js";  //school 重名了
+    // import { default as m3 } from "./src/js/m3.js";
+    // console.log(m3);
+
+
+    //3、简单形式  针对默认暴露
+    // import m3 from "./src/js/m3.js";
+    // console.log(m3);  // { school: 'walking学院', change: ƒ }
+  </script>
+
+  <script src="./src/app.js" type="module"></script>
+
+  ES6 引入 模块 概念，定制了 ESM模块规范，现在主流浏览器 也都支持 ESM 模块规范
+
+
+</body>
+
+</html>

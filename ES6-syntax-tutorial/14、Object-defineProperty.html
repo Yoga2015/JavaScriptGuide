@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>回顾Object.defineProperty</title>
+</head>
+
+<body>
+  <script>
+    // 通过 数据描述符 创建
+    const person0 = {};
+    Object.defineProperty(person0, 'name', {
+      value: '小陈'
+    })
+    console.log(person0.name) // 小陈
+
+
+    // 通过 存取描述符 修改
+    const person1 = {};
+    Object.defineProperty(person1, 'name', {
+      get: function () {
+        console.log('触发get');
+        return '小陈'
+      },
+    })
+    console.log(person1.name)  //触发 get 小陈
+
+
+
+    let person = {
+      name: '李四',
+      sex: '男'
+    }
+
+    // 需求：给 person 添加属性    
+    // Object.defineProperty(给哪个对象添加属性，'新增的属性名'，｛新增的属性的配置｝)
+    Object.defineProperty(person, 'age', {
+      value: 18
+    })
+
+    console.log(person);   //{name: '李四', sex: '男', age: 18}
+
+    //通过 Object.defineProperty添加的属性，Object.keys（）无法遍历出来,除非？
+    // console.log(Object.keys(person));  //  ['name', 'sex']
+
+    // for...in 既能遍历数组也能遍历对象
+    // 通过 Object.defineProperty添加的属性， for in 也无法遍历 出来
+    for (let key in person) {
+      console.log(person[key]);  //李四  男
+    }
+
+    console.log('-------------------------------------');
+
+
+
+    // 修改 person2对象 属性值 ，通过 数据描述符 修改
+    let person2 = {
+      name: '张三',
+      sex: '男'
+    }
+
+    // 通过 Object.defineProperty 追加（添加）的属性的属性值:
+    // 默认不可修改（写）、不可遍历、不可删除，除非设置属性的配置项才行。
+    Object.defineProperty(person2, 'age', {
+      value: 20,
+      enumerable: true,  //控制属性是否可以枚举，默认值是 false
+      writable: true,  // 控制属性是否可以被修改，默认值是 false  
+      configurable: true, //控制属性是否可以被删除，默认值是 false
+    })
+
+    // 遍历 person2 对象里的属性
+    console.log(Object.keys(person2));  // ['name', 'sex', 'age']
+
+    for (let key in person2) {
+      console.log(person2[key]);  //李四  男  20
+    }
+
+    //修改 person2的属性值
+    console.log(person2.age = 30);   // 30
+
+    // 删除 person2 中的属性
+    console.log(delete person2.age);  // false
+
+    console.log('-------------------------------------');
+
+
+
+    // 使用setter 和 getter 可以控制 对 对象的访问 
+    let number = 25
+    let person3 = {
+      id: 1,
+      name: '王五',
+      sex: '女'
+    }
+
+    // 通过 Object.defineProperty 追加（添加）的属性的属性值:
+    // 默认不可修改（写）、不可遍历、不可删除，除非设置属性的配置项才行。
+    Object.defineProperty(person3, 'age', {
+      // value: 50,
+      // enumerable: true,  //控制属性是否可以枚举，默认值是 false
+      // writable: true,  // 控制属性是否可以被修改，默认值是 false  
+      // configurable: true, //控制属性是否可以被删除，默认值是 false
+
+      // 使用 setter 和 getter后 不注释上面会报错 
+      // TypeError: Invalid property descriptor.
+      // Cannot both specify accessors and a value or writable attribute, #<Object>
+      // at Function.defineProperty(<anonymous>)
+      // 无效的属性描述符。不能在 Function.defineProperty (<anonymous>)中同时指定访问器和值或可写属性(< Object>)
+
+      // 当有人读取 person 的age属性时，get 函数（getter）就会被调用，且返回值就是age的值
+      get() {
+        console.log('有人读取age属性了');
+        return number
+      },
+
+      set(value) {
+        console.log('有人修改了 age 属性，且值是', value);
+        number = value
+      }
+    })
+
+    console.log(person3.age);  // 有人访问（读取） age属性了  25
+    person3.age = 30;   // 有人修改了 age 属性，且值是 30 
+    console.log(person3.age);    // 有人访问（读取） age属性了  30
+
+    // 遍历 person2 对象里的属性
+    console.log(Object.keys(person3));
+
+  </script>
+</body>
+
+</html>

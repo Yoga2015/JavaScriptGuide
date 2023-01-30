@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // reduce() 数组求和
+
+    const arr1 = [1, 2, 3, 4, 5];
+    const sum = arr1.reduce((prev, curr, currIndex) => {
+      console.log(prev, curr, currIndex);
+      return prev + curr;
+    }, 10)
+    console.log(sum);   // 15    25
+
+    // 1   2   1              // 10   1   0
+    // 3   3   2              // 11   2   1
+    // 6   4   3              // 13   3   2
+    // 10  5   4              // 16   4   3
+    // 15                     // 20   5   4
+    // 25
+
+    // reduce 数组扁平化
+    const arr2 = [[1, 2], [3, 4], [5, 6]];
+    function flat(arr) {
+      return arr.reduce((prev, curr) => {
+        return prev.concat(Array.isArray(curr) ? flat(curr) : curr)
+      }, [])
+    }
+
+    console.log(flat(arr2));   // [1, 2, 3, 4, 5, 6]
+
+  </script>
+</body>
+
+</html>

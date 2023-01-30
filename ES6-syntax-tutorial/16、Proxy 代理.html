@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proxy 代理</title>
+</head>
+
+<body>
+  <script>
+    // 创建 proxy 对象 
+    // let proxyObj = new Proxy(target, handler);
+    // target 是 Proxy 代理的目标对象 ，handler 是 给 Proxy 代理的目标对象 进行 定制我们的拦截的行为
+
+    //1、 定义对象
+    let person = {
+      name: '李四',
+      age: 18,
+      phoneNumber: '110',
+      girlFriend: 'Amy'
+    };
+
+    //3、 proxy 拦截行为 是 handler 处理函数：get 方法，用来拦截 对目标对象属性的 读取（访问）操作
+    let handlerObj = {
+
+      get: function (target, propKey, proxyObj) {
+        console.log(` 外界来读取 ${propKey} 属性了，已经被拦截、监听到了`);
+        if (propKey === 'girlFriend') {
+          return '这是一个秘密'
+        }
+        // 定义你要返回的值
+        return target[propKey];
+      },
+
+      set: function (target, propKey, propVal, proxyObj) {
+        console.log(` ${propKey} 属性被外界修改了 ：${propKey}=${propVal}`);
+        console.log('但是我不给你改，我改成默认值');
+        target[propKey] = '李四';
+      },
+
+      //判断对象中是否包含有满足条件的某个属性
+      has(target, propKey) {
+        if (propKey.startsWith('_')) {
+          return false;
+        }
+        return target[propKey];
+      },
+
+      deleteProperty(target, propKey) {
+        if (propKey !== 'name') {
+          delete target[propKey];
+          return true;
+        }
+        return false;
+      },
+
+    }
+
+    //2、代理人  创建 proxy 实例对象，并给 person 对象 设置代理
+    let proxyObj = new Proxy(person, handlerObj);
+    console.log(proxyObj);   // {name: '我是李四', age: 18, phoneNumber: '110'}
+
+    //读取 person的age属性看看 , 注意, 定义代理后,得用代理对象 proxyObj来调用属性 或 方法
+    console.log(proxyObj.name);   // 外界来读取 name 属性了，已经被拦截、监听到了  李四  
+
+    //4、外界进行修改数据 person.name的值为 zhansan
+    proxyObj.name = 'zhangsan'; //  name 属性被外界修改了 ：name=zhangsan  
+    console.log(person);
+
+    console.log(proxyObj.age); // 外界来读取 age 属性了，已经被拦截、监听到了  18
+
+    console.log(proxyObj);  //Proxy {name: '李四', age: 18, phoneNumber: '110'}
+
+    // 判断对象 是否 具有某个属性
+    console.log('_name' in proxyObj);  // false   
+    console.log('name' in proxyObj);  // true
+
+    console.log(proxyObj.girlFriend);
+
+    console.log(delete proxyObj.name);
+
+    console.log(person);
+
+    console.log(Object.keys(proxyObj)); // ['name', 'age', 'phoneNumber', 'girlFriend']
+
+
+  </script>
+
+  <!-- <script>
+    //1、定义对象
+    let star = {
+      name: '周星驰',
+      girlFriend: '朱茵'
+    }
+
+    //  2、代理人
+    let proxy = new Proxy(star, {
+      // 取值器方法
+      get(target, key) {
+        console.log(this, arguments);
+        // 不能获取敏感信息
+        if (key === 'girlFriend') {
+          return '这是个秘密'
+        }
+        return target[key];
+        //同上
+        // return Reflect.get(target, key);
+      },
+      // 赋值器方法
+      set(target, key, value, proxy) {
+        console.log(this, arguments);
+        // 敏感的信息拦截掉
+        if (key === 'girlFriend') {
+          return;
+        }
+        //公开数据可以修改
+        target[key] = value;
+      }
+    })
+
+    //3、跟经纪人（代理人）获取明星信息
+    console.log(proxy.name);
+    console.log(proxy.girlFriend);
+
+    //4、修改数据
+    proxy.name = 'walking';
+    console.log(star);
+    proxy.girlFriend = '皇贵妃';
+    console.log(star);
+
+    // 代理就是通过操作一个对象来保护另一个对象
+
+  </script> -->
+</body>
+
+</html>

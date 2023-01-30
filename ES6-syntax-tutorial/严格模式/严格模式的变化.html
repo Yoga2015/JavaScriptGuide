@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>严格模式的变化</title>
+</head>
+
+<body>
+  <!-- 严格模式的变化 -->
+
+  <!-- 变量的变化 -->
+  <script>
+    'use strict';
+    //1、 变量必须先声明再使用
+    // num = 10;
+    // console.log(num);   // ReferenceError: num is not defined
+
+    //2、 严禁删除已经声明的变量
+    // let num2 = 20;
+    // console.log(num2);
+    // delete num2;   //SyntaxError: Delete of an unqualified identifier in strict mode
+  </script>
+
+
+  <!-- 严格模式下this指向问题 -->
+  <script>
+    'use strict';
+    //3、严格模式下，全局作用域中函数中的this是undefined。
+    function fn() {
+      console.log(this);   // undefined
+    }
+    fn();
+
+    // 4、严格模式下，如果构造函数不加 new调用 ，this 指向的是 undefined 如果给他赋值则 会报错
+    function Star() {
+      this.age = 20;
+    }
+    // Star();  // TypeError: Cannot set properties of undefined
+    let lisi = new Star();
+    console.log(lisi.age);   // 20   new实例化的构造函数指向创建的对象实例。
+
+    // 5、定时器 里的 this 还是指向 window
+    setTimeout(function () {
+      console.log(this);   // window
+    }, 1000)
+
+    // 6、事件、对象 里的this 还是指向调用者
+  </script>
+
+
+  <!-- 函数的变化 -->
+  <script>
+    'use strict';
+
+    // 1、严格模式下，函数里面的参数不允许有重名（包括不限：形参）
+    // a = 1;
+    // a = 2; 普通模式下， 同名的形参，后面的值会覆盖前面的值 ，所以执行后的结果是 4
+    // function fn(a, a) {  //  语法错误    : 在此上下文中不允许重复的参数名
+    //   console.log(a + a); // SyntaxError: Duplicate parameter name not allowed in this context 
+    // }
+    // fn(1, 2)
+
+
+    "use strict";
+    if (true) {
+      function f() {
+        // !!! 语法错误
+      }
+      f();
+    }
+
+  </script>
+
+</body>
+
+</html>

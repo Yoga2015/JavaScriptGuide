@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES5 使用 构造函数 来 实现继承</title>
+</head>
+
+<body>
+  <script>
+    // ES5 使用 构造函数 来 实现继承
+    //手机
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    }
+
+    Phone.prototype.call = function () {
+      console.log('我可以打电话');
+    }
+
+    // 智能手机
+    function SmartPhone(brand, price, color, size) {
+      Phone.call(this, brand, price);   //this 指向  SmartPhone的实例化对象 
+      this.color = color;
+      this.size = size;
+    }
+
+    // 设置 子级构造函数的原型
+    SmartPhone.prototype = new Phone;
+    SmartPhone.prototype.constructor = SmartPhone;
+
+    // 声明 子类的方法
+    SmartPhone.prototype.photo = function () {
+      console.log('我可以拍照');
+    }
+
+    SmartPhone.prototype.playGame = function () {
+      console.log('我可以玩游戏');
+    }
+
+    const hongmi = new SmartPhone('redmi', 3699, '粉色', '6.7inch');
+
+    console.log(hongmi);// SmartPhone {brand: 'redmi', price: 3699, color: '粉色', size: '6.7inch'}
+
+  </script>
+</body>
+
+</html>

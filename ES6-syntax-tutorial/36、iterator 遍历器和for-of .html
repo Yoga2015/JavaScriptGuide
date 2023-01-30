@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iterator 遍历器</title>
+</head>
+
+<body>
+  <script>
+    // Iterator 遍历器
+
+    // 声明一个数组
+    let F4 = ['小沈阳', '赵四', '刘能', '宋小宝'];
+
+    // 使用 for...in 遍历数组  
+    for (let v in F4) {   // 此时变量 v 保存的是 键名
+      console.log(v);   // 0   1   2   3
+    }
+    // 使用 for...of 遍历数组 ，遍历出 数组元素的
+    for (let v of F4) {     // // 此时变量 v 保存的是 键值
+      console.log(v);     // 小沈阳 赵四  刘能  宋小宝
+    }
+
+    console.log(F4);  // ['小沈阳', '赵四', '刘能', '宋小宝']
+
+    let iterator = F4[Symbol.iterator]();
+
+    //控制台里看到 iterator对象 有 next()方法
+    console.log(iterator);   // Array Iterator {}
+
+    // 每一次 调用 iterator对象 的next()方法 ，指针自动指向数据结构的一个成员（下一个成员）。
+    console.log(iterator.next());   // {value: '小沈阳', done: false}   
+    console.log(iterator.next());   // {value: '赵四', done: false}
+    console.log(iterator.next());   // {value: '刘能', done: false}
+    console.log(iterator.next());   // {value: '宋小宝', done: false}
+    console.log(iterator.next());   // {value: undefined, done: true}
+                                    // value属性是当前成员的值，done属性是一个布尔值，表示遍历是否结束。
+  </script>
+
+  <script>
+    var arr = ['a', 'b'];
+    var it = makeIterator(arr);
+
+    console.log(it.next());   // { value: "a", done: false }
+    console.log(it.next());  // { value: "b", done: false }
+    console.log(it.next());  // { value: undefined, done: true }
+
+    function makeIterator(array) {
+      var nextIndex = 0;
+      return {
+        next: function () {
+          return nextIndex < array.length ?
+            { value: array[nextIndex++], done: false } :
+            { value: undefined, done: true }
+        }
+      }
+    }
+  </script>
+  
+</body>
+
+</html>

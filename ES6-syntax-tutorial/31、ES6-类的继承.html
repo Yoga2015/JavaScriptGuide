@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6-类的继承</title>
+</head>
+
+<body>
+  <script>
+    class Phone {
+      // 构造方法
+      constructor(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      // 父类的成员属性
+      call() {
+        console.log('我可以打电话');
+      }
+    };
+
+    // 类 实现 继承 方式
+    class SmartPhone extends Phone {
+      // 构造方法
+      constructor(brand, price, color, size) {
+        super(brand, price); // === Phone(this,brand,price)
+        this.color = color;
+        this.size = size
+      }
+
+      photo() {
+        console.log('我可以拍照');
+      }
+
+      playGame() {
+        console.log('我可以玩游戏');
+      }
+
+      //子类对父类方法的重写    子类是无法直接去调用父类的同名方法的
+      call() {
+        // super();  // SyntaxError: 'super' keyword unexpected here
+        console.log('我不仅可以打电话，还可以视频通话');
+      }
+    }
+
+    const xiaomi = new SmartPhone('小米', 3999, '白色', '8.2inch')
+    console.log(xiaomi);  // SmartPhone {brand: '小米', price: 3999, color: '白色', size: '8.2inch'}
+    xiaomi.photo();  // 我可以拍照
+    xiaomi.playGame();  // 我可以玩游戏
+    xiaomi.call();  // 我不仅可以打电话，还可以视频通话
+
+  </script>
+</body>
+
+</html>

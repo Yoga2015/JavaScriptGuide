@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6的对象扩展</title>
+</head>
+
+<body>
+  <script>
+    //1、 Object.is()  判断两个值是否完全相等
+    console.log(Object.is(100, 100));  // true  ===
+    console.log(Object.is(NaN, NaN));   // true  ===
+    console.log(NaN === NaN);  // false
+
+    //2、 Object.ssign()  对象的合并
+    const foo = {
+      host: 'localhost',
+      port: 3306,
+      name: 'root',
+      password: 'root',
+      test: 'test'
+    }
+
+    const koo = {
+      host: 'https://www.baidu.com/',
+      port: 80,
+      name: 'walking',
+      password: '123',
+      test2: 'test2'
+    }
+
+    console.log(Object.assign(foo, koo));   // 合并过程中出现同名的属性会被覆盖
+    //{host: 'https://www.baidu.com/', port: 80, name: 'walking', password: '123', test: 'test', …}
+
+    // 3、Object.setPrototypeOf() 设置原型对象  Object.getPrototypeOf()
+    const school = {
+      name: '尚硅谷'
+    }
+    const cities = {
+      xiaoqu: ['北京', '上海', '深圳']
+    }
+    Object.setPrototypeOf(school, cities);
+    console.log(Object.getPrototypeOf(school));  // {xiaoqu: Array(3)}
+    console.log(school);  // {name: '尚硅谷'}
+
+  </script>
+</body>
+
+</html>

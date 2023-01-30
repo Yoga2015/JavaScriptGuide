@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise</title>
+</head>
+
+<body>
+<script>
+  //  实例化 Promise  （把一个异步操作 封装到一个Promise对象里面） 
+  const p = new Promise(function (resolve, reject) {
+
+    setTimeout(function () {
+      let data = '数据库中的用户数据';
+      resolve(data);   // resolve 即从“未完成”到“成功”（即从 pending 变为 fulfilled 状态）
+
+      let err = '数据读取失败';
+      reject(err);  // reject 即从“未完成”到“失败”  (即从 pending 变为 rejected 状态)
+
+    }, 1000);
+
+  });
+
+  // 调用 Promise 对象 的 then（）方法 ,  then() 有两个参数，都是回调函数
+  p.then(function (value) {      // 成功时就调用then()方法的第一个 回调函数
+    console.log(value);   // 数据库中的用户数据
+  }, function (reason) {   // 失败时就调用then()方法的第二个 回调函数
+    console.log(reason);   // 数据读取失败
+  })
+
+    // 把一个异步操作 封装到一个Promise对象里面，而且通过 resolve \ reject 改变它的状态，
+    // 一旦状态改变，就调用相应的回调函数：
+    //   成功时就调用then()方法的第一个 回调函数
+    //   失败时就调用then()方法的第二个 回调函数
+</script>
+</body>
+
+</html>

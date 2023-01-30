@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6-结合babel和browserify打包工具</title>
+</head>
+
+<body>
+
+  <!-- <script src="./src/app.js" type="module"></script> -->
+
+  <!-- 
+      1、安装工具   babel-cli 、babel-preset-env 、 browserify 打包工具（webpack）
+      npm i babel-cli babel-preset-env browserify -D
+
+      2、通过 babel命令 进行 语法转换 
+      npx babel src/js -d dist/js --presets=babel-preset-env 
+
+      3、用 browserify 进行 打包
+      npx browserify dist/js/app.js -o dist/bundle.js
+
+      4、把 dist/bundle.js 引入html
+   -->
+
+  <!-- <script src="dist/js/app.js"></script> -->
+
+  <script src="dist/bundle.js"></script>
+
+</body>
+
+</html>

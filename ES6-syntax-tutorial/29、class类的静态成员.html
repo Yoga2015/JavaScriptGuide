@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class 类的静态成员</title>
+</head>
+
+<body>
+  <script>
+    // 手机  构造函数
+    // function Phone() {
+
+    // };
+
+    // // 构造函数的属性和方法
+    // Phone.name = '手机';
+    // Phone.change = function () {
+    //   console.log('我可以改变人类的通讯方式');
+    // }
+    // // 但是它们不属于 实例化对象的属性和方法，对于这样的成员我们成为 静态成员。
+
+    // Phone.prototype.size = '4';
+
+    // let nokia = new Phone();
+    // console.log(nokia.name);  // undefined
+    // nokia.change();    // TypeError: nokia.change is not a function
+
+    // console.log(nokia.size); // 4
+
+
+    class Phone {
+      // 静态属性
+      static name = '手机';
+      static change() {
+        console.log('我可以改变人类的通讯方式');
+      }
+    }
+
+    let nokia = new Phone();
+    console.log(nokia.name);   // undefined
+    console.log(Phone.name);  //  手机
+
+  </script>
+
+
+</body>
+
+</html>

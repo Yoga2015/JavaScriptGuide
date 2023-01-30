@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包应用 - 计算打车价格</title>
+</head>
+
+<body>
+  <script>
+    // 闭包应用 - 计算打车价格
+    // 打车起步价13元 (三公里内)，之后每多一公里增加5块钱，用户输入公里数就可以计算打车价格。
+    // 如果有拥堵情况，总价格多收取 10块钱拥堵费
+
+    let taxiPrice = prompt(`请输入公里数，马上可以计算打车价格 ` + '\n ' + `
+    打车起步价13(三公里内)，之后每多一公里增加5块钱,
+    如果有拥堵情况，总价格多收取 10块钱拥堵费`);
+
+    // 1、正常函数封装计算车费方法
+    function calculatePrice(item) {
+      let start = 13;   // 起步价
+      let total = 0;  //总价
+      if (item <= 3) {
+        total = start;
+        alert(total);
+      } else {
+        total = start + (item - 3) * 5;
+        alert(total);
+      }
+    }
+    calculatePrice(taxiPrice);
+
+
+
+    //2、利用闭包的方式（立即执行函数方式）： 计算车费方法
+    let car = (function () {
+      let start = 13;     // 起步价
+      let totalPrice = 0;   //总价
+      return {
+        // 正常的总价
+        price: function (n) {
+          if (n <= 3) {
+            total = start;
+          } else {
+            total = start + (n - 3) * 5;
+          }
+          return total;
+        },
+
+        // 拥堵之后的费用 ,实际中是否拥堵，是根据地图情况的
+        yongdu: function (flag) {
+          return flag ? total + 10 : total;
+        },
+      }
+    })();
+
+    console.log(car.price(5));   // 23   正常的总价
+    console.log(car.yongdu(true));  // 33  拥堵之后的费用
+
+    console.log(car.price(1));   // 13   正常的总价
+    console.log(car.yongdu(false));  // 13  
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>严格模式</title>
+</head>
+
+<body>
+
+  <!-- 普通模式 -->
+  <script>
+      //当前script标签 里是 普通模式
+  </script>
+
+
+  <!-- 为整个脚本 （script标签）开启严格模式 -->
+  <script>
+    "use strict"; //当前 script标签 开启了严格模式
+    // 下面的js代码就会按照严格模式执行代码
+    console.log('这是严格模式');
+  </script>
+
+  <script>
+    (function () {
+      //在当前的这个自调用函数中有开启严格模式，当前函数之外还是普通模式
+      "use strict";
+    })();
+  </script>
+
+
+  <!-- 为函数开启严格模式 -->
+  <script>
+    function fn1() {
+      'use strict';
+      // 下面的js代码就会按照 严格模式 执行代码
+    }
+
+    function fn1() {      //当前script标签 未开启 严格模式
+      // 里面的js代码就会按照 普通模式 执行代码
+    }     
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+</head>
+
+<body>
+  <script>
+    // map 是 ES6 提供的一个新的 数据结构。它类似于对象，也是键值对的集合。
+
+    // // 创建 map实例对象
+    let m = new Map();
+
+    // 添加元素
+    m.set('sex', '男');
+    m.set('change', function () {
+      console.log('我们可以改变你');
+    })
+
+    console.log(m);  // Map(2) {'sex' => '男', 'change' => ƒ}
+
+    // size
+    console.log(m.size);   // 2   sex 、change（）
+
+    // 删除
+    m.delete('sex')
+
+    console.log(m);   // Map(1) {'change' => ƒ}
+
+    // let obj = {
+    //   name: 'lisi'
+    // };
+
+    // //给 obj 对象 设置(添加)键值对
+    // m.set(obj, 'content');   // 也可以对象obj当作m的一个键
+
+    // console.log(obj);  // {name: 'lisi'}
+
+    // //通过key获取对应值
+    // console.log(m.get(obj));   // content
+
+    // //判断 是否是 Map实例的成员 ，返回一个布尔值
+    // console.log(m.has(obj));   // true
+
+    // // 删除值，返回一个布尔值
+    // console.log(m.delete(obj));  // true
+
+    // //经过删除后，再次判断 是否是 Map实例的成员 ，返回一个布尔值
+    // console.log(m.has(obj)); // false
+
+
+
+    // map的参数
+    let map = new Map([
+      ['name', 'walking'],
+      ['title', 'I Am a King']
+    ])
+    console.log(map);
+    console.log(map.size); // 2
+    console.log(map.has('name')); // true
+    console.log(map.get('name')); // walking
+    console.log(map.has('title'));// true
+    console.log(map.get('title'));// I Am a King
+
+    // 添加元素
+    map.set('sex', '男');
+    map.set('change', function () {
+      console.log('我们可以改变你');
+    })
+
+    console.log(map.get('name')); //lisi
+
+    let key = {
+      school: '广州一中'
+    };
+
+    map.set(key, ['深圳', '广州', '北京'])
+
+    // size
+    console.log(map.size);   // 4   name、title 、sex 、change（）
+
+    // 删除
+    map.delete('name')
+
+    console.log(map);   // Map(3) { 'title' => 'I Am a King', 'sex' => '男', 'change' => ƒ }
+
+    // map 循环遍历    
+    // forEach() 方法，它的第一个参数必须是value ，第二参数是key
+    map.forEach((value, key) => {
+      console.log(value, key);
+    })
+    // walking       name
+    // I Am a King   title
+
+
+    // for…of 循环  (ES6引入的一种新的遍历命令)
+
+    // Map.prototype.keys()：返回键名的遍历器
+    for (let key of map.keys()) {
+      console.log(key);
+    }
+    // 'name'
+    // 'title'
+
+    //Map.prototype.values()：返回键值的遍历器。
+    for (let value of map.values()) {
+      console.log(value);
+    }
+    //'walking'
+    // 'I Am a King'
+
+    //Map.prototype.entries() : 返回所有成员的遍历器
+    for (let item of map.entries()) {
+      console.log(item);
+    }
+    // ['name', 'walking']
+    // ['title', 'I Am a King']
+
+    // 或者
+
+    for (let [key, value] of map.entries()) {  //for...of 遍历，它的第一个是key ，第二个是value
+      console.log(key, value);
+    }
+    // name  walking
+    // title I Am a King
+
+
+
+    // Map 转为数组 
+    let map1 = new Map([
+      ['name', 'walking'],
+      ['title', 'I Am a King']
+    ])
+    // 比较快速的方法是使用 扩展运算符（...） 
+    console.log([...map1.keys()]);   //['name', 'title']
+    console.log([...map1.values()]);  //['walking', 'I Am a King']
+    console.log([...map1.entries()]); //[['name', 'walking'],['title', 'I Am a King']]
+    console.log([...map1]); //[['name', 'walking'],['title', 'I Am a King']]
+
+    // 数组 转为 Map
+    let arr = [['false', 'no'], ['true', 'yes']]
+    let arrMap = new Map(arr);
+    console.log(arrMap);
+
+
+    let wm = new WeakMap();
+    // wm.set(1, 2);   // TypeError: Invalid value used as weak map key
+    wm.set([1], 2);
+    wm.set({
+      name: 'lisi'
+    }, 'es');
+
+  </script>
+</body>
+
+</html>

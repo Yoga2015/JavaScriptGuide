@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reflect</title>
+</head>
+
+<body>
+  <script>
+    // 内部的方法放在了Reflect
+    console.log(Reflect); // Reflect {defineProperty: ƒ, deleteProperty: ƒ, get: ƒ, …}
+
+    console.log(typeof Reflect);   // carect
+
+    //定义对象
+    let car = {
+      color: 'red',
+      num: 100,
+
+    }
+
+    //设置特性1  （设置对象属性）
+    // Object.defineProperty(car, 'color', {
+    //   writable: false
+    // });
+    // Object.defineProperty(car, 'num', {
+    //   enumerable: false
+    // });
+
+    //设置特性2   设置对象属性
+    Reflect.defineProperty(car, 'color', {
+      writable: false,
+      // configurable: false,
+      // enumerable: false,
+    });
+    Reflect.defineProperty(car, 'num', {
+      enumerable: false,    //不可枚举 （不可遍历）
+
+    });
+
+    // 修改color
+    car.color = 'green';
+
+    // 遍历 car对象
+    for (let key in car) {
+      console.log(key, car[key]);   // color red
+    }
+
+    console.log(Reflect.ownKeys(car));   //  ['color', 'num']
+
+    // 删除属性
+    // delete car.color;
+    Reflect.deleteProperty(car, 'color');
+    console.log(car);
+
+
+    // 判断对象的属性
+    console.log('color' in car);  // false
+    console.log(Reflect.has(car, 'color'));  // false
+    console.log(Reflect.has(car, 'msg'));  // false
+
+
+
+  </script>
+</body>
+
+</html>

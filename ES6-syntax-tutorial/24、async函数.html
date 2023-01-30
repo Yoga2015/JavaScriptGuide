@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async函数</title>
+</head>
+
+<body>
+<script>
+  // 普通的函数
+  // function fn(){
+
+  //  }
+
+  // async函数   特殊的是 返回值 是一个 Promise 对象
+  async function fn() {
+    // 此时 返回的结果 不管是 字符串 、数组 、null 、undefined，
+    // 只要返回的结果不是一个 Promise类型的对象时，则返回的结果就是一个 成功的 Promise对象
+
+    // 返回一个字符串  , 则返回的结果就是一个 成功的 Promise对象
+    return '广州一中';
+
+    // 返回的结果不是一个 Promise类型的对象时，则返回的结果就是一个 成功的 Promise对象
+    return;
+
+    // 抛出错误   此时 返回的结果是一个失败的 Promise对象
+    throw new Error('出错了');
+
+    // 当返回的结果是一个 Promise对象
+    return new Promise((resolve, reject) => {
+      // resolve('成功的数据');
+      reject('失败的错误');
+    })
+
+
+  }
+
+  const result = fn();
+
+  result.then(value => {
+    console.log(value);
+  }, reason => {
+    console.warn(reason);
+  })
+
+</script>
+
+</body>
+
+</html>

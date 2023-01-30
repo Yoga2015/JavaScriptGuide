@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使用$.ajax()发起get请求以及post请求</title>
+<script src="./lib/jquery.js"></script>
+</head>
+<body>
+<button id="btnAjaxGet">使用$.ajax()发起get请求</button>
+<button id="btnAjaxPost">使用$.ajax()发起post请求</button>
+<script>
+  // 使用 $.ajax发起POST请求时，只需要将type属性的值设置为 'POST' 即可
+  $(function () {
+    $('#btnAjaxPost').on('click', function () {
+      $.ajax({
+        type: 'POST',  // 请求的方式
+        url: 'http://www.liulongbin.top:3006/api/addbook', // 请求的 URL 地址
+        data: {
+          bookname: 'ajax基础',
+          author: 'walking',              // 要提交给服务器的数据
+          publisher: '深圳图书出版社'
+        },
+        success: function (res) {   // 请求成功之后的回调函数
+          console.log(res);
+        }
+      })
+    })
+  })
+</script>
+
+<script>
+  // 使用 $.ajax() 发起 GET 请求时，只需要将 type 属性的值设置为 'GET' 即可：
+  $(function () {
+    $('#btnAjaxGet').on('click', function () {
+      $.ajax({
+        type: 'GET',  // 请求的方式
+        url: 'http://www.liulongbin.top:3006/api/getbooks', // 请求的 URL 地址
+        data: {
+          id: 1 // 这次请求要携带的数据
+        },
+        success: function (res) {   // 请求成功之后的回调函数
+          console.log(res);
+        }
+      })
+    })
+  })
+</script>
+</body>
+
+</html>

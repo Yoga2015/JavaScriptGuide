@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class类</title>
+</head>
+
+<body>
+  <script>
+    // ES5 通过 构造函数 实例对象的语法
+    //手机 
+    function Phone(brand, price) {
+      this.brand = brand;
+      this.price = price;
+    };
+
+    // 添加方法   从构造函数的原型对象上添加 这样可以做到 重复用
+    Phone.prototype.call = function () {
+      console.log('我可以打电话！');
+    };
+
+    // 实例化对象
+    let xiaomi = new Phone('xiaomi', 4999);
+    xiaomi.call();
+    console.log(xiaomi);
+
+
+    // ES6 通过 class 实例对象的语法
+    class Shouji {
+
+      //构造方法 名字不能修改  this关键字则代表实例对象   new一个实例对象时就自调用
+      constructor(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      //添加方法  前面不需要加上function这个关键字 方法必须使用该语法，不能使用 ES5 的对象完整形式  
+      call() {
+        console.log('我可以打电话！');
+      }
+
+      // 方法与方法之间不需要逗号分隔，加了会报错。
+    }
+
+    //使用的时候，也是直接对类使用new命令
+    let redmi = new Shouji('redmi', 1999);
+    console.log(redmi);
+
+    //类的数据类型就是函数
+    console.log(typeof Shouji);   // function
+    // 类本身就指向构造函数
+    console.log(Shouji === Shouji.prototype.constructor);
+
+
+    
+  </script>
+</body>
+
+</html>

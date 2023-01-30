@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数值扩展</title>
+</head>
+
+<body>
+  <script>
+    // Number.EPSILON 是JavaScript 表示的最小精度
+    // EPSILON 属性 的值 接近 于  2.220446049250313e-16
+    console.log(0.1 + 0.2);   // 0.30000000000000004
+
+    function equal(a, b) {
+      if (Math.abs(a - b) < Number.EPSILON) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    console.log(0.1 + 0.2 === 0.3);   // false
+    console.log(equal(0.1 + 0.2, 0.3));  // true
+
+    //1. 二进制和八进制
+    let b = 0b1010;
+    let o = 0o777;
+    let d = 100;
+    let x = 0xff;
+    console.log(x);  // 255
+
+    //2. Number.isFinite  检测一个数值是否为有限数
+    console.log(Number.isFinite(100));   // true
+    console.log(Number.isFinite(100 / 0));  // false
+    console.log(Number.isFinite(Infinity));   // false
+
+    //3、 Number.isNaN() 检测一个数值是否为NaN
+    console.log(Number.isNaN(123));  // false
+
+    //4、 Number.parseInt() 、  Number.parseFloat() 字符串 转 整数
+    console.log(Number.parseInt('5201314game'));  // 5201314
+    console.log(Number.parseFloat('3.14圆周率'));  // 3.14
+
+    //5、 Number.isInteger() 判断一个数是否为整数
+    console.log(Number.isInteger(19.9));  // false
+    console.log(Number.isInteger(30));  // true
+
+    //6、 Math.trunc()  将数字的小数部分抹掉
+    console.log(Math.trunc(5.3));  // 5
+
+    //7、 Math.sign()  判断一个数到底为正数 负数  还是 零
+    console.log(Math.sign(10));  // 1
+    console.log(Math.sign(0));  // 0
+    console.log(Math.sign(-9));  // -1
+
+  </script>
+</body>
+
+</html>

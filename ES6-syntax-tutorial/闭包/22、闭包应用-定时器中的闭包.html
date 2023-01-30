@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器中的闭包</title>
+</head>
+
+<body>
+  <ul class="nav">
+    <li>豆腐</li>
+    <li>鸡蛋</li>
+    <li>排骨</li>
+    <li>青菜</li>
+  </ul>
+
+  <script>
+    // 闭包应用 - 3秒钟之后，打印所有 li元素的内容
+    let lis = document.querySelector('.nav').querySelectorAll('li');
+
+    for (let i = 0; i < lis.length; i++) {
+      (function (i) {
+        setTimeout(function () {
+          console.log(lis[i].innerHTML);
+        }, 3000);
+      })(i);
+    }
+  </script>
+</body>
+
+</html>

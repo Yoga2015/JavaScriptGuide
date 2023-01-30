@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+
+<body>
+    <script>
+        //1、创建 Symbol 方式    Symbol 值 通过 Symbol()函数生成
+        let s = Symbol();
+        console.log(s, typeof s);   //Symbol() 'symbol'
+
+        // 没有参数的情况
+        let s1 = Symbol();
+        let s2 = Symbol();
+        console.log(s1 === s2); // false
+
+        // 有参数的情况
+        let s3 = Symbol('walking');
+        let s4 = Symbol('walking');
+        console.log(s3 === s4);   // false  虽然有两个walking 但是它们的编号是不一样的
+
+        // 2、创建 Symbol 方式2 ----》Symbol.for 创建
+        let s5 = Symbol.for('张三');
+        let s6 = Symbol.for('张三');
+        console.log(s5 === s6);  //  true
+
+        //3、Symbol 值不能与其他类型的值进行运算，会报错
+        // let result = s6 + 100;
+        // let result = s6 < 100;
+        // let result = s6 < s6;
+
+        // USONB    you so niubility
+        // u  undefined
+        // s  string  Symbol
+        // o  object
+        // n  null  number
+        // b  boolean
+
+
+        // 4、Symbol 使用场景
+
+        // 向对象中 添加 新的方法 : up 、 down 相关的
+        let game = {
+            name: '奋斗罗'
+        }
+
+        // game.up = function () {
+
+        // }
+        // game.down = function () {
+
+        // }
+        // 但是我们不确定 新方法的名字 有没有可能 与 game对象里面 现有方法产生属性名的冲突 
+
+        // 声明一个对象
+        let methods = {
+            up: Symbol(),
+            down: Symbol()
+        }
+
+        game[methods.up] = function () {
+            console.log('我是up');
+        }
+        game[methods.down] = function () {
+            console.log('我是down');
+        }
+
+        console.log(game);  // {name: '奋斗罗', Symbol(): ƒ, Symbol(): ƒ}
+
+
+        let youxi = {
+            name: '魂斗罗',
+            [Symbol('say')]: function () {
+                console.log('我真行')
+            },
+            [Symbol('zibao')]: function () {
+                console.log('自爆');
+            }
+        }
+        console.log(youxi);  // { name: '魂斗罗', Symbol(say): ƒ, Symbol(zibao): ƒ }
+
+
+        // Symbol内置属性 
+        // Symbol.hasInstance  自己可以控制类型检测
+        class Person {
+            static [Symbol.hasInstance](param) {
+                console.log(param);
+                console.log('我被用来检测类型了');   // 我被用来检测类型了
+
+                return true;   //不控制类型检测结果 ，默认是 false
+            }
+        }
+        let b = {};
+        console.log(b instanceof Person);   // false   true
+
+
+    </script>
+</body>
+
+</html>
